@@ -409,7 +409,7 @@
 
         .main_content {
             width: 90%;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 200px auto 0;
             padding: 0 20px;
         }
@@ -447,18 +447,6 @@
             font-weight: 500;
         }
 
-        .setup-btn {
-            display: block;
-            width: 100%;
-            background: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 20px;
-            transition: background 0.3s ease;
-            text-align: center;
-        }
 
         .setup-btn:hover {
             background: var(--hover-color);
@@ -542,6 +530,22 @@
             color: var(--hover-color);
         }
 
+        .header {
+            background: #00897b;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            color: #00897b;
+        }
     </style>
 </head>
 <body>
@@ -587,7 +591,7 @@
                     </div>
                     <div class="profile-menu">
                         <a href="#"><i class="fas fa-home text-prime"></i>Home</a>
-                        <a href="CPD_Trainings.html"><i class="fas fa-certificate text-prime"></i>Trainings</a>
+                        <a href="#"><i class="fas fa-certificate text-prime"></i>Trainings</a>
                         <a href="settings.html"><i class="fas fa-cog text-prime"></i>Account settings</a>
                         <div class="divider"></div>
                         <a href="login.html"><i class="fas fa-user-plus text-prime"></i>Log into another account</a>
@@ -599,20 +603,177 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="main_content">
+    <div class="container-fluid py-4">
         <div class="row">
-            <div class="col-custom">
-                <img src="asset/images/launch.svg" alt="Launch illustration">
-            </div>
-            <div class="col-custom" style="width: 400px;">
-                <div class="welcome-text">
-                    <div class="name">Hello ANOLA Juventus MATIMBWI,</div>
-                    <div class="portal">WELCOME TO THE TEACHER PORTAL TANZANIA PLATFORM</div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header" style="background-color: #009c95; color: white;">
+                        <h5 class="mb-0">CPD Training Requests</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Filters Section -->
+                        <div class="row mb-4">
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label fw-bold">Status</label>
+                                <select class="form-select">
+                                    <option value="">All Status</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="rejected">Rejected</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label fw-bold">Date Range</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label fw-bold">Region</label>
+                                <select class="form-select">
+                                    <option value="">All Regions</option>
+                                    <option value="arusha">Arusha</option>
+                                    <option value="dar">Dar es Salaam</option>
+                                    <option value="dodoma">Dodoma</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label fw-bold">Training Type</label>
+                                <select class="form-select">
+                                    <option value="">All Types</option>
+                                    <option value="workshop">Workshop</option>
+                                    <option value="seminar">Seminar</option>
+                                    <option value="course">Course</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Search and Actions Row -->
+                        <div class="row mb-4">
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search requests...">
+                                    <button class="btn" style="background-color: #009c95; color: white;" type="button">
+                                        <i class="fas fa-search me-1"></i> Search
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <button class="btn" style="background-color: #007c77; color: white;">
+                                     0 Requests
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Table Section -->
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead style="background-color: #f8f9fa;">
+                                    <tr>
+                                        <th>Training Title</th>
+                                        <th>Requested By</th>
+                                        <th>Date Requested</th>
+                                        <th>Training Date</th>
+                                        <th>Location</th>
+                                        <th>Status</th>
+                                        <th class="text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Effective Teaching Methods</td>
+                                        <td>John Doe</td>
+                                        <td>2024-01-15</td>
+                                        <td>2024-02-01</td>
+                                        <td>Arusha</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td class="text-end">
+                                            <button class="btn btn-sm" style="background-color: #009c95; color: white;" title="View Details" onclick="viewTraining(1)">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-success" title="Accept" onclick="acceptTraining(1)">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" title="Reject" onclick="showRejectModal(1)">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <p>Get started by setting up or updating your profile, after which you can start using the platform.</p>
-                <a href="CPD_facilitator_basic_info.html" class="setup-btn">
-                    <i class="fas fa-user-cog"></i> Set Up CPD Facilitator Profile
-                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reject Modal -->
+    <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #009c95; color: white;">
+                    <h5 class="modal-title" id="rejectModalLabel">Reject Training Request</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="rejectForm">
+                        <input type="hidden" id="trainingId" name="trainingId">
+                        <div class="mb-3">
+                            <label for="rejectReason" class="form-label fw-bold">Reason for Rejection</label>
+                            <textarea class="form-control" id="rejectReason" rows="3" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="rejectTraining()">Submit Rejection</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Training Modal -->
+    <div class="modal fade" id="viewTrainingModal" tabindex="-1" aria-labelledby="viewTrainingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #009c95; color: white;">
+                    <h5 class="modal-title" id="viewTrainingModalLabel">Training Request Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Training Title:</label>
+                            <p id="viewTitle">Effective Teaching Methods</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Requested By:</label>
+                            <p id="viewRequestedBy">John Doe</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Date Requested:</label>
+                            <p id="viewDateRequested">2024-01-15</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Training Date:</label>
+                            <p id="viewTrainingDate">2024-02-01</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Location:</label>
+                            <p id="viewLocation">Arusha</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="fw-bold">Status:</label>
+                            <p id="viewStatus"><span class="badge" style="background-color: #007c77;">Pending</span></p>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="fw-bold">Description:</label>
+                            <p id="viewDescription">This training focuses on modern teaching methodologies and classroom management techniques.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" style="background-color: #006c68; color: white;" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -630,6 +791,97 @@
                     dropdown.classList.remove('show');
                 }
             });
+        }
+    </script>
+    <!-- Include SweetAlert2 Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Function to view training details and trigger the modal
+        function viewTraining(trainingId) {
+            // Populate training details (Replace with dynamic data logic as needed)
+            document.getElementById('viewTitle').innerText = "Effective Teaching Methods";
+            document.getElementById('viewRequestedBy').innerText = "John Doe";
+            document.getElementById('viewDateRequested').innerText = "2024-01-15";
+            document.getElementById('viewTrainingDate').innerText = "2024-02-01";
+            document.getElementById('viewLocation').innerText = "Arusha";
+            document.getElementById('viewStatus').innerHTML = '<span class="badge" style="background-color: #007c77;">Pending</span>';
+            document.getElementById('viewDescription').innerText = "This training focuses on modern teaching methodologies and classroom management techniques.";
+
+            // Show modal
+            const viewTrainingModal = new bootstrap.Modal(document.getElementById('viewTrainingModal'));
+            viewTrainingModal.show();
+        }
+
+        // Function to accept training
+        function acceptTraining(trainingId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'Do you want to accept this training request?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#007c77',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Accept'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Perform accept action here (e.g., update server or database)
+
+                    // Show success notification
+                    Swal.fire({
+                        title: 'Accepted!',
+                        text: 'The training request has been successfully accepted.',
+                        icon: 'success',
+                        confirmButtonColor: '#007c77'
+                    });
+                }
+            });
+        }
+
+        // Function to show rejection modal
+        function showRejectModal(trainingId) {
+            // Populate hidden field with trainingId
+            document.getElementById('trainingId').value = trainingId;
+
+            // Show reject modal
+            const rejectModal = new bootstrap.Modal(document.getElementById('rejectModal'));
+            rejectModal.show();
+        }
+
+        // Function to reject training (triggered after rejection reason is submitted)
+        function rejectTraining() {
+            const trainingId = document.getElementById('trainingId').value;
+            const rejectReason = document.getElementById('rejectReason').value;
+
+            if (!rejectReason.trim()) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Please provide a reason for rejection.',
+                    icon: 'error',
+                    confirmButtonColor: '#d33'
+                });
+                return;
+            }
+
+            // Hide modal
+            const rejectModal = bootstrap.Modal.getInstance(document.getElementById('rejectModal'));
+            rejectModal.hide();
+
+            // Perform reject action here (e.g., send rejection data to server)
+            console.log(`Rejected training ID: ${trainingId} with reason: ${rejectReason}`);
+
+            // Show success notification
+            Swal.fire({
+                title: 'Rejected!',
+                text: 'The training request has been successfully rejected.',
+                icon: 'success',
+                confirmButtonColor: '#d33'
+            });
+        }
+
+        // Function to toggle the profile dropdown
+        function toggleDropdown() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
         }
     </script>
     <script src="assets/js/main.js"></script>
