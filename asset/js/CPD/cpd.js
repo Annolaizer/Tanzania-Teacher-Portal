@@ -1,120 +1,60 @@
 
-$(document).ready(function() {
-    // Initialize Bootstrap modals
-    var academicModal = new bootstrap.Modal(document.getElementById('requestModal'), {
-        backdrop: 'static',
-        keyboard: false
-    });
-    
-    var employmentModal = new bootstrap.Modal(document.getElementById('employmentModal'), {
-        backdrop: 'static',
-        keyboard: false
-    });
-
-    // Handle modal close buttons
-    $('.btn-close, [data-bs-dismiss="modal"]').on('click', function() {
-        academicModal.hide();
-        employmentModal.hide();
-        $('.modal-backdrop').remove();
-        $('body').removeClass('modal-open');
-    });
-
-    // Handle academic entry form submission
-    $('#academicEntryForm').on('submit', function(e) {
-        e.preventDefault();
-        academicModal.hide();
-        $('.modal-backdrop').remove();
-        $('body').removeClass('modal-open');
-    });
-
-    // Handle employment entry form submission
-    $('#employmentEntryForm').on('submit', function(e) {
-        e.preventDefault();
-        employmentModal.hide();
-        $('.modal-backdrop').remove();
-        $('body').removeClass('modal-open');
-    });
-
-    // Navigation between sections
-    $('#teacherFormNextBtn').on('click', function() {
-        $('#teacherInfoForm').hide();
-        $('#academicEntrySection').show();
-    });
-
-    $('#academicEntryBackBtn').on('click', function() {
-        $('#academicEntrySection').hide();
-        $('#teacherInfoForm').show();
-    });
-
-    $('#academicEntryNextBtn').on('click', function() {
-        $('#academicEntrySection').hide();
-        $('#employmentHistorySection').show();
-    });
-
-    $('#employmentHistoryBackBtn').on('click', function() {
-        $('#employmentHistorySection').hide();
-        $('#academicEntrySection').show();
-    });
-
-    $('#employmentHistoryNextBtn').on('click', function() {
-        $('#employmentHistorySection').hide();
-        $('#passportPictureForm').show();
-    });
-
-    // Handle back button click on passport form
-    $('#passportFormBackBtn').on('click', function() {
-        $('#passportPictureForm').hide();
-        $('#employmentHistorySection').show();
-    });
-
-    // Handle finalize button click
-    $('#finalize').on('click', function() {
-        Swal.fire({
-            title: 'Terms and Conditions',
-            html: `
-                <div class="text-left">
-                    <p>By finalizing this form, you confirm that:</p>
-                    <ol class="text-left" style="text-align: left; margin-left: 20px;">
-                        <li>All information provided is accurate and complete.</li>
-                        <li>You understand that false information may result in disciplinary action.</li>
-                        <li>You agree to notify relevant authorities of any changes to your information.</li>
-                        <li>You consent to the verification of your provided information.</li>
-                    </ol>
-                    <p>Do you agree to these terms and wish to submit your information?</p>
-                </div>
-            `,
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, I agree',
-            cancelButtonText: 'Cancel',
-            reverseButtons: true,
-            allowOutsideClick: false
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Submitted!',
-                    'Your information has been successfully submitted.',
-                    'success'
-                ).then(() => {
-                    // Redirect to dashboard or next page
-                    window.location.href = 'user_dashboard.html';
-                });
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to update topbar height
+    function updateTopBarHeight() {
+        const topBar = document.querySelector('.top_bar');
+        if (topBar) {
+            const height = topBar.offsetHeight;
+            document.documentElement.style.setProperty('--topbar-actual-height', height + 'px');
+            
+            // Update navbar position
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                navbar.style.top = height + 'px';
             }
+        }
+    }
+
+    // Update on load and resize
+    updateTopBarHeight();
+    window.addEventListener('resize', updateTopBarHeight);
+    // Update when content might change
+    setTimeout(updateTopBarHeight, 100);
+
+    // Function to toggle dropdown
+    window.toggleDropdown = function() {
+        const dropdown = document.getElementById('profileDropdown');
+        dropdown.classList.toggle('show');
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.profile-trigger') && !e.target.closest('.profile-dropdown')) {
+                dropdown.classList.remove('show');
+            }
+        });
+    }
+
+    // Handle title radio buttons
+    document.querySelectorAll('input[name="title"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const otherTitleInput = document.getElementById('otherTitleInput');
+            otherTitleInput.style.display = this.value === 'Other' ? 'block' : 'none';
         });
     });
 
-    // Initialize Select2
-    $('.select2-nationality').select2({
-        placeholder: 'nationality',
-        maximumResultsForSearch: 5,
-        width: '100%',
-        dropdownParent: $('#nationality').parent()
+    // Handle other disability checkbox
+    document.getElementById('otherDisability').addEventListener('change', function() {
+        const otherInput = document.getElementById('otherDisabilityText');
+        otherInput.style.display = this.checked ? 'inline-block' : 'none';
+        if (this.checked) {
+            otherInput.focus();
+        }
     });
-    
-    // Rest of your existing JavaScript...
-    // (Keep all the other functionality like file handling, form validation, etc.)
+
+    // Ensure modal shows up when button is clicked
+    $('[data-bs-toggle="modal"]').on('click', function() {
+        academicModal.show();
+    });
 });
 
 $(document).ready(function() {
@@ -136,7 +76,7 @@ $(document).ready(function() {
             
                 <div class="form-group mt-3">
                     <div class="d-flex justify-content-between gap-3">
-                        <button type="button" class="btn btn-secondary flex-grow-1" id="passportFormBackBtn">
+                        <button type="button" class="btn btn-secondary flex-grow-1" id="passportPictureBackBtn">
                             Back
                         </button>
                         <button type="button" class="btn btn-primary flex-grow-1" id="finalize">
@@ -155,11 +95,6 @@ $(document).ready(function() {
             $('#academicEntrySection').show();
         });
 
-        // Handle back button click on passport form
-        $('#passportFormBackBtn').click(function() {
-            $('#passportPictureForm').hide();
-            $('#academicEntrySection').closest('.form-section').show();
-        });
         // end
     $('.select2-nationality').select2({
         placeholder: 'nationality',
@@ -267,6 +202,12 @@ $(document).ready(function() {
     $('#academicEntryNextBtn').click(function() {
         $('#academicEntrySection').hide();
         $('#passportPictureForm').show();
+    });
+
+    // Handle back button click on passport form
+    $('#passportPictureBackBtn').click(function() {
+        $('#passportPictureForm').hide();
+        $('#academicEntrySection').show();
     });
 
     // Initialize Bootstrap modal
