@@ -470,16 +470,13 @@
     <!-- Main Content -->
     <div class="main-content">
         <div class="form-section">
-            <h3>Identification</h3>
-            <p class="mb-4">First things first, we'll need some identification information</p>
+            <h3>Teacher's details</h3>
+            <p class="mb-4"><i>First things first, we'll need some identification information</i></p>
             
             <form id="teacherProfileForm">
                 <div class="form-floating">
                     <select class="form-select select2-teacher-type" id="teacherType" placeholder="Teacher type" required>
                         <option value="">Please select an option</option>
-                        <option value="NABCO">NABCO</option>
-                        <option value="Newly Qualified NABCO">Newly Qualified NABCO</option>
-                        <option value="Newly Qualified NSS">Newly Qualified NSS</option>
                         <option value="Private">Private</option>
                         <option value="Public">Public</option>
                         <option value="Unemployed">Unemployed</option>
@@ -487,13 +484,19 @@
                     <label for="teacherType">Teacher type</label>
                 </div>
 
-                <div id="dynamicFields">
-                    <!-- Dynamic fields will be inserted here -->
+                <div class="form-floating">
+                    <select class="form-select select2-teacher-type" id="teacherType1" placeholder="Education level" required>
+                        <option value="">Please select level of education</option>
+                        <option value="diploma">Diploma</option>
+                        <option value="undergraduate">Undergraduate</option>
+                        <option value="masters">Masters</option>
+                        <option value="phd">PhD</option>
+                    </select>
+                    <label for="education">Education Level</label>
                 </div>
 
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="ssnitNumber" placeholder="SSNIT number" required>
-                    <label for="ssnitNumber">SSNIT number</label>
+                <div id="dynamicFields">
+                    <!-- Dynamic fields will be inserted here -->
                 </div>
 
                 <button type="submit" class="btn-primary">Save</button>
@@ -541,10 +544,7 @@
             switch(teacherType) {
                 case 'NABCO':
                     fieldsHTML = `
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="gtleIndex" placeholder="GTLE index number" required>
-                            <label for="gtleIndex">GTLE index number</label>
-                        </div>
+                        
                         <div class="form-floating">
                             <input type="text" class="form-control" id="nabcoRef" placeholder="NABCO reference number" required>
                             <label for="nabcoRef">NABCO reference number</label>
@@ -555,22 +555,16 @@
                 case 'Newly Qualified NSS':
                 case 'Unemployed':
                     fieldsHTML = `
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="gtleIndex" placeholder="GTLE index number" required>
-                            <label for="gtleIndex">GTLE index number</label>
-                        </div>
+                        
                     `;
                     break;
                 case 'Public':
                     fieldsHTML = `
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="staffId" placeholder="Staff ID" required>
-                            <label for="staffId">Staff ID</label>
+                            <input type="text" class="form-control" id="staffId" placeholder="Check number" required>
+                            <label for="staffId">Check number</label>
                         </div>
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="payslipName" placeholder="Name on payslip" required>
-                            <label for="payslipName">Name on payslip</label>
-                        </div>
+                       
                     `;
                     break;
             }
@@ -581,9 +575,10 @@
         $(document).ready(function() {
             $('.select2-teacher-type').select2({
                 placeholder: 'Please select an option',
-                maximumResultsForSearch: 5,
+                // maximumResultsForSearch: 5,
                 width: '100%',
-                dropdownParent: $('#teacherType').parent()
+                dropdownParent: $('#teacherType').parent(),
+                dropdownParent: $('#teacherType1').parent()
             });
             
             // Adjust the position of the label when Select2 is focused

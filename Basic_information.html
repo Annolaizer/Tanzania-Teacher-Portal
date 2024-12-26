@@ -40,7 +40,7 @@
                     </div>
                     <div class="profile-menu">
                         <a href="user_dashboard.html"><i class="fas fa-home text-prime"></i>Home</a>
-                        <a href="professional-standing.html"><i class="fas fa-certificate text-prime"></i>Professional standing</a>
+                        <a href="CPD_Trainings.html"><i class="fas fa-certificate text-prime"></i>Trainings</a>
                         <a href="settings.html"><i class="fas fa-cog text-prime"></i>Account settings</a>
                         <div class="divider"></div>
                         <a href="login.html"><i class="fas fa-user-plus text-prime"></i>Log into another account</a>
@@ -82,14 +82,7 @@
             <!-- First Form -->
             <div class="form-section" id="basicInfoForm">
                 <h2 class="form-title">Basic Information</h2>
-                <p class="form-subtitle">Let's start with some basic information</p>
-                
-                <!-- Info Alert -->
-                <div class="alert alert-info py-3 text-center" style="font-size: 0.8rem;">
-                    <i class="fas fa-info-circle me-2"></i>
-                    This information is never shared with anyone outside the National Teaching Council and its partners
-                </div>
-
+                <p class="form-subtitle"><i>Let's start with some basic information</i></p>
                 <form id="basicInfoForm">
                     <!-- Title and Names Section -->
                     <div class="form-group mb-4">
@@ -150,68 +143,11 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Name Change Section -->
-                    <div class="form-group mb-4">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="nameChangeCheck" style="border-radius: 3px;">
-                                <label class="form-check-label" for="nameChangeCheck">
-                                    Have you changed your name?
-                                </label>
-                            </div>
-                        </div>
-                        <div id="fileUploadSection" class="mt-3" style="display: none;">
-                            <div class="file-upload-wrapper">
-                                <button type="button" class="btn w-100" style="background-color: var(--primary-color); color: white; border: none; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='var(--hover-color)'" onmouseout="this.style.backgroundColor='var(--primary-color)'" onclick="document.getElementById('fileUploadModal').style.display='block'">
-                                    <i class="fas fa-upload me-2"></i>Upload Supporting Document
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- File Upload Modal -->
-                    <div id="fileUploadModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content" style="border-radius: 8px; border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-                                <div class="modal-header" style="background-color: var(--primary-color); color: white; border-bottom: none; border-radius: 8px 8px 0 0;">
-                                    <h5 class="modal-title">Upload Supporting Document</h5>
-                                    <button type="button" class="btn-close btn-close-white" onclick="document.getElementById('fileUploadModal').style.display='none'"></button>
-                                </div>
-                                <div class="modal-body p-4">
-                                    <div class="upload-area" style="border: 2px dashed var(--primary-color); border-radius: 8px; padding: 30px; text-align: center; background-color: var(--light-bg); transition: all 0.3s ease;">
-                                        <input type="file" id="documentFile" class="d-none" accept=".pdf,.doc,.docx">
-                                        <i class="fas fa-cloud-upload-alt mb-3" style="font-size: 48px; color: var(--primary-color);"></i>
-                                        <p class="mb-3" style="color: #666;">Drag and drop your file here or</p>
-                                        <button type="button" class="btn" style="background-color: var(--primary-color); color: white; border: none; padding: 8px 24px; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='var(--hover-color)'" onmouseout="this.style.backgroundColor='var(--primary-color)'" onclick="document.getElementById('documentFile').click()">
-                                            Browse Files
-                                        </button>
-                                        <p class="mt-3 small text-muted">Supported formats: PDF, DOC, DOCX</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <style>
-                        .upload-area.highlight {
-                            border-color: var(--hover-color);
-                            background-color: rgba(0,156,149,0.05);
-                            transform: scale(1.02);
-                        }
-                        .modal-header .btn-close:focus {
-                            box-shadow: none;
-                        }
-                        .upload-area:hover {
-                            border-color: var(--hover-color);
-                        }
-                    </style>
-
                     <!-- Other Fields -->
                     <div class="row g-3 mb-4">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="form-label">Sex</label>
+                                <label class="form-label">Gender</label>
                                 <div class="square-radio-group">
                                     <div class="form-check">
                                         <input class="form-check-input square" type="radio" id="sex_male" name="sex" value="male">
@@ -232,122 +168,77 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-floating">
-                                <select class="form-control select2-nationality" id="nationality" required>
-                                    <option value="">Select nationality</option>
-                                    <option value="tanzanian">Tanzanian</option>
-                                    <option value="kenyan">Kenyan</option>
-                                    <option value="ugandan">Ugandan</option>
-                                    <option value="rwandan">Rwandan</option>
-                                    <option value="burundian">Burundian</option>
-                                    <option value="ethiopian">Ethiopian</option>
-                                    <option value="nigerian">Nigerian</option>
-                                    <option value="ghanaian">Ghanaian</option>
-                                    <option value="south_african">South African</option>
-                                    <option value="egyptian">Egyptian</option>
-                                </select>
-                                <label for="nationality">Nationality</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row g-3 mb-4">
-                        <div class="col-md-4">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="placeOfBirth" placeholder="Place of Birth" required>
-                                <label for="placeOfBirth">Place of Birth</label>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="hometown" placeholder="Hometown" required>
-                                <label for="hometown">Hometown</label>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="currentAddress" placeholder="Current Address" required>
-                                <label for="currentAddress">Current Address</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row g-3 mb-4">
-                        <div class="col-md-4">
-                            <div class="form-floating">
                                 <input type="tel" class="form-control" id="telephone" placeholder="Telephone" required>
                                 <label for="telephone">Telephone</label>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
                         <div class="col-md-4">
                             <div class="form-floating">
-                                <input type="tel" class="form-control" id="otherTelephone" placeholder="Other Telephone (If any)">
-                                <label for="otherTelephone">Other Telephone</label>
+                                <select type="text" class="form-control" id="region" placeholder="region">
+                                    <option value=""> Select Region</option>
+                                    <option value="Iringa">Iringa</option>
+                                    <option value="Njombe">Njombe</option>
+                                </select>
+                                <label for="Region">Region</label>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-check mt-4">
-                                <input class="form-check-input" type="checkbox" id="livingAbroad">
-                                <label class="form-check-label" for="livingAbroad">
-                                    I am living abroad
-                                </label>
+                            <div class="form-floating">
+                                <select type="text" class="form-control" id="district" placeholder="District">
+                                    <option value=""> Select District</option>
+                                    <option value="Iringa">Njombe</option>
+                                    <option value="Njombe">Ramadhani</option>
+                                </select>
+                                <label for="District">District</label>
                             </div>
                         </div>
-                        <!-- Contact Information -->
-
-                <!-- Appointment Information -->
-                <div class="form-group mb-4">
-                    <div class="form-floating">
-                        <input type="date" class="form-control" id="firstAppointmentDate" placeholder="Date of first appointment">
-                        <label for="firstAppointmentDate">Date of first appointment (If any)</label>
-                    </div>
-                </div>
-
-                <!-- Professional Qualification -->
-                <div class="form-group mb-4">
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="noQualification" onchange="toggleQualificationFields()">
-                        <label class="form-check-label" for="noQualification">
-                            Not Employeed ?
-                        </label>
-                    </div>
-
-                    <div id="qualificationFields">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="qualificationProof" placeholder="Employment Check Number">
-                            <label for="qualificationProof">Employment Check Number</label>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <select type="text" class="form-control" id="region" placeholder="Ward">
+                                    <option value=""> Select Ward</option>
+                                    <option value="Iringa">Njombe</option>
+                                    <option value="Ramadhani">Ramadhani</option>
+                                </select>
+                                <label for="Ward">Ward</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Disability Information -->
-                <div class="form-group mb-4">
-                    <label class="form-label">Disability (If any)</label>
-                    <div class="disability-checkboxes">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="hearingImpaired">
-                            <label class="form-check-label" for="hearingImpaired">
-                                Hearing impaired
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="speechImpaired">
-                            <label class="form-check-label" for="speechImpaired">
-                                Speech impaired
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="visuallyImpaired">
-                            <label class="form-check-label" for="visuallyImpaired">
-                                Visually impaired
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                    <div class="row">
+                        <!-- Disability Information -->
+                            <label class="form-label">Disability (If any)</label>
+                            <div class="disability-checkboxes" style="display: flex; gap: 2rem; flex-wrap: nowrap;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="hearingImpaired">
+                                    <label class="form-check-label" for="hearingImpaired">
+                                        Hearing impaired
+                                    </label>
                                 </div>
-
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="speechImpaired">
+                                    <label class="form-check-label" for="speechImpaired">
+                                        Speech impaired
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="visuallyImpaired">
+                                    <label class="form-check-label" for="visuallyImpaired">
+                                        Visually impaired
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="otherDisability">
+                                    <label class="form-check-label" for="otherDisability">
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+                    </div>
                 <div class="row mb-3">
                     <div class="col-12">
-                        <button type="button" class="btn btn-primary w-100" id="saveBtn">Save</button>
+                        <button type="button" class="btn btn-primary w-100 mt-2"  id="saveBtn">Save</button>
                     </div>
                 </div>
                 <div class="d-flex gap-4">
@@ -359,52 +250,54 @@
 
         <!-- Second Form -->
         <div class="form-section" id="teacherInfoForm" style="display: none;">
-            <h2 class="form-title">Teacher Information</h2>
-            <p class="form-subtitle">Finally, let's get some teaching-specific details</p>
-            
+            <h2 class="form-title">Professional Information</h2>
+            <p class="form-subtitle"><i>Finally, let's get some Professional Information details</i></p>
             <form class="w-100">
-                <!-- Role Selection -->
+                <!-- Professional Qualification -->
                 <div class="form-group mb-4">
-                    <label class="form-label">Role</label>
-                    <div class="role-radio-group">
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="role" id="roleAdmin" value="Administration">
-                            <label class="form-check-label" for="roleAdmin">
-                                Administration
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="roleClassroom" value="Classroom">
-                            <label class="form-check-label" for="roleClassroom">
-                                Classroom
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Level Selection -->
-                <div class="form-group mb-4">
-                    <label class="form-label">Level</label>
-                    <select class="form-select" id="levelSelect">
+                    <label class="form-label">Education Level</label>
+                    <select class="form-select" id="professionalQualification" name="professionalQualification" required>
                         <option value="" selected disabled>Please select an option</option>
-                        <option value="level1">Level 1</option>
-                        <option value="level2">Level 2</option>
-                        <option value="level3">Level 3</option>
+                        <option value="diploma">Diploma</option>
+                        <option value="under">Undergraduate</option>
+                        <option value="masters">Masters</option>
+                        <option value="phd">PhD</option>
                     </select>
                 </div>
 
-                <!-- Station -->
+                <!-- teaching Level -->
+                <div class="form-group mb-4">
+                    <label class="form-label">Teaching Level</label>
+                    <select class="form-select" id="professionalQualification" name="professionalQualification" required>
+                        <option value="" selected disabled>Please select an option</option>
+                        <option value="pre">Pre-primary</option>
+                        <option value="primary">Primary</option>
+                        <option value="lower">Lower secondary</option>
+                        <option value="upper">Upper secondary</option>
+                    </select>
+                </div>
+
+                
+                <!-- Working Experience -->
                 <div class="form-group mb-4">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="station" placeholder="Station">
-                        <label for="station">Station</label>
+                        <input type="number" class="form-control" id="experienceYears" name="experienceYears" placeholder="Years of Experience" required>
+                        <label for="experienceYears">Check number</label>
+                    </div>
+                </div>
+
+                <!-- Current Workplace -->
+                <div class="form-group mb-4">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="currentWorkplace" name="currentWorkplace" placeholder="Current Workplace" required>
+                        <label for="currentWorkplace">Current teaching school</label>
                     </div>
                 </div>
 
                 <!-- Button Group -->
                 <div class="row mb-3">
                     <div class="col-12">
-                        <button type="button" class="btn btn-primary w-100" id="teacherFormSaveBtn">Save</button>
+                        <button type="button" class="btn btn-primary w-100" id="professionalInfoSaveBtn">Save</button>
                     </div>
                 </div>
                 <div class="d-flex gap-4">
@@ -497,6 +390,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
             // Initialize Bootstrap modals
@@ -566,6 +460,44 @@
                 $('#employmentHistorySection').show();
             });
 
+            // Handle finalize button click
+            $('#finalize').on('click', function() {
+                Swal.fire({
+                    title: 'Terms and Conditions',
+                    html: `
+                        <div class="text-left">
+                            <p>By finalizing this form, you confirm that:</p>
+                            <ol class="text-left" style="text-align: left; margin-left: 20px;">
+                                <li>All information provided is accurate and complete.</li>
+                                <li>You understand that false information may result in disciplinary action.</li>
+                                <li>You agree to notify relevant authorities of any changes to your information.</li>
+                                <li>You consent to the verification of your provided information.</li>
+                            </ol>
+                            <p>Do you agree to these terms and wish to submit your information?</p>
+                        </div>
+                    `,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, I agree',
+                    cancelButtonText: 'Cancel',
+                    reverseButtons: true,
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            'Submitted!',
+                            'Your information has been successfully submitted.',
+                            'success'
+                        ).then(() => {
+                            // Redirect to dashboard or next page
+                            window.location.href = 'user_dashboard.html';
+                        });
+                    }
+                });
+            });
+
             // Initialize Select2
             $('.select2-nationality').select2({
                 placeholder: 'nationality',
@@ -623,6 +555,15 @@
                 });
             });
 
+            // Handle other disability checkbox
+            document.getElementById('otherDisability').addEventListener('change', function() {
+                const otherInput = document.getElementById('otherDisabilityText');
+                otherInput.style.display = this.checked ? 'inline-block' : 'none';
+                if (this.checked) {
+                    otherInput.focus();
+                }
+            });
+
             // Ensure modal shows up when button is clicked
             $('[data-bs-toggle="modal"]').on('click', function() {
                 academicModal.show();
@@ -653,8 +594,8 @@
                                 <button type="button" class="btn btn-secondary flex-grow-1" id="passportFormBackBtn">
                                     Back
                                 </button>
-                                <button type="button" class="btn btn-secondary flex-grow-1" id="passportFormNextBtn">
-                                    Next
+                                <button type="button" class="btn btn-primary flex-grow-1" id="finalize">
+                                    Finalize
                                 </button>
                             </div>
                         </div>
