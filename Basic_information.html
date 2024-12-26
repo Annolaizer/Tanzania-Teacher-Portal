@@ -82,7 +82,7 @@
             <!-- First Form -->
             <div class="form-section" id="basicInfoForm">
                 <h2 class="form-title">Basic Information</h2>
-                <p class="form-subtitle">Let's start with some basic information</p>
+                <p class="form-subtitle"><i>Let's start with some basic information</i></p>
                 
                 <!-- Info Alert -->
                 <div class="alert alert-info py-3 text-center" style="font-size: 0.8rem;">
@@ -268,39 +268,14 @@
                             <div class="form-check mb-3">
                                 <input class="form-check-input" type="checkbox" id="noQualification" onchange="toggleQualificationFields()">
                                 <label class="form-check-label" for="noQualification">
-                                    Not Employeed ?
+                                    Not Employeed
                                 </label>
                             </div>
 
                             <div id="qualificationFields">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="qualificationProof" placeholder="Employment Check Number">
-                                    <label for="qualificationProof">Employment Check Number</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Disability Information -->
-                        <div class="form-group mb-4">
-                            <label class="form-label">Disability (If any)</label>
-                            <div class="disability-checkboxes">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="hearingImpaired">
-                                    <label class="form-check-label" for="hearingImpaired">
-                                        Hearing impaired
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="speechImpaired">
-                                    <label class="form-check-label" for="speechImpaired">
-                                        Speech impaired
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="visuallyImpaired">
-                                    <label class="form-check-label" for="visuallyImpaired">
-                                        Visually impaired
-                                    </label>
+                                    <label for="qualificationProof">Check Number</label>
                                 </div>
                             </div>
                         </div>
@@ -321,36 +296,37 @@
         <!-- Second Form -->
         <div class="form-section" id="teacherInfoForm" style="display: none;">
             <h2 class="form-title">Professional Information </h2>
-            <p class="form-subtitle">Finally, let's get some Professional Information  details</p>
+            <p class="form-subtitle"><i>Finally, let's get some Professional Information  details</i></p>
             <form class="w-100">
                 <!-- Professional Qualification -->
                 <div class="form-group mb-4">
-                    <label class="form-label">Professional Qualification</label>
+                    <label class="form-label">Education Level</label>
                     <select class="form-select" id="professionalQualification" name="professionalQualification" required>
                         <option value="" selected disabled>Please select an option</option>
-                        <option value="phd">PhD</option>
-                        <option value="msc">MSc</option>
-                        <option value="degree">Degree</option>
-                        <option value="adv_diploma">Advanced Diploma</option>
                         <option value="diploma">Diploma</option>
+                        <option value="undergraduate">Undergraduate</option>
+                        <option value="masters">Masters</option>
+                        <option value="phd">PhD</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="form-label">Teaching Level</label>
+                    <select class="form-select" id="professionalQualification" name="professionalQualification" required>
+                        <option value="" selected disabled>Please select an option</option>
+                        <option value="pre">Pre-primary</option>
+                        <option value="primary">Primary</option>
+                        <option value="lower">Lower secondary</option>
+                        <option value="upper">Upper secondary</option>
                     </select>
                 </div>
             
-                <!-- Registration Category -->
-                <div class="form-group mb-4">
-                    <label class="form-label">Registration Category</label>
-                    <select class="form-select" id="registrationCategory" name="registrationCategory" required>
-                        <option value="" selected disabled>Please select an option</option>
-                        <option value="rn">Registered Nurse (RN)</option>
-                        <option value="en">Enrolled Nurse (EN)</option>
-                    </select>
-                </div>
             
                 <!-- License Number -->
                 <div class="form-group mb-4">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
-                        <label for="licenseNumber">License Number</label>
+                        <label for="licenseNumber">Check number</label>
                     </div>
                 </div>
             
@@ -358,23 +334,7 @@
                 <div class="form-group mb-4">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="currentWorkplace" name="currentWorkplace" placeholder="Current Workplace" required>
-                        <label for="currentWorkplace">Current Workplace</label>
-                    </div>
-                </div>
-            
-                <!-- District -->
-                <div class="form-group mb-4">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="district" name="district" placeholder="District" required>
-                        <label for="district">District</label>
-                    </div>
-                </div>
-            
-                <!-- Region -->
-                <div class="form-group mb-4">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="region" name="region" placeholder="Region" required>
-                        <label for="region">Region</label>
+                        <label for="currentWorkplace">Current teaching school</label>
                     </div>
                 </div>
             

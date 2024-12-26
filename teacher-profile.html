@@ -470,8 +470,8 @@
     <!-- Main Content -->
     <div class="main-content">
         <div class="form-section">
-            <h3>Identification</h3>
-            <p class="mb-4">First things first, we'll need some identification information</p>
+            <h3>Teacher's details</h3>
+            <p class="mb-4"><i>First things first, we'll need some identification information</i></p>
             
             <form id="teacherProfileForm">
                 <div class="form-floating">
@@ -544,10 +544,7 @@
             switch(teacherType) {
                 case 'NABCO':
                     fieldsHTML = `
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="gtleIndex" placeholder="GTLE index number" required>
-                            <label for="gtleIndex">GTLE index number</label>
-                        </div>
+                        
                         <div class="form-floating">
                             <input type="text" class="form-control" id="nabcoRef" placeholder="NABCO reference number" required>
                             <label for="nabcoRef">NABCO reference number</label>
@@ -558,10 +555,7 @@
                 case 'Newly Qualified NSS':
                 case 'Unemployed':
                     fieldsHTML = `
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="gtleIndex" placeholder="GTLE index number" required>
-                            <label for="gtleIndex">GTLE index number</label>
-                        </div>
+                        
                     `;
                     break;
                 case 'Public':
