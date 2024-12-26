@@ -82,7 +82,7 @@
             <!-- First Form -->
             <div class="form-section" id="basicInfoForm">
                 <h2 class="form-title">Basic Information</h2>
-                <p class="form-subtitle">Let's start with some basic information</p>
+                <p class="form-subtitle"><i>Let's start with some basic information</i></p>
                 <form id="basicInfoForm">
                     <!-- Title and Names Section -->
                     <div class="form-group mb-4">
@@ -251,51 +251,46 @@
         <!-- Second Form -->
         <div class="form-section" id="teacherInfoForm" style="display: none;">
             <h2 class="form-title">Professional Information</h2>
-            <p class="form-subtitle">Finally, let's get some Professional Information details</p>
+            <p class="form-subtitle"><i>Finally, let's get some Professional Information details</i></p>
             <form class="w-100">
                 <!-- Professional Qualification -->
                 <div class="form-group mb-4">
-                    <label class="form-label">Professional Qualification</label>
+                    <label class="form-label">Education Level</label>
                     <select class="form-select" id="professionalQualification" name="professionalQualification" required>
                         <option value="" selected disabled>Please select an option</option>
-                        <option value="phd">PhD</option>
-                        <option value="msc">MSc</option>
-                        <option value="degree">Degree</option>
-                        <option value="adv_diploma">Advanced Diploma</option>
                         <option value="diploma">Diploma</option>
+                        <option value="under">Undergraduate</option>
+                        <option value="masters">Masters</option>
+                        <option value="phd">PhD</option>
                     </select>
+                </div>
+
+                <!-- teaching Level -->
+                <div class="form-group mb-4">
+                    <label class="form-label">Teaching Level</label>
+                    <select class="form-select" id="professionalQualification" name="professionalQualification" required>
+                        <option value="" selected disabled>Please select an option</option>
+                        <option value="pre">Pre-primary</option>
+                        <option value="primary">Primary</option>
+                        <option value="lower">Lower secondary</option>
+                        <option value="upper">Upper secondary</option>
+                    </select>
+                </div>
+
+                
+                <!-- Working Experience -->
+                <div class="form-group mb-4">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" id="experienceYears" name="experienceYears" placeholder="Years of Experience" required>
+                        <label for="experienceYears">Check number</label>
+                    </div>
                 </div>
 
                 <!-- Current Workplace -->
                 <div class="form-group mb-4">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="currentWorkplace" name="currentWorkplace" placeholder="Current Workplace" required>
-                        <label for="currentWorkplace">Current Workplace</label>
-                    </div>
-                </div>
-
-                <!-- Working Experience -->
-                <div class="form-group mb-4">
-                    <div class="form-floating">
-                        <input type="number" class="form-control" id="experienceYears" name="experienceYears" placeholder="Years of Experience" required>
-                        <label for="experienceYears">Years of Experience</label>
-                    </div>
-                </div>
-
-                <div class="form-group mb-4">
-                    <label class="form-label">Specialization</label>
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="specialization" name="specialization" placeholder="Specialization">
-                        <label for="specialization">Specialization</label>
-                    </div>
-                </div>
-
-                <!-- Additional Information -->
-                <div class="form-group mb-4">
-                    <label class="form-label">Additional Certifications</label>
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="additionalCertifications" name="additionalCertifications" placeholder="Additional Certifications">
-                        <label for="additionalCertifications">Additional Certifications</label>
+                        <label for="currentWorkplace">Current teaching school</label>
                     </div>
                 </div>
 
