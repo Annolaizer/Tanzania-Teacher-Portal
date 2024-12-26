@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="asset/images/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Professional Standing Request - Teacher Portal Tanzania</title>
+    <style>
+        :root {
+            --primary-color: #009c95;
+            --secondary-color: #cc3344;
+            --hover-color: #007c77;
+            --hover-dark: #006c68;
+            --light-bg: #f8f8f8;
+            --navbar-height: 70px;
+            --topbar-height: 40px;
+            --container-max-width: 1200px;
+        }
+        .text-prime{
+            color: #009c95;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--light-bg);
+            padding-top: calc(var(--navbar-height) + var(--topbar-actual-height, var(--topbar-height)));
+            margin: 0;
+        }
+        .text-prime{
+            color: var(--primary-color);
+        }
+        .top_bar {
+            width: 100%;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            position: fixed;
+            top: 0;
+            z-index: 1030;
+            min-height: var(--topbar-height);
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+            text-align: center;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            position: fixed;
+            top: var(--topbar-actual-height, var(--topbar-height));
+            left: 0;
+            right: 0;
+            height: var(--navbar-height);
+            z-index: 1020;
+            padding: 0;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            color: white !important;
+            text-decoration: none;
+        }
+
+        .portal-name {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        #logo {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .user-profile {
+            position: relative;
+            margin-left: auto;
+        }
+
+        .profile-trigger {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+            margin-right: 0 !important;
+            outline: none;
+        }
+
+        .profile-trigger:hover {
+            background-color: var(--hover-color);
+            border-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .profile-trigger:focus {
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-trigger i {
+            font-size: 1.2rem;
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 2px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 300px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .profile-dropdown.show {
+            display: block;
+        }
+
+        .profile-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        .profile-header i.fa-user {
+            font-size: 3rem;
+            color: var(--primary-color);
+            background: #f5f5f5;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+        }
+
+        .profile-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .profile-email {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .profile-menu {
+            padding: 10px 0;
+        }
+
+        .profile-menu a {
+            display: block;
+            padding: 10px 20px;
+            margin: 2px 0;
+            border: none;
+            transition: all 0.2s ease;
+            color: #333;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .profile-menu a i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .profile-menu a:hover {
+            background-color: var(--light-bg);
+        }
+
+        .profile-menu a:hover i {
+            color: var(--hover-color);
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #eee;
+            margin: 8px 0;
+        }
+
+        .main-content {
+            padding: 2rem;
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+        }
+
+        .page-header {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .alert-custom {
+            background-color: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            border: 1px solid #e9ecef;
+        }
+
+        .alert-custom .icon-col {
+            flex-shrink: 0;
+        }
+
+        .alert-custom .icon-col i {
+            font-size: 2rem;
+            color: #6c757d;
+        }
+
+        .alert-custom .text-col {
+            flex-grow: 1;
+            font-size: 1.05rem;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+
+        .icon-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .icon-container i {
+            color: var(--primary-color);
+            font-size: 12rem;
+        }
+
+        .btn-prime {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            width: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .btn-prime:hover {
+            background-color: #5a6268;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .modal-title {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .form-floating {
+            position: relative;
+        }
+        
+        .form-container input,
+        .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            background: transparent;
+            height: 45px;
+            padding-top: 20px;
+        }
+        
+        .form-container input:focus,
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 156, 149, 0.2);
+        }
+        
+        .form-floating label {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: #666;
+            pointer-events: none;
+            transition: 0.2s ease all;
+        }
+        
+        .form-floating input:focus ~ label,
+        .form-floating input:not(:placeholder-shown) ~ label {
+            top: 1px;
+            font-size: 12px;
+            color: var(--primary-color);
+            background-color: var(--light-bg);
+            padding: 0 2px;
+            display: inline;
+            line-height: 1;
+            height: auto;
+            margin: 0;
+        }
+
+        .custom-file-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Add new styles for file input modal */
+        .file-input-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1060;
+            width: 90%;
+            max-width: 400px;
+            display: none;
+        }
+
+        .file-input-modal.show {
+            display: block;
+        }
+
+        .file-input-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        .file-input-modal-backdrop.show {
+            display: block;
+        }
+
+        .file-input-modal .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .file-input-modal .modal-title {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .file-input-modal .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .file-input-modal .file-drop-zone {
+            margin: 15px 0;
+        }
+
+        .selected-file-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            background: var(--light-bg);
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .selected-file-info i {
+            color: var(--primary-color);
+        }
+
+        .file-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .file-actions button {
+            padding: 8px 15px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-actions .cancel-btn {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .file-actions .select-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .file-actions button:hover {
+            opacity: 0.9;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+        }
+
+        .file-input-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            cursor: pointer;
+        }
+
+        .file-drop-zone {
+            border: 2px dashed #ccc;
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            background: #f8f9fa;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .file-drop-zone.drag-over {
+            background: #e9ecef;
+            border-color: #6c757d;
+        }
+
+        .file-drop-zone i {
+            font-size: 2em;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .file-drop-zone p {
+            margin: 0;
+            color: #6c757d;
+        }
+
+        .browse-text {
+            color: #007bff;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .selected-file-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .selected-file-info i {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        /* File input styling */
+        .form-control[type="file"] {
+            padding: 0;
+            height: 38px;
+            line-height: 38px;
+        }
+
+        .form-control[type="file"]::file-selector-button {
+            height: 100%;
+            padding: 0 16px;
+            background-color: #e9ecef;
+            border: 0;
+            border-right: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            color: #666;
+            margin-right: 16px;
+        }
+
+        .form-control[type="file"]::file-selector-button:hover {
+            background-color: #dde0e3;
+        }
+
+        @media (max-width: 991.98px) {
+            .nav-link {
+                margin: 5px 0;
+                border-color: rgba(255, 255, 255, 0.15);
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            :root {
+                --navbar-height: 60px;
+            }
+            .page-header {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .main-content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portal-name {
+                display: none;
+            }
+
+            .navbar > .container {
+                padding: 0 15px;
+                justify-content: space-between;
+            }
+
+            .user-profile {
+                margin-left: 0;
+            }
+
+            .profile-trigger {
+                position: relative;
+                right: 0;
+                margin-right: 0 !important;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .profile-dropdown {
+                right: 0;
+                width: 280px;
+            }
+
+            .main-content {
+                margin-top: 120px;
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #logo {
+                height: 35px;
+            }
+
+            .profile-dropdown {
+                width: calc(100vw - 30px);
+                right: -15px;
+            }
+
+            .main-content {
+                width: 100%;
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="top_bar">
+        GES teachers who cannot verify their Staff ID or SSNIT should send their payslip, SSNIT ID and scanned first appointment letter to it@ntc.gov.gh . The Duration for processing Letter of Professional Standing takes a maximum of 30 working days.
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a href="user_dashboard.html" class="navbar-brand">
+                <img src="asset/images/logo.png" alt="Logo" id="logo">
+                <span class="portal-name">Teacher Portal Tanzania</span>
+            </a>
+            <div class="user-profile">
+                <button class="profile-trigger" onclick="toggleDropdown()" style="margin-right: -40px;">
+                    <i class="fas fa-user"></i>
+                </button>
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="profile-header">
+                        <i class="fas fa-user"></i>
+                        <div class="profile-name">ANOLA Juventus MATIMBWI</div>
+                        <div class="profile-email">annolamatimbwi@gmail.com</div>
+                    </div>
+                    <div class="profile-menu">
+                        <a href="user_dashboard.html"><i class="fas fa-home text-prime"></i>Home</a>
+                        <a href="professional-standing.html"><i class="fas fa-certificate text-prime"></i>Professional standing</a>
+                        <a href="settings.html"><i class="fas fa-cog text-prime"></i>Account settings</a>
+                        <div class="divider"></div>
+                        <a href="login.html"><i class="fas fa-user-plus text-prime"></i>Log into another account</a>
+                        <a href="index.html"><i class="fas fa-sign-out-alt text-prime"></i>Logout of all accounts</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content" style="width: 80%; max-width: 600px; margin: auto;">
+        <h4 class="text-prime">Professional Standing Request</h4>
+        
+        <div class="alert-custom">
+            <div class="icon-col">
+                <i class="fa fa-warning"></i>
+            </div>
+            <div class="text-col">
+                Statements are sent directly to the requesting institution. You will be notified once it is sent.
+            </div>
+        </div>
+
+        <div class="icon-container">
+            <i class="fa fa-graduation-cap"></i>
+        </div>
+        <p class="text-center">No request found</p>
+        <button class="btn btn-block btn-prime text-center" style="width: 100%;" data-bs-toggle="modal" data-bs-target="#requestModal">Make first request</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="requestModalLabel">Add academic entry</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="academicEntryForm">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="institutionName" placeholder="Institution name" required>
+                            <label for="institutionName">Institution name</label>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="institutionEmail" placeholder="Institution email" required>
+                            <label for="institutionEmail">Institution email</label>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <small><label class="form-label">Introduction letter from district</label></small>
+                            <div class="file-input-wrapper">
+                                <input type="file" class="form-control" id="introLetter" accept=".pdf,.doc,.docx">
+                                <div class="file-input-overlay" onclick="openFileModal('introLetterModal', event)"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <small><label class="form-label">Letter addressed to The Registrar</label></small>
+                            <div class="file-input-wrapper">
+                                <input type="file" class="form-control" id="registrarLetter" accept=".pdf,.doc,.docx">
+                                <div class="file-input-overlay" onclick="openFileModal('registrarLetterModal', event)"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <small><label class="form-label">Transcript</label></small>
+                            <div class="file-input-wrapper">
+                                <input type="file" class="form-control" id="transcript" accept=".pdf">
+                                <div class="file-input-overlay" onclick="openFileModal('transcriptModal', event)"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form="academicEntryForm" class="btn btn-submit" style="background-color: var(--primary-color); color: white;">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Input Modals -->
+    <div class="file-input-modal-backdrop" id="fileModalBackdrop"></div>
+    <div class="file-input-modal" id="introLetterModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Upload Introduction Letter</h5>
+                <button type="button" class="close-btn" onclick="closeFileModal('introLetterModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="file-drop-zone" ondrop="handleDrop(event, 'introLetterInput')" ondragover="handleDragOver(event)">
+                    <input type="file" class="custom-file-input" id="introLetterInput" accept=".pdf,.doc,.docx" onchange="handleFileSelect(this)">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop your file here or <span class="browse-text">browse</span></p>
+                    <div class="selected-file-info" style="display: none;">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="selected-file-name"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeFileModal('introLetterModal')">Cancel</button>
+                <button type="button" class="btn" onclick="confirmFileSelection('introLetterModal')" style="margin-left: 20px; background-color: var(--primary-color); color: white;">Select File</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="file-input-modal" id="registrarLetterModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Upload Registrar Letter</h5>
+                <button type="button" class="close-btn" onclick="closeFileModal('registrarLetterModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="file-drop-zone" ondrop="handleDrop(event, 'registrarLetterInput')" ondragover="handleDragOver(event)">
+                    <input type="file" class="custom-file-input" id="registrarLetterInput" accept=".pdf,.doc,.docx" onchange="handleFileSelect(this)">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop your file here or <span class="browse-text">browse</span></p>
+                    <div class="selected-file-info" style="display: none;">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="selected-file-name"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeFileModal('registrarLetterModal')">Cancel</button>
+                <button type="button" class="btn" onclick="confirmFileSelection('registrarLetterModal')" style="margin-left: 20px; background-color: var(--primary-color); color: white;">Select File</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="file-input-modal" id="transcriptModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Upload Transcript</h5>
+                <button type="button" class="close-btn" onclick="closeFileModal('transcriptModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="file-drop-zone" ondrop="handleDrop(event, 'transcriptInput')" ondragover="handleDragOver(event)">
+                    <input type="file" class="custom-file-input" id="transcriptInput" accept=".pdf" onchange="handleFileSelect(this)">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop your file here or <span class="browse-text">browse</span></p>
+                    <div class="selected-file-info" style="display: none;">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="selected-file-name"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeFileModal('transcriptModal')">Cancel</button>
+                <button type="button" class="btn" onclick="confirmFileSelection('transcriptModal')" style="margin-left: 20px; background-color: var(--primary-color); color: white;">Select File</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function updateTopBarHeight() {
+            const topBar = document.querySelector('.top_bar');
+            if (topBar) {
+                document.documentElement.style.setProperty('--topbar-actual-height', topBar.offsetHeight + 'px');
+            }
+        }
+        
+        // Update on load and resize
+        updateTopBarHeight();
+        window.addEventListener('resize', updateTopBarHeight);
+        // Update when content might change
+        window.addEventListener('DOMContentLoaded', updateTopBarHeight);
+
+        function toggleDropdown() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('show');
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const profile = document.querySelector('.user-profile');
+                if (!profile.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        }
+
+        // Modal functionality
+        function openModal() {
+            const myModal = new bootstrap.Modal(document.getElementById('requestModal'));
+            myModal.show();
+        }
+
+        // Update file input names when files are selected
+        document.querySelectorAll('.custom-file-input').forEach(input => {
+            input.addEventListener('change', function(e) {
+                const fileName = e.target.files[0]?.name || 'No file selected';
+                e.target.nextElementSibling.textContent = fileName;
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('academicEntryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Handle form submission here
+            // You can add your form submission logic
+        });
+
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDrop(event, inputId) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const dropZone = event.currentTarget;
+            dropZone.classList.remove('drag-over');
+            
+            const files = event.dataTransfer.files;
+            if (files.length > 0) {
+                const input = document.getElementById(inputId);
+                input.files = files;
+                handleFileSelect(input);
+            }
+        }
+
+        function handleFileSelect(input) {
+            const fileInfo = input.closest('.file-drop-zone').querySelector('.selected-file-info');
+            const fileName = fileInfo.querySelector('.selected-file-name');
+            
+            if (input.files.length > 0) {
+                fileName.textContent = input.files[0].name;
+                fileInfo.style.display = 'flex';
+            } else {
+                fileInfo.style.display = 'none';
+            }
+        }
+
+        // Add click handler to browse text
+        document.querySelectorAll('.browse-text').forEach(browse => {
+            browse.onclick = function(e) {
+                e.stopPropagation();
+                const input = this.closest('.file-drop-zone').querySelector('.custom-file-input');
+                input.click();
+            };
+        });
+
+        // Add click handler to drop zones
+        document.querySelectorAll('.file-drop-zone').forEach(zone => {
+            zone.onclick = function(e) {
+                if (e.target === this || e.target.tagName === 'P' || e.target.tagName === 'I') {
+                    const input = this.querySelector('.custom-file-input');
+                    input.click();
+                }
+            };
+        });
+
+        // File Modal Functions
+        let currentModalId = null;
+        let escapeListener = null;
+
+        function openFileModal(modalId, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            // Store current modal id
+            currentModalId = modalId;
+            
+            // Show modal and backdrop
+            document.getElementById('fileModalBackdrop').classList.add('show');
+            document.getElementById(modalId).classList.add('show');
+            
+            // Add click event to backdrop for closing
+            document.getElementById('fileModalBackdrop').onclick = function(e) {
+                if (e.target === this) {
+                    closeFileModal(currentModalId);
+                }
+            };
+            
+            // Add escape key listener
+            if (escapeListener) {
+                document.removeEventListener('keydown', escapeListener);
+            }
+            
+            escapeListener = function(e) {
+                if (e.key === 'Escape' && currentModalId) {
+                    closeFileModal(currentModalId);
+                }
+            };
+            
+            document.addEventListener('keydown', escapeListener);
+        }
+
+        function closeFileModal(modalId) {
+            if (!modalId) return;
+            
+            // Hide modal and backdrop
+            document.getElementById('fileModalBackdrop').classList.remove('show');
+            document.getElementById(modalId).classList.remove('show');
+            
+            // Clean up
+            currentModalId = null;
+            if (escapeListener) {
+                document.removeEventListener('keydown', escapeListener);
+                escapeListener = null;
+            }
+            
+            // Remove backdrop click handler
+            document.getElementById('fileModalBackdrop').onclick = null;
+        }
+
+        function confirmFileSelection(modalId) {
+            const modal = document.getElementById(modalId);
+            const input = modal.querySelector('.custom-file-input');
+            const mainForm = document.getElementById('academicEntryForm');
+            const mainInput = mainForm.querySelector(`#${input.id.replace('Input', '')}`);
+            
+            if (input.files.length > 0) {
+                const file = input.files[0];
+                // Create a new FileList object
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                mainInput.files = dataTransfer.files;
+                closeFileModal(modalId);
+            }
+        }
+
+        // Initialize all modal buttons on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove previous event listeners
+            document.querySelectorAll('.file-input-modal button').forEach(btn => {
+                const newBtn = btn.cloneNode(true);
+                btn.parentNode.replaceChild(newBtn, btn);
+            });
+        });
+    </script>
+</body>
+</html>

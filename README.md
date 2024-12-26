@@ -1,1 +1,2 @@
-# Tanzania-Teacher-Portal
+# TTPS
+Tanzania Teacher Portal

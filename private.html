@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="asset/images/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Teacher Portal Tanzania</title>
+    <style>
+        :root {
+            --primary-color: #009c95;
+            --secondary-color: #cc3344;
+            --hover-color: #007c77;
+            --hover-dark: #006c68;
+            --light-bg: #f8f8f8;
+            --navbar-height: 70px;
+            --topbar-height: 40px;
+            --container-max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--light-bg);
+            padding-top: calc(var(--navbar-height) + var(--topbar-actual-height, var(--topbar-height)));
+            margin: 0;
+        }
+
+        .top_bar {
+            width: 100%;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            position: fixed;
+            top: 0;
+            z-index: 1030;
+            min-height: var(--topbar-height);
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+            position: fixed;
+            width: 100%;
+            top: var(--topbar-actual-height, var(--topbar-height));
+            z-index: 1020;
+            min-height: var(--navbar-height);
+            padding: 0.625rem 0;
+            margin: 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding-right: 0;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        #logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .portal-name {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 5px;
+            margin-left: 0.5rem;
+        }
+
+        .user-profile {
+            position: relative;
+            margin-left: auto;
+        }
+
+        .profile-trigger {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+            margin-right: 1rem !important;
+        }
+
+        .profile-trigger:hover {
+            background-color: var(--hover-color);
+            border-color: var(--hover-color);
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 2px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 300px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .profile-dropdown.show {
+            display: block;
+        }
+
+        .profile-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        .profile-header i.fa-user {
+            font-size: 3rem;
+            color: var(--primary-color);
+            background: #f5f5f5;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+        }
+
+        .profile-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .profile-email {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .profile-menu {
+            padding: 10px 0;
+        }
+
+        .profile-menu a {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .profile-menu a:hover {
+            background-color: var(--light-bg);
+        }
+
+        .profile-menu i {
+            margin-right: 10px;
+            width: 20px;
+            color: var(--primary-color);
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #eee;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 767.98px) {
+            :root {
+                --navbar-height: 60px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .navbar-brand {
+                gap: 8px;
+            }
+
+            #logo {
+                height: 35px;
+            }
+
+            .portal-name {
+                font-size: 1rem;
+            }
+
+            .profile-trigger {
+                height: 35px;
+                width: 35px;
+                margin-right: -20px !important;
+            }
+
+            .profile-dropdown {
+                width: 260px;
+                right: -10px;
+            }
+
+            .profile-header {
+                padding: 15px;
+            }
+
+            .profile-header i.fa-user {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+
+            .profile-name {
+                font-size: 1rem;
+            }
+
+            .profile-email {
+                font-size: 0.8rem;
+            }
+
+            .profile-menu a {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+
+            .form-section {
+                padding: 15px;
+            }
+
+            .form-title {
+                font-size: 1.5rem;
+            }
+
+            .form-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-label {
+                font-size: 0.9rem;
+            }
+
+            .progress-circle {
+                width: 120px;
+                height: 120px;
+            }
+
+            .progress-circle::before {
+                width: 100px;
+                height: 100px;
+                top: 10px;
+                left: 10px;
+            }
+
+            .progress-value {
+                font-size: 1.75rem;
+            }
+
+            .progress-text {
+                font-size: 0.7rem;
+            }
+
+            .col-md-3 {
+                position: static;
+                width: 100%;
+                height: auto;
+                margin-bottom: 20px;
+                padding: 15px;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                border-radius: 8px;
+            }
+
+            .progress-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .progress-circle {
+                width: 120px;
+                height: 120px;
+                margin: 0 auto;
+            }
+
+            .progress-circle::before {
+                width: 100px;
+                height: 100px;
+            }
+
+            .progress-value {
+                font-size: 1.75rem;
+            }
+
+            .progress-info {
+                text-align: center;
+                margin-top: 1rem;
+            }
+
+            .remaining-fields {
+                justify-content: center;
+                margin-top: 0.5rem;
+            }
+
+            .col-md-9 {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .main-content {
+                margin-top: 0;
+                padding: 15px;
+            }
+
+            .form-section {
+                padding: 15px;
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .top_bar {
+                font-size: 0.7rem;
+                padding: 0.5rem 15px;
+                line-height: 1.3;
+            }
+
+            .navbar {
+                padding: 0.5rem 0;
+            }
+
+            .portal-name {
+                font-size: 0.9rem;
+            }
+
+            #logo {
+                height: 30px;
+            }
+
+            .profile-dropdown {
+                width: calc(100vw - 30px);
+                right: 15px;
+            }
+
+            .form-section {
+                padding: 10px;
+            }
+
+            .form-title {
+                font-size: 1.25rem;
+            }
+
+            .form-group {
+                margin-bottom: 12px;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .progress-circle {
+                width: 100px;
+                height: 100px;
+            }
+
+            .progress-circle::before {
+                width: 80px;
+                height: 80px;
+                top: 10px;
+                left: 10px;
+            }
+
+            .progress-value {
+                font-size: 1.5rem;
+            }
+
+            .col-md-3 {
+                padding: 10px;
+                margin: 10px;
+            }
+
+            .progress-section {
+                padding: 0.5rem;
+            }
+
+            .progress-circle {
+                width: 100px;
+                height: 100px;
+            }
+
+            .progress-circle::before {
+                width: 80px;
+                height: 80px;
+            }
+
+            .progress-value {
+                font-size: 1.5rem;
+            }
+
+            .progress-info h5 {
+                font-size: 0.9rem;
+            }
+
+            .remaining-fields {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .top_bar {
+                font-size: 0.65rem;
+                padding: 0.5rem 10px;
+            }
+
+            .portal-name {
+                font-size: 0.8rem;
+            }
+
+            #logo {
+                height: 25px;
+            }
+
+            .profile-trigger {
+                height: 30px;
+                width: 30px;
+            }
+
+            .form-title {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top_bar {
+                font-size: 0.75rem;
+                padding: 0.5rem 20px;
+                height: auto;
+                text-align: justify;
+                width: 100%;
+                hyphens: auto;
+                word-wrap: break-word;
+                position: fixed;
+                top: 0;
+            }
+            .top_bar p {
+                margin: 0;
+                padding: 0;
+            }
+            :root {
+                --topbar-height: auto;
+            }
+            body {
+                padding-top: calc(var(--navbar-height) + 2.5rem);
+            }
+            .navbar {
+                position: fixed;
+                top: var(--topbar-actual-height, 2.5rem);
+                transform: none;
+                margin: 0;
+                transition: top 0.3s ease;
+            }
+        }
+
+        /* Progress section styles */
+        .sidebar {
+            position: fixed;
+            top: var(--topbar-actual-height);
+            left: 0;
+            width: 25%;
+            height: 100vh;
+            background: #fff;
+            border-right: 1px solid #dee2e6;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .progress-section {
+            padding: 2rem;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-height: 90%;
+        }
+
+        .progress-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            width: 100%;
+            text-align: center;
+            margin: 0;
+        }
+
+        .progress-circle-container {
+            padding: 0.75rem 0;
+        }
+
+        .progress-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary-color) 11%, #e9ecef 0);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .progress-circle::before {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            top: 10px;
+            left: 10px;
+        }
+
+        .progress-circle-inner {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .progress-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+            line-height: 1;
+        }
+
+        .progress-text {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: #6c757d;
+        }
+
+        .progress-info {
+            text-align: center;
+            width: 100%;
+        }
+
+        .progress-info h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .progress-info p {
+            color: #6c757d;
+            margin: 0;
+            font-size: 0.85rem;
+        }
+
+        .remaining-fields {
+            color: #dc3545;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            padding: 0.75rem 0;
+        }
+
+        .remaining-fields i {
+            font-size: 1rem;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            padding: 1rem;
+            width: 100%;
+            margin: 0 auto;
+            height: calc(100vh - var(--navbar-height) - var(--topbar-height));
+            overflow: hidden;
+        }
+
+        .form-section {
+            height: 100%;
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .form-title {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .form-subtitle {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .form-notice {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bunner {
+            display: none;
+        }
+
+        .col-md-9 {
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 156, 149, 0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Radio button styles */
+        .title-radio-group {
+            display: flex;
+            flex-wrap: nowrap; /* Prevent wrapping */
+            gap: 1.5rem;
+            width: 100%;
+            overflow-x: auto; /* Allow horizontal scrolling if needed */
+            padding-bottom: 0.5rem; /* Space for potential scrollbar */
+            -ms-overflow-style: none; /* Hide scrollbar IE and Edge */
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .title-radio-group::-webkit-scrollbar {
+            display: none;
+        }
+
+        .form-check {
+            flex: 0 0 auto; /* Don't grow or shrink */
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .form-check-input {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .form-check-input:checked {
+            background-color: #007c77;
+            border-color: #007c77;
+        }
+
+        .form-check-input:focus {
+            border-color: #007c77;
+            box-shadow: 0 0 0 0.25rem rgba(0, 124, 119, 0.25);
+        }
+
+        .form-check-input:hover {
+            border-color: #007c77;
+        }
+
+        .form-check-label {
+            font-size: 1.1rem;
+            color: #009c95 !important;
+            padding-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .title-radio-group {
+                gap: 1rem;
+            }
+        }
+
+        /* Remove user icon styles */
+        .user-icon-container {
+            display: none;
+        }
+
+        /* Styles for layout */
+        .main-content {
+            height: calc(100vh - var(--topbar-actual-height));
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .confirmation-checkbox {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+            border: 1px solid #dee2e6;
+        }
+
+        .confirmation-checkbox .form-check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .confirmation-checkbox .form-check-input {
+            width: 1.2em;
+            height: 1.2em;
+            margin-top: 0;
+        }
+
+        .confirmation-checkbox .form-check-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Base styles */
+        .container-fluid {
+            padding: 0;
+            margin-top: calc(var(--navbar-height) + var(--topbar-height));
+        }
+
+        .row {
+            margin: 0;
+        }
+
+        /* Progress section styles */
+        .col-md-3 {
+            background-color: white;
+            height: calc(100vh - var(--navbar-height) - var(--topbar-height));
+            position: fixed;
+            left: 0;
+            padding: 2rem 1rem;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+
+        .col-md-9 {
+            margin-left: 25%;
+            padding: 2rem;
+        }
+
+        /* Profile trigger styles */
+        .profile-trigger {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+            margin-right: 1rem !important;
+        }
+
+        @media (max-width: 768px) {
+            /* Container adjustments */
+            .container-fluid {
+                margin-top: calc(var(--navbar-height) + var(--topbar-actual-height, var(--topbar-height)));
+            }
+
+            /* Progress section mobile layout */
+            .col-md-3 {
+                position: relative;
+                height: auto;
+                width: 100%;
+                padding: 1rem;
+                margin: 0;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            .col-md-9 {
+                margin-left: 0;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .progress-section {
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            /* Profile trigger mobile adjustments */
+            .profile-trigger {
+                margin-right: 1rem !important;
+                position: relative;
+                right: 0;
+            }
+
+            .navbar .container {
+                padding: 0 1rem;
+            }
+
+            /* Progress circle mobile adjustments */
+            .progress-circle {
+                margin: 0 auto 1rem;
+            }
+
+            .progress-info {
+                margin: 1rem 0;
+            }
+
+            .remaining-fields {
+                justify-content: center;
+            }
+
+            .profile-trigger {
+                margin-right: 0.5rem !important;
+            }
+
+            .dropdown-menu {
+                width: 280px;
+                right: -10px;
+            }
+
+            .col-md-3 {
+                display: none;  /* Hide profile progress section on small devices */
+            }
+
+            .col-md-9 {
+                margin-left: 0;
+                padding: 1rem;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .profile-trigger {
+                margin-right: 0.5rem !important;
+            }
+
+            .navbar .container {
+                padding: 0 0.5rem;
+            }
+
+            .col-md-3 {
+                padding: 0.5rem;
+            }
+
+            .progress-section {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Custom row styles */
+        .custom-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            gap: 0;
+        }
+
+        .custom-row > [class*="col-"] {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Ensure existing column styles work with new row */
+        .col-md-3, .col-md-9 {
+            position: relative;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-3 {
+                flex: 0 0 25%;
+                max-width: 25%;
+            }
+            
+            .col-md-9 {
+                flex: 0 0 75%;
+                max-width: 75%;
+            }
+        }
+        .custom-row {
+        position: fixed !important;
+        top: calc(var(--navbar-height) + var(--topbar-actual-height, var(--topbar-height))) !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        overflow: hidden !important;
+        z-index: 1000 !important;
+        background-color: var(--light-bg) !important;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        gap: 0;
+}
+@media (min-width: 768px) {
+    .col-md-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    
+    .col-md-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+}
+
+.main-content {
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+}
+
+.form-section {
+    background: white;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+    </style>
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="top_bar">
+        GES teachers who cannot verify their Staff ID or SSNIT should send their payslip, SSNIT ID and scanned first appointment letter to it@ntc.gov.gh . The Duration for processing Letter of Professional Standing takes a maximum of 30 working days.
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="user_dashboard.html" class="navbar-brand">
+                <img src="asset/images/logo.png" alt="Logo" id="logo">
+                <span class="portal-name">Teacher Portal Tanzania</span>
+            </a>
+            <div class="user-profile">
+                <button class="profile-trigger" onclick="toggleDropdown()" style="margin-right: -40px;">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="profile-header">
+                        <i class="fas fa-user"></i>
+                        <div class="profile-name">ANOLA Juventus MATIMBWI</div>
+                        <div class="profile-email">annolamatimbwi@gmail.com</div>
+                    </div>
+                    <div class="profile-menu">
+                        <a href="user_dashboard.html"><i class="fas fa-home text-prime"></i>Home</a>
+                        <a href="professional-standing.html"><i class="fas fa-certificate text-prime"></i>Professional standing</a>
+                        <a href="settings.html"><i class="fas fa-cog text-prime"></i>Account settings</a>
+                        <div class="divider"></div>
+                        <a href="login.html"><i class="fas fa-user-plus text-prime"></i>Log into another account</a>
+                        <a href="index.html"><i class="fas fa-sign-out-alt text-prime"></i>Logout of all accounts</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Section -->
+    <div class="custom-row">
+        <div class="col-md-3">
+            <div class="progress-section">
+                <div class="progress-title">
+                    Profile Progress
+                </div>
+                <div class="progress-circle-container">
+                    <div class="progress-circle">
+                        <div class="progress-circle-inner">
+                            <div class="progress-value">11%</div>
+                            <div class="progress-text">completed</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-info">
+                    <h5>Basic Information</h5>
+                    <p>Step 1 of 7</p>
+                </div>
+                <div class="remaining-fields">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>16 fields remaining</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="main-content">
+                <div class="form-section">
+                    <h2 class="form-title">Private Teacher Information</h2>
+                    <p class="form-subtitle">Next, we'll need some teacher-type specific information</p>
+                    
+                    <div class="form-group mt-4">
+                        <label class="form-label">Role</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" id="role_admin">
+                            <label class="form-check-label" for="role_admin">Administration</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" id="role_classroom">
+                            <label class="form-check-label" for="role_classroom">Classroom</label>
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-group mt-3" id="adminOptions" style="display: none;">
+                        <select class="form-select">
+                            <option selected>Please select an option</option>
+                            <option value="station">Head</option>
+                            <option value="station">Supervisor</option>
+                        </select>
+                        
+                    </div>
+
+                    <div class="form-group mt-3" id="classroomOptions" style="display: none;">
+                        <select class="form-select mb-3">
+                            <option selected>Please select an option</option>
+                            <option value="early_grade">Early Grade</option>
+                            <option value="jhs">Junior High school</option>
+                            <option value="primary">Primary school</option>
+                            <option value="shs">SHS/TVET</option>
+                        </select>
+                        <div class="mt-3">
+                            <label for="fileUpload" class="form-label">Upload Documents</label>
+                            <input type="file" class="form-control" id="fileUpload">
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="btutton" placeholder="Station" class="form-control">
+                    </div>
+                    <div class="form-group mt-4">
+                        <button type="button" class="btn btn-primary w-100" onclick="saveInformation()">
+                            <i class="fas fa-save me-2"></i>Save
+                        </button>
+                    </div>
+                    <div class="form-group mt-3">
+                        <div class="d-flex justify-content-between gap-3">
+                            <button type="button" class="btn btn-secondary flex-grow-1">
+                                <i class="fas fa-arrow-left me-2"></i>Back
+                            </button>
+                            <button type="button" class="btn btn-secondary flex-grow-1">
+                                Next<i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to update topbar height
+            function updateTopBarHeight() {
+                const topBar = document.querySelector('.top_bar');
+                if (topBar) {
+                    const height = topBar.offsetHeight;
+                    document.documentElement.style.setProperty('--topbar-actual-height', height + 'px');
+                    
+                    // Update navbar position
+                    const navbar = document.querySelector('.navbar');
+                    if (navbar) {
+                        navbar.style.top = height + 'px';
+                    }
+                }
+            }
+
+            // Update on load and resize
+            updateTopBarHeight();
+            window.addEventListener('resize', updateTopBarHeight);
+            // Update when content might change
+            setTimeout(updateTopBarHeight, 100);
+
+            // Function to toggle dropdown
+            window.toggleDropdown = function() {
+                const dropdown = document.getElementById('profileDropdown');
+                dropdown.classList.toggle('show');
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.profile-trigger') && !e.target.closest('.profile-dropdown')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+
+        // Enable/disable next button based on checkbox
+        document.getElementById('confirmInfo').addEventListener('change', function() {
+            document.getElementById('nextPageBtn').disabled = !this.checked;
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const adminRadio = document.getElementById('role_admin');
+            const classroomRadio = document.getElementById('role_classroom');
+            const adminOptions = document.getElementById('adminOptions');
+            const classroomOptions = document.getElementById('classroomOptions');
+    
+            function toggleOptions() {
+                adminOptions.style.display = adminRadio.checked ? 'block' : 'none';
+                classroomOptions.style.display = classroomRadio.checked ? 'block' : 'none';
+            }
+    
+            adminRadio.addEventListener('change', toggleOptions);
+            classroomRadio.addEventListener('change', toggleOptions);
+        });
+    </script>
+</body>

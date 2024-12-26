@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="asset/images/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <title>Teacher Profile - Teacher Portal Tanzania</title>
+    <style>
+        :root {
+            --primary-color: #009c95;
+            --secondary-color: #cc3344;
+            --hover-color: #007c77;
+            --hover-dark: #006c68;
+            --light-bg: #f8f8f8;
+            --navbar-height: 70px;
+            --topbar-height: 40px;
+            --container-max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--light-bg);
+            padding-top: calc(var(--navbar-height) + var(--topbar-actual-height, var(--topbar-height)));
+            margin: 0;
+        }
+
+        .top_bar {
+            width: 100%;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            position: fixed;
+            top: 0;
+            z-index: 1030;
+            min-height: var(--topbar-height);
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+            position: fixed;
+            width: 100%;
+            top: var(--topbar-actual-height, var(--topbar-height));
+            z-index: 1020;
+            min-height: var(--navbar-height);
+            padding: 0.625rem 0;
+            margin: 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding-right: 0;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        #logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .portal-name {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 5px;
+            margin-left: 0.5rem;
+        }
+
+        .user-profile {
+            position: relative;
+            margin-left: auto;
+        }
+
+        .profile-trigger {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+            margin-right: 0 !important;
+        }
+
+        .profile-trigger:hover {
+            background-color: var(--hover-color);
+            border-color: var(--hover-color);
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 2px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 300px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .profile-dropdown.show {
+            display: block;
+        }
+
+        .profile-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        .profile-header i.fa-user {
+            font-size: 3rem;
+            color: var(--primary-color);
+            background: #f5f5f5;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+        }
+
+        .profile-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .profile-email {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .profile-menu {
+            padding: 10px 0;
+        }
+
+        .profile-menu a {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .profile-menu a:hover {
+            background-color: var(--light-bg);
+        }
+
+        .profile-menu i {
+            margin-right: 10px;
+            width: 20px;
+            color: var(--primary-color);
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #eee;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 767.98px) {
+            :root {
+                --navbar-height: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top_bar {
+                font-size: 0.75rem;
+                padding: 0.5rem 20px;
+                height: auto;
+                text-align: justify;
+                width: 100%;
+                hyphens: auto;
+                word-wrap: break-word;
+                position: fixed;
+                top: 0;
+            }
+            .top_bar p {
+                margin: 0;
+                padding: 0;
+            }
+            :root {
+                --topbar-height: auto;
+            }
+            body {
+                padding-top: calc(var(--navbar-height) + 2.5rem);
+            }
+            .navbar {
+                position: fixed;
+                top: var(--topbar-actual-height, 2.5rem);
+                transform: none;
+                margin: 0;
+                transition: top 0.3s ease;
+            }
+        }
+
+        /* Form Styles */
+        .main-content {
+            padding: 2rem;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-section {
+            background-color: transparent;
+            padding: 15px 0;
+            border: none;
+            box-shadow: none;
+            width: 45%;
+            max-width: 450px;
+            min-width: 320px;
+            margin: 0 auto;
+        }
+
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        @media screen and (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+
+            .form-section {
+                width: 75%;
+                min-width: 300px;
+            }
+
+            .form-section h3 {
+                margin-top: 2rem;
+                padding-top: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .form-section {
+                width: 95%;
+                padding: 15px;
+                min-width: auto;
+            }
+
+            .form-section h3 {
+                margin-top: 2.5rem;
+            }
+        }
+
+        .form-floating {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .form-floating input,
+        .form-floating select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: transparent;
+            height: 45px;
+            padding-top: 20px;
+        }
+
+        .form-floating input:focus,
+        .form-floating select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 156, 149, 0.2);
+        }
+
+        .form-floating label {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: #666;
+            pointer-events: none;
+            transition: 0.2s ease all;
+        }
+
+        .form-floating input:focus ~ label,
+        .form-floating input:not(:placeholder-shown) ~ label,
+        .form-floating select:focus ~ label,
+        .form-floating select:not([value=""]) ~ label {
+            top: 1px;
+            font-size: 12px;
+            color: var(--primary-color);
+            background-color: var(--light-bg);
+            padding: 0 2px;
+            display: inline;
+            line-height: 1;
+            height: auto;
+            margin: 0;
+        }
+
+        .form-floating input::placeholder,
+        .form-floating select::placeholder {
+            color: transparent;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--hover-color);
+            color: white;
+        }
+
+        #dynamicFields {
+            margin-top: 1rem;
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+        }
+
+        /* Select2 Custom Styles */
+        .select2-container--default .select2-selection--single {
+            height: 58px;
+            padding: 15px 10px;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 56px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 24px;
+            color: #212529;
+        }
+
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: var(--primary-color);
+        }
+
+        .select2-dropdown {
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+        }
+
+        .select2-search__field {
+            border: 1px solid #ced4da !important;
+            border-radius: 0.375rem;
+            padding: 6px 12px !important;
+        }
+
+        .select2-search__field:focus {
+            border-color: var(--primary-color) !important;
+            outline: none;
+        }
+
+        /* Ensure the label stays up when Select2 is focused */
+        .form-floating .focused {
+            opacity: 0.65;
+            transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+        }
+    </style>
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="top_bar">
+        GES teachers who cannot verify their Staff ID or SSNIT should send their payslip, SSNIT ID and scanned first appointment letter to it@ntc.gov.gh . The Duration for processing Letter of Professional Standing takes a maximum of 30 working days.
+    </div>
+
+    <script>
+        // Function to update topbar height
+        function updateTopBarHeight() {
+            const topBar = document.querySelector('.top_bar');
+            if (topBar) {
+                const height = topBar.offsetHeight;
+                document.documentElement.style.setProperty('--topbar-actual-height', height + 'px');
+            }
+        }
+        
+        // Update on load and resize
+        updateTopBarHeight();
+        window.addEventListener('resize', updateTopBarHeight);
+        // Update when content might change
+        window.addEventListener('DOMContentLoaded', updateTopBarHeight);
+    </script>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="user_dashboard.html" class="navbar-brand">
+                <img src="asset/images/logo.png" alt="Logo" id="logo">
+                <span class="portal-name">Teacher Portal Tanzania</span>
+            </a>
+            <div class="user-profile">
+                <button class="profile-trigger" onclick="toggleDropdown()" style="margin-right: -40px;">
+                    <i class="fas fa-user"></i>
+                </button>
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="profile-header">
+                        <i class="fas fa-user"></i>
+                        <div class="profile-name">ANOLA Juventus MATIMBWI</div>
+                        <div class="profile-email">annolamatimbwi@gmail.com</div>
+                    </div>
+                    <div class="profile-menu">
+                        <a href="user_dashboard.html"><i class="fas fa-home text-prime"></i>Home</a>
+                        <a href="professional-standing.html"><i class="fas fa-certificate text-prime"></i>Professional standing</a>
+                        <a href="settings.html"><i class="fas fa-cog text-prime"></i>Account settings</a>
+                        <div class="divider"></div>
+                        <a href="login.html"><i class="fas fa-user-plus text-prime"></i>Log into another account</a>
+                        <a href="index.html"><i class="fas fa-sign-out-alt text-prime"></i>Logout of all accounts</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="form-section">
+            <h3>Identification</h3>
+            <p class="mb-4">First things first, we'll need some identification information</p>
+            
+            <form id="teacherProfileForm">
+                <div class="form-floating">
+                    <select class="form-select select2-teacher-type" id="teacherType" placeholder="Teacher type" required>
+                        <option value="">Please select an option</option>
+                        <option value="NABCO">NABCO</option>
+                        <option value="Newly Qualified NABCO">Newly Qualified NABCO</option>
+                        <option value="Newly Qualified NSS">Newly Qualified NSS</option>
+                        <option value="Private">Private</option>
+                        <option value="Public">Public</option>
+                        <option value="Unemployed">Unemployed</option>
+                    </select>
+                    <label for="teacherType">Teacher type</label>
+                </div>
+
+                <div id="dynamicFields">
+                    <!-- Dynamic fields will be inserted here -->
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="ssnitNumber" placeholder="SSNIT number" required>
+                    <label for="ssnitNumber">SSNIT number</label>
+                </div>
+
+                <button type="submit" class="btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('show');
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const profile = document.querySelector('.user-profile');
+                if (!profile.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const teacherTypeSelect = document.getElementById('teacherType');
+            teacherTypeSelect.addEventListener('change', updateDynamicFields);
+
+            const form = document.getElementById('teacherProfileForm');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent default form submission
+                
+                // Here you can add any form validation or data processing if needed
+                
+                // Redirect to Basic_information.html
+                window.location.href = 'Basic_information.html';
+            });
+        });
+
+        function updateDynamicFields() {
+            const teacherType = document.getElementById('teacherType').value;
+            const dynamicFields = document.getElementById('dynamicFields');
+            let fieldsHTML = '';
+
+            switch(teacherType) {
+                case 'NABCO':
+                    fieldsHTML = `
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="gtleIndex" placeholder="GTLE index number" required>
+                            <label for="gtleIndex">GTLE index number</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="nabcoRef" placeholder="NABCO reference number" required>
+                            <label for="nabcoRef">NABCO reference number</label>
+                        </div>
+                    `;
+                    break;
+                case 'Newly Qualified NABCO':
+                case 'Newly Qualified NSS':
+                case 'Unemployed':
+                    fieldsHTML = `
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="gtleIndex" placeholder="GTLE index number" required>
+                            <label for="gtleIndex">GTLE index number</label>
+                        </div>
+                    `;
+                    break;
+                case 'Public':
+                    fieldsHTML = `
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="staffId" placeholder="Staff ID" required>
+                            <label for="staffId">Staff ID</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="payslipName" placeholder="Name on payslip" required>
+                            <label for="payslipName">Name on payslip</label>
+                        </div>
+                    `;
+                    break;
+            }
+
+            dynamicFields.innerHTML = fieldsHTML;
+        }
+
+        $(document).ready(function() {
+            $('.select2-teacher-type').select2({
+                placeholder: 'Please select an option',
+                maximumResultsForSearch: 5,
+                width: '100%',
+                dropdownParent: $('#teacherType').parent()
+            });
+            
+            // Adjust the position of the label when Select2 is focused
+            $('.select2-teacher-type').on('select2:open', function() {
+                $(this).parent().find('label').addClass('focused');
+            }).on('select2:close', function() {
+                if (!$(this).val()) {
+                    $(this).parent().find('label').removeClass('focused');
+                }
+            });
+
+            // Ensure the updateDynamicFields function is called when Select2 changes
+            $('.select2-teacher-type').on('select2:select', function(e) {
+                updateDynamicFields();
+            });
+        });
+    </script>
+</body>
+</html>
