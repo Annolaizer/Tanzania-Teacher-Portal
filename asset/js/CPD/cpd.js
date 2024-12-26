@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     // Function to update topbar height
     function updateTopBarHeight() {

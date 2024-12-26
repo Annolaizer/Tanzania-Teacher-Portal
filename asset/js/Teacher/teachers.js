@@ -1,3 +1,60 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to update topbar height
+    function updateTopBarHeight() {
+        const topBar = document.querySelector('.top_bar');
+        if (topBar) {
+            const height = topBar.offsetHeight;
+            document.documentElement.style.setProperty('--topbar-actual-height', height + 'px');
+            
+            // Update navbar position
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                navbar.style.top = height + 'px';
+            }
+        }
+    }
+
+    // Update on load and resize
+    updateTopBarHeight();
+    window.addEventListener('resize', updateTopBarHeight);
+    // Update when content might change
+    setTimeout(updateTopBarHeight, 100);
+
+    // Function to toggle dropdown
+    window.toggleDropdown = function() {
+        const dropdown = document.getElementById('profileDropdown');
+        dropdown.classList.toggle('show');
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.profile-trigger') && !e.target.closest('.profile-dropdown')) {
+                dropdown.classList.remove('show');
+            }
+        });
+    }
+
+    // Handle title radio buttons
+    document.querySelectorAll('input[name="title"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const otherTitleInput = document.getElementById('otherTitleInput');
+            otherTitleInput.style.display = this.value === 'Other' ? 'block' : 'none';
+        });
+    });
+
+    // Handle other disability checkbox
+    document.getElementById('otherDisability').addEventListener('change', function() {
+        const otherInput = document.getElementById('otherDisabilityText');
+        otherInput.style.display = this.checked ? 'inline-block' : 'none';
+        if (this.checked) {
+            otherInput.focus();
+        }
+    });
+
+    // Ensure modal shows up when button is clicked
+    $('[data-bs-toggle="modal"]').on('click', function() {
+        academicModal.show();
+    });
+});
 
 $(document).ready(function() {
     // Initialize Bootstrap modals
