@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Information - Teacher Portal Tanzania</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="asset/images/logo.png" type="image/x-icon">
+    
+    <!-- CSS Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="asset/css/basic_information.css">
+    <link rel="stylesheet" href="asset/css/academic_entry.css">
+</head>
+<body>
+ <!-- Top Bar -->
+    <div class="top_bar">
+        GES teachers who cannot verify their Staff ID or SSNIT should send their payslip, SSNIT ID and scanned first appointment letter to it@ntc.gov.gh . The Duration for processing Letter of Professional Standing takes a maximum of 30 working days.
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="user_dashboard.html" class="navbar-brand">
+                <img src="asset/images/logo.png" alt="Logo" id="logo">
+                <span class="portal-name">Teacher Portal Tanzania</span>
+            </a>
+            <div class="user-profile">
+                <button class="profile-trigger" onclick="toggleDropdown()" style="margin-right: -40px;">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="profile-header">
+                        <i class="fas fa-user"></i>
+                        <div class="profile-name">ANOLA Juventus MATIMBWI</div>
+                        <div class="profile-email">annolamatimbwi@gmail.com</div>
+                    </div>
+                    <div class="profile-menu">
+                        <a href="user_dashboard.html"><i class="fas fa-home text-prime"></i>Home</a>
+                        <a href="professional-standing.html"><i class="fas fa-certificate text-prime"></i>Professional standing</a>
+                        <a href="settings.html"><i class="fas fa-cog text-prime"></i>Account settings</a>
+                        <div class="divider"></div>
+                        <a href="login.html"><i class="fas fa-user-plus text-prime"></i>Log into another account</a>
+                        <a href="index.html"><i class="fas fa-sign-out-alt text-prime"></i>Logout of all accounts</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Navigation -->
+    <div class="progress-sidenav">
+        <div class="progress-section">
+            <div class="progress-title">
+                Profile Progress
+            </div>
+            <div class="progress-circle-container">
+                <div class="progress-circle">
+                    <div class="progress-circle-inner">
+                        <div class="progress-value">11%</div>
+                        <div class="progress-text">completed</div>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-info">
+                <h5>Basic Information</h5>
+                <p>Step 1 of 7</p>
+            </div>
+            <div class="remaining-fields">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>16 fields remaining</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-wrapper d-flex align-items-center justify-content-center min-vh-100">
+        <div class="container w-640">
+            <!-- First Form -->
+            <div class="form-section" id="basicInfoForm">
+                <h2 class="form-title">Basic Information</h2>
+                <p class="form-subtitle">Let's start with some basic information</p>
+                
+                <!-- Info Alert -->
+                <div class="alert alert-info py-3 text-center" style="font-size: 0.8rem;">
+                    <i class="fas fa-info-circle me-2"></i>
+                    This information is never shared with anyone outside the National Teaching Council and its partners
+                </div>
+
+                <form id="basicInfoForm">
+                    <!-- Title and Names Section -->
+                    <div class="form-group mb-4">
+                        <label class="form-label">Title</label>
+                        <div class="title-radio-group" style="display: flex; flex-wrap: nowrap; gap: 1.5rem; width: 100%; overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none;">
+                            <div class="form-check" style="margin-left: 20px;">
+                                <input class="form-check-input" type="radio" id="title_dr" name="title" value="Dr">
+                                <label class="form-check-label" for="title_dr">Dr.</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="title_mr" name="title" value="Mr">
+                                <label class="form-check-label" for="title_mr">Mr.</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="title_mrs" name="title" value="Mrs" style="border-radius: 3px;">
+                                <label class="form-check-label" for="title_mrs">Mrs.</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="title_ms" name="title" value="Ms" style="border-radius: 3px;">
+                                <label class="form-check-label" for="title_ms">Ms.</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="title_rev" name="title" value="Rev" style="border-radius: 3px;">
+                                <label class="form-check-label" for="title_rev">Rev.</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="title_prof" name="title" value="Prof" style="border-radius: 3px;">
+                                <label class="form-check-label" for="title_prof">Prof.</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="title_other" name="title" value="Other" style="border-radius: 3px;">
+                                <label class="form-check-label" for="title_other">Other</label>
+                            </div>
+                        </div>
+                        <div id="otherTitleInput" class="mt-2" style="display: none;">
+                            <input type="text" class="form-control" placeholder="Please specify your title">
+                        </div>
+                    </div>
+
+                    <!-- Names Section -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                                <label for="firstName">First Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                                <label for="lastName">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="otherNames" placeholder="Other Names">
+                                <label for="otherNames">Other Names</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Upload Modal -->
+                    <div id="fileUploadModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content" style="border-radius: 8px; border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                                <div class="modal-header" style="background-color: var(--primary-color); color: white; border-bottom: none; border-radius: 8px 8px 0 0;">
+                                    <h5 class="modal-title">Upload Supporting Document</h5>
+                                    <button type="button" class="btn-close btn-close-white" onclick="document.getElementById('fileUploadModal').style.display='none'"></button>
+                                </div>
+                                <div class="modal-body p-4">
+                                    <div class="upload-area" style="border: 2px dashed var(--primary-color); border-radius: 8px; padding: 30px; text-align: center; background-color: var(--light-bg); transition: all 0.3s ease;">
+                                        <input type="file" id="documentFile" class="d-none" accept=".pdf,.doc,.docx">
+                                        <i class="fas fa-cloud-upload-alt mb-3" style="font-size: 48px; color: var(--primary-color);"></i>
+                                        <p class="mb-3" style="color: #666;">Drag and drop your file here or</p>
+                                        <button type="button" class="btn" style="background-color: var(--primary-color); color: white; border: none; padding: 8px 24px; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='var(--hover-color)'" onmouseout="this.style.backgroundColor='var(--primary-color)'" onclick="document.getElementById('documentFile').click()">
+                                            Browse Files
+                                        </button>
+                                        <p class="mt-3 small text-muted">Supported formats: PDF, DOC, DOCX</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <style>
+                        .upload-area.highlight {
+                            border-color: var(--hover-color);
+                            background-color: rgba(0,156,149,0.05);
+                            transform: scale(1.02);
+                        }
+                        .modal-header .btn-close:focus {
+                            box-shadow: none;
+                        }
+                        .upload-area:hover {
+                            border-color: var(--hover-color);
+                        }
+                    </style>
+
+                    <!-- Other Fields -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Gender</label>
+                                <div class="square-radio-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input square" type="radio" id="sex_male" name="sex" value="male">
+                                        <label class="form-check-label" for="sex_male">Male</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input square" type="radio" id="sex_female" name="sex" value="female">
+                                        <label class="form-check-label" for="sex_female">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="date" class="form-control" id="dob" placeholder="Date of Birth" required>
+                                <label for="dob">Date of Birth</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="tel" class="form-control" id="telephone" placeholder="Telephone" required>
+                                <label for="telephone">Telephone</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <select type="text" class="form-control" id="region" placeholder="region">
+                                    <option value=""> Select Region</option>
+                                    <option value="Iringa">Iringa</option>
+                                    <option value="Njombe">Njombe</option>
+                                </select>
+                                <label for="Region">Region</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <select type="text" class="form-control" id="district" placeholder="District">
+                                    <option value=""> Select District</option>
+                                    <option value="Iringa">Njombe</option>
+                                    <option value="Njombe">Ramadhani</option>
+                                </select>
+                                <label for="District">District</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <select type="text" class="form-control" id="region" placeholder="Ward">
+                                    <option value=""> Select Ward</option>
+                                    <option value="Iringa">Njombe</option>
+                                    <option value="Ramadhani">Ramadhani</option>
+                                </select>
+                                <label for="Ward">Ward</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <!-- Contact Information -->
+
+                        <!-- Appointment Information -->
+                        <div class="form-group mb-4">
+                            <div class="form-floating">
+                                <input type="date" class="form-control" id="firstAppointmentDate" placeholder="Date of first appointment">
+                                <label for="firstAppointmentDate">Date of first appointment (If any)</label>
+                            </div>
+                        </div>
+
+                        <!-- Professional Qualification -->
+                        <div class="form-group mb-4">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="noQualification" onchange="toggleQualificationFields()">
+                                <label class="form-check-label" for="noQualification">
+                                    Not Employeed ?
+                                </label>
+                            </div>
+
+                            <div id="qualificationFields">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="qualificationProof" placeholder="Employment Check Number">
+                                    <label for="qualificationProof">Employment Check Number</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Disability Information -->
+                        <div class="form-group mb-4">
+                            <label class="form-label">Disability (If any)</label>
+                            <div class="disability-checkboxes">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="hearingImpaired">
+                                    <label class="form-check-label" for="hearingImpaired">
+                                        Hearing impaired
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="speechImpaired">
+                                    <label class="form-check-label" for="speechImpaired">
+                                        Speech impaired
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="visuallyImpaired">
+                                    <label class="form-check-label" for="visuallyImpaired">
+                                        Visually impaired
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary w-100" id="saveBtn">Save</button>
+                    </div>
+                </div>
+                <div class="d-flex gap-4">
+                    <button type="button" class="btn btn-secondary flex-grow-1" id="backBtn">Back</button>
+                    <button type="button" class="btn btn-secondary flex-grow-1" id="nextBtn">Next</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Second Form -->
+        <div class="form-section" id="teacherInfoForm" style="display: none;">
+            <h2 class="form-title">Professional Information </h2>
+            <p class="form-subtitle">Finally, let's get some Professional Information  details</p>
+            <form class="w-100">
+                <!-- Professional Qualification -->
+                <div class="form-group mb-4">
+                    <label class="form-label">Professional Qualification</label>
+                    <select class="form-select" id="professionalQualification" name="professionalQualification" required>
+                        <option value="" selected disabled>Please select an option</option>
+                        <option value="phd">PhD</option>
+                        <option value="msc">MSc</option>
+                        <option value="degree">Degree</option>
+                        <option value="adv_diploma">Advanced Diploma</option>
+                        <option value="diploma">Diploma</option>
+                    </select>
+                </div>
+            
+                <!-- Registration Category -->
+                <div class="form-group mb-4">
+                    <label class="form-label">Registration Category</label>
+                    <select class="form-select" id="registrationCategory" name="registrationCategory" required>
+                        <option value="" selected disabled>Please select an option</option>
+                        <option value="rn">Registered Nurse (RN)</option>
+                        <option value="en">Enrolled Nurse (EN)</option>
+                    </select>
+                </div>
+            
+                <!-- License Number -->
+                <div class="form-group mb-4">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
+                        <label for="licenseNumber">License Number</label>
+                    </div>
+                </div>
+            
+                <!-- Current Workplace -->
+                <div class="form-group mb-4">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="currentWorkplace" name="currentWorkplace" placeholder="Current Workplace" required>
+                        <label for="currentWorkplace">Current Workplace</label>
+                    </div>
+                </div>
+            
+                <!-- District -->
+                <div class="form-group mb-4">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="district" name="district" placeholder="District" required>
+                        <label for="district">District</label>
+                    </div>
+                </div>
+            
+                <!-- Region -->
+                <div class="form-group mb-4">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="region" name="region" placeholder="Region" required>
+                        <label for="region">Region</label>
+                    </div>
+                </div>
+            
+                <!-- Button Group -->
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary w-100" id="professionalInfoSaveBtn">Save</button>
+                    </div>
+                </div>
+                <div class="d-flex gap-4">
+                    <button type="button" class="btn btn-secondary flex-grow-1" id="teacherFormBackBtn">Back</button>
+                    <button type="button" class="btn btn-secondary flex-grow-1" id="teacherFormNextBtn">Next</button>
+                </div>
+                </div>
+            </form>
+            
+            
+        </div>
+        <!-- Academic Entry Section -->
+        <div class="form-section" id="academicEntrySection" style="display: none;">
+            <h2 class="form-title">Academic History</h2>
+            <p class="form-subtitle"><i>Next, we'll need entries from your academic history</i></p>
+            
+            <div class="form-content">
+                <!-- Table for displaying entries -->
+                <div class="table-responsive mb-4">
+                    <div class="text-center mb-3">
+                        <i class="text-prime fas fa-graduation-cap fa-2x" style="font-size: 10rem;"></i>
+                    </div>
+                    <p class="text-center"> No entries found</p>
+                    <div id="academicEntriesTable">
+                        <!-- Academic entries will be displayed here -->
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary mb-4 w-100" data-bs-toggle="modal" data-bs-target="#requestModal">
+                    Add Academic Entry
+                </button>
+
+                <div class="d-flex gap-4">
+                    <button type="button" class="btn btn-secondary flex-grow-1" id="academicEntryBackBtn">Back</button>
+                    <button type="button" class="btn btn-secondary flex-grow-1" id="academicEntryNextBtn">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="requestModalLabel">Add academic entry</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="academicEntryForm">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="institutionName" placeholder="Institution name" required>
+                                <label for="institutionName">Institution name</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="institutionEmail" placeholder="Institution email" required>
+                                <label for="institutionEmail">Institution email</label>
+                            </div>
+                            
+                            <div class="form-group mb-3">
+                                <small><label class="form-label">Introduction letter from district</label></small>
+                                <div class="file-input-wrapper">
+                                    <input type="file" class="form-control" id="introLetter" accept=".pdf,.doc,.docx">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group mb-3">
+                                <small><label class="form-label">Letter addressed to The Registrar</label></small>
+                                <div class="file-input-wrapper">
+                                    <input type="file" class="form-control" id="registrarLetter" accept=".pdf,.doc,.docx">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group mb-3">
+                                <small><label class="form-label">Transcript</label></small>
+                                <div class="file-input-wrapper">
+                                    <input type="file" class="form-control" id="transcript" accept=".pdf">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="academicEntryForm" class="btn btn-submit" style="background-color: var(--primary-color); color: white;">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize Bootstrap modals
+            var academicModal = new bootstrap.Modal(document.getElementById('requestModal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+            
+            var employmentModal = new bootstrap.Modal(document.getElementById('employmentModal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+
+            // Handle modal close buttons
+            $('.btn-close, [data-bs-dismiss="modal"]').on('click', function() {
+                academicModal.hide();
+                employmentModal.hide();
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+            });
+
+            // Handle academic entry form submission
+            $('#academicEntryForm').on('submit', function(e) {
+                e.preventDefault();
+                academicModal.hide();
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+            });
+
+            // Handle employment entry form submission
+            $('#employmentEntryForm').on('submit', function(e) {
+                e.preventDefault();
+                employmentModal.hide();
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+            });
+
+            // Navigation between sections
+            $('#teacherFormNextBtn').on('click', function() {
+                $('#teacherInfoForm').hide();
+                $('#academicEntrySection').show();
+            });
+
+            $('#academicEntryBackBtn').on('click', function() {
+                $('#academicEntrySection').hide();
+                $('#teacherInfoForm').show();
+            });
+
+            $('#academicEntryNextBtn').on('click', function() {
+                $('#academicEntrySection').hide();
+                $('#employmentHistorySection').show();
+            });
+
+            $('#employmentHistoryBackBtn').on('click', function() {
+                $('#employmentHistorySection').hide();
+                $('#academicEntrySection').show();
+            });
+
+            $('#employmentHistoryNextBtn').on('click', function() {
+                $('#employmentHistorySection').hide();
+                $('#passportPictureForm').show();
+            });
+
+            // Handle back button click on passport form
+            $('#passportFormBackBtn').on('click', function() {
+                $('#passportPictureForm').hide();
+                $('#employmentHistorySection').show();
+            });
+
+            // Initialize Select2
+            $('.select2-nationality').select2({
+                placeholder: 'nationality',
+                maximumResultsForSearch: 5,
+                width: '100%',
+                dropdownParent: $('#nationality').parent()
+            });
+            
+            // Rest of your existing JavaScript...
+            // (Keep all the other functionality like file handling, form validation, etc.)
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to update topbar height
+            function updateTopBarHeight() {
+                const topBar = document.querySelector('.top_bar');
+                if (topBar) {
+                    const height = topBar.offsetHeight;
+                    document.documentElement.style.setProperty('--topbar-actual-height', height + 'px');
+                    
+                    // Update navbar position
+                    const navbar = document.querySelector('.navbar');
+                    if (navbar) {
+                        navbar.style.top = height + 'px';
+                    }
+                }
+            }
+
+            // Update on load and resize
+            updateTopBarHeight();
+            window.addEventListener('resize', updateTopBarHeight);
+            // Update when content might change
+            setTimeout(updateTopBarHeight, 100);
+
+            // Function to toggle dropdown
+            window.toggleDropdown = function() {
+                const dropdown = document.getElementById('profileDropdown');
+                dropdown.classList.toggle('show');
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.profile-trigger') && !e.target.closest('.profile-dropdown')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+
+            // Handle title radio buttons
+            document.querySelectorAll('input[name="title"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const otherTitleInput = document.getElementById('otherTitleInput');
+                    otherTitleInput.style.display = this.value === 'Other' ? 'block' : 'none';
+                });
+            });
+
+            // Ensure modal shows up when button is clicked
+            $('[data-bs-toggle="modal"]').on('click', function() {
+                academicModal.show();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // last form
+                            // Add the passport picture form HTML
+                const passportFormHTML = `
+                    <!-- Passport Picture Form -->
+                    <div class="form-section" id="passportPictureForm" style="display: none;">
+                        <h2 class="form-title">Passport Picture</h2>
+                        <p class="form-subtitle"><i>Next, you'll need to upload your passport picture</i></p>
+                        
+                        <div class="form-group mt-4">   
+                            
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="file" class="form-control">
+                        </div>
+                    
+                        <div class="form-group mt-3">
+                            <div class="d-flex justify-content-between gap-3">
+                                <button type="button" class="btn btn-secondary flex-grow-1" id="passportFormBackBtn">
+                                    Back
+                                </button>
+                                <button type="button" class="btn btn-secondary flex-grow-1" id="passportFormNextBtn">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>`;
+
+                // Insert the passport form after the last form
+                $('.container.w-640').append(passportFormHTML);
+
+                // Handle next button click on the last form
+                $('#teacherFormNextBtn').click(function() {
+                    $(this).closest('.form-section').hide();
+                    $('#academicEntrySection').show();
+                });
+
+                // Handle back button click on passport form
+                $('#passportFormBackBtn').click(function() {
+                    $('#passportPictureForm').hide();
+                    $('#teacherFormNextBtn').closest('.form-section').show();
+                });
+                // end
+            $('.select2-nationality').select2({
+                placeholder: 'nationality',
+                maximumResultsForSearch: 5,
+                width: '100%',
+                dropdownParent: $('#nationality').parent()
+            });
+            
+            // Adjust the position of the label when Select2 is focused
+            $('.select2-nationality').on('select2:open', function() {
+                $(this).parent().find('label').addClass('focused');
+            }).on('select2:close', function() {
+                if (!$(this).val()) {
+                    $(this).parent().find('label').removeClass('focused');
+                }
+            });
+
+            // Toggle qualification fields based on checkbox
+            $('#noQualification').on('change', function() {
+                const $fields = $(this).closest('.form-group').find('#qualificationFields');
+                if (this.checked) {
+                    $fields.slideUp();
+                    // Clear the fields
+                    $fields.find('input[type="date"], input[type="file"]').val('');
+                } else {
+                    $fields.slideDown();
+                }
+            });
+
+            // Set initial state of qualification fields
+            if ($('#noQualification').is(':checked')) {
+                $('#qualificationFields').hide();
+            }
+
+            // Handle form navigation
+            $('#nextBtn').on('click', function() {
+                $('.form-section').first().fadeOut(300, function() {
+                    $('#teacherInfoForm').fadeIn(300);
+                });
+            });
+
+            $('#teacherFormBackBtn').on('click', function() {
+                $('#teacherInfoForm').fadeOut(300, function() {
+                    $('.form-section').first().fadeIn(300);
+                });
+            });
+
+            // Handle save buttons
+            $('#saveBtn, #teacherFormSaveBtn').on('click', function() {
+                // Add your save logic here
+                alert('Form saved successfully!');
+            });
+
+            // Add passport picture preview functionality
+            $(document).on('change', '#passportPictureForm input[type="file"]', function(event) {
+                const file = event.target.files[0];
+                const preview = $(this).closest('.form-section').find('.form-group.mt-4');
+                
+                if (file) {
+                    if (!file.type.startsWith('image/')) {
+                        alert('Please upload an image file');
+                        event.target.value = '';
+                        return;
+                    }
+
+                    if (file.size > 2 * 1024 * 1024) {
+                        alert('Image size should be less than 2MB');
+                        event.target.value = '';
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.css({
+                            'display': 'flex',
+                            'justify-content': 'center',
+                            'width': '100%'
+                        });
+                        preview.html(`
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; width: 200px;">
+                                <img src="${e.target.result}" 
+                                     alt="Passport Preview" 
+                                     style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: block;">
+                                <p style="margin: 0; color: #666; font-size: 0.9rem; text-align: center;">Upload passport picture</p>
+                            </div>
+                        `);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Handle passport form next button
+            $('#passportFormNextBtn').click(function() {
+                $('#passportPictureForm').hide();
+                $('#academicEntrySection').show();
+            });
+
+            // Handle academic entry back button
+            $('#academicEntryBackBtn').click(function() {
+                $('#academicEntrySection').hide();
+                $('#teacherInfoForm').show();
+            });
+
+            // Handle academic entry next button
+            $('#academicEntryNextBtn').click(function() {
+                $('#academicEntrySection').hide();
+                $('#passportPictureForm').show();
+            });
+
+            // Initialize Bootstrap modal
+            var academicModal = new bootstrap.Modal(document.getElementById('requestModal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+            
+            // Handle modal close button
+            $('.btn-close, [data-bs-dismiss="modal"]').on('click', function() {
+                academicModal.hide();
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+            });
+
+            // Handle academic entry form submission
+            $('#academicEntryForm').on('submit', function(e) {
+                e.preventDefault();
+                // Add your form submission logic here
+                academicModal.hide();
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+            });
+
+            // Ensure modal shows up when button is clicked
+            $('[data-bs-toggle="modal"]').on('click', function() {
+                academicModal.show();
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to update topbar height
+            function updateTopBarHeight() {
+                const topBar = document.querySelector('.top_bar');
+                if (topBar) {
+                    const height = topBar.offsetHeight;
+                    document.documentElement.style.setProperty('--topbar-actual-height', height + 'px');
+                    
+                    // Update navbar position
+                    const navbar = document.querySelector('.navbar');
+                    if (navbar) {
+                        navbar.style.top = height + 'px';
+                    }
+                }
+            }
+
+            // Update on load and resize
+            updateTopBarHeight();
+            window.addEventListener('resize', updateTopBarHeight);
+            // Update when content might change
+            setTimeout(updateTopBarHeight, 100);
+
+            // Function to toggle dropdown
+            window.toggleDropdown = function() {
+                const dropdown = document.getElementById('profileDropdown');
+                dropdown.classList.toggle('show');
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.profile-trigger') && !e.target.closest('.profile-dropdown')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+
+            // Handle title radio buttons
+            document.querySelectorAll('input[name="title"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const otherTitleInput = document.getElementById('otherTitleInput');
+                    otherTitleInput.style.display = this.value === 'Other' ? 'block' : 'none';
+                });
+            });
+
+            // Handle name change checkbox
+            document.getElementById('nameChangeCheck').addEventListener('change', function() {
+                document.getElementById('fileUploadSection').style.display = this.checked ? 'block' : 'none';
+            });
+
+            // Handle file selection
+            document.getElementById('documentFile').addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    document.getElementById('fileUploadModal').style.display = 'none';
+                }
+            });
+
+            // Handle drag and drop
+            const uploadArea = document.querySelector('.upload-area');
+            
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight(e) {
+                uploadArea.classList.add('highlight');
+            }
+
+            function unhighlight(e) {
+                uploadArea.classList.remove('highlight');
+            }
+
+            uploadArea.addEventListener('drop', handleDrop, false);
+
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                document.getElementById('documentFile').files = files;
+                document.getElementById('fileUploadModal').style.display = 'none';
+            }
+
+            // Enable/disable next button based on checkbox
+            document.getElementById('confirmInfo').addEventListener('change', function() {
+                document.getElementById('nextPageBtn').disabled = !this.checked;
+            });
+
+            // Toggle qualification fields based on checkbox
+            const noQualificationCheckbox = document.getElementById('noQualification');
+            const qualificationFields = document.getElementById('qualificationFields');
+
+            function toggleQualificationFields() {
+                if (noQualificationCheckbox && qualificationFields) {
+                    if (noQualificationCheckbox.checked) {
+                        qualificationFields.classList.add('hidden');
+                    } else {
+                        qualificationFields.classList.remove('hidden');
+                    }
+                }
+            }
+
+            // Set initial state
+            toggleQualificationFields();
+
+            // Add change event listener
+            if (noQualificationCheckbox) {
+                noQualificationCheckbox.addEventListener('change', toggleQualificationFields);
+            }
+        });
+    </script>
+
+    <script>
+        function toggleQualificationFields() {
+            const checkbox = document.getElementById('noQualification');
+            const fields = document.getElementById('qualificationFields');
+            
+            if (checkbox.checked) {
+                fields.classList.add('hidden');
+            } else {
+                fields.classList.remove('hidden');
+            }
+        }
+
+        // Initial state check
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleQualificationFields();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize Bootstrap modals
+            var academicModal = new bootstrap.Modal(document.getElementById('requestModal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+            
+            var employmentModal = new bootstrap.Modal(document.getElementById('employmentModal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+            
+            // Handle modal close buttons
+            $('.btn-close, [data-bs-dismiss="modal"]').on('click', function() {
+                academicModal.hide();
+                employmentModal.hide();
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+            });
+
+            // Handle academic entry form submission
+            $('#academicEntryForm').on('submit', function(e) {
+                e.preventDefault();
+                // Add your form submission logic here
+                academicModal.hide();
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+            });
+
+            // Handle employment entry form submission
+            $('#employmentEntryForm').on('submit', function(e) {
+                e.preventDefault();
+                // Add your form submission logic here
+                employmentModal.hide();
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+            });
+
+            // Show employment history section after academic entry
+            $('#academicEntryNextBtn').on('click', function() {
+                $('#academicEntrySection').hide();
+                $('#employmentHistorySection').show();
+            });
+
+            // Handle back button in employment section
+            $('#employmentHistoryBackBtn').on('click', function() {
+                $('#employmentHistorySection').hide();
+                $('#academicEntrySection').show();
+            });
+
+            // Handle next button in employment section (if needed)
+            $('#employmentHistoryNextBtn').on('click', function() {
+                // Add navigation to next section if needed
+            });
+
+            // Update the teacher form next button to show academic section
+            $('#teacherFormNextBtn').on('click', function() {
+                $('#teacherInfoForm').hide();
+                $('#academicEntrySection').show();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize Bootstrap modals
+            var academicModal = new bootstrap.Modal(document.getElementById('requestModal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+            
+            var employmentModal = new bootstrap.Modal(document.getElementById('employmentModal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+            
+            // Handle modal close buttons
+            $('.btn-close, [data-bs-dismiss="modal"]').on('click', function() {
+                academicModal.hide();
+                employmentModal.hide();
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+            });
+
+            // Handle academic entry form submission
+            $('#academicEntryForm').on('submit', function(e) {
+                e.preventDefault();
+                academicModal.hide();
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+            });
+
+            // Handle employment entry form submission
+            $('#employmentEntryForm').on('submit', function(e) {
+                e.preventDefault();
+                employmentModal.hide();
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+            });
+
+            // Navigation between sections
+            $('#teacherFormNextBtn').on('click', function() {
+                $('#teacherInfoForm').hide();
+                $('#academicEntrySection').show();
+            });
+
+            $('#academicEntryBackBtn').on('click', function() {
+                $('#academicEntrySection').hide();
+                $('#teacherInfoForm').show();
+            });
+
+            $('#academicEntryNextBtn').on('click', function() {
+                $('#academicEntrySection').hide();
+                $('#employmentHistorySection').show();
+            });
+
+            $('#employmentHistoryBackBtn').on('click', function() {
+                $('#employmentHistorySection').hide();
+                $('#academicEntrySection').show();
+            });
+
+            $('#employmentHistoryNextBtn').on('click', function() {
+                $('#employmentHistorySection').hide();
+                // Add navigation to next section if needed
+            });
+        });
+    </script>
+</body>
+</html>
