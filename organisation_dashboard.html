@@ -883,11 +883,12 @@
                                 </div>
                             </div>
                              <!-- Add Training Button -->
-                            <div class="col-md-4 text-end">
-                                <button class="btn shadow-lg rounded-pill" style="background-color: #005f56; color: white; padding: 10px 20px;" id="numberOfRequests" data-bs-toggle="modal" data-bs-target="#addTrainingModal">
+                             <div class="col-md-4 text-end">
+                                <button class="btn rounded-pill" style="background-color: #005f56; color: white; padding: 10px 20px;" id="numberOfRequests" data-bs-toggle="modal" data-bs-target="#addTrainingModal">
                                     <i class="fa fa-plus-circle me-2"></i> Add Training
                                 </button>
                             </div>
+                            
 
                             <!-- Modal Structure -->
                             <div class="modal fade" id="addTrainingModal" tabindex="-1" aria-labelledby="addTrainingModalLabel" aria-hidden="true">
@@ -900,71 +901,69 @@
                                             </h5>
                                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-
+                            
                                         <!-- Modal Body -->
                                         <div class="modal-body p-4" style="background-color: #f7f9fb;">
                                             <form id="addTrainingForm">
                                                 <!-- Row 1 -->
                                                 <div class="row g-3 mb-4">
-                                                    <!-- Code -->
-                                                    <div class="col-md-6">
-                                                        <label for="trainingCode" class="form-label text-muted">Code</label>
+                                                    <!-- Training Code -->
+                                                    <div class="col-md-4">
+                                                        <label for="trainingCode" class="form-label text-muted">Training Code</label>
                                                         <input type="text" class="form-control border-0 shadow-sm" id="trainingCode" placeholder="Enter training code" required>
                                                     </div>
                                                     <!-- Training Title -->
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <label for="trainingTitle" class="form-label text-muted">Training Title</label>
                                                         <input type="text" class="form-control border-0 shadow-sm" id="trainingTitle" placeholder="Enter training title" required>
                                                     </div>
-                                                </div>
-
-                                                <!-- Row 2 -->
-                                                <div class="row g-3 mb-4">
-                                                    <!-- CPD Facilitator -->
-                                                    <div class="col-md-6">
-                                                        <label for="cpdFacilitator" class="form-label text-muted">CPD Facilitator</label>
-                                                        <input type="text" class="form-control border-0 shadow-sm" id="cpdFacilitator" placeholder="Enter CPD facilitator" required>
-                                                    </div>
-                                                    <!-- Date Requested -->
-                                                    <div class="col-md-6">
-                                                        <label for="dateRequested" class="form-label text-muted">Date Requested</label>
-                                                        <input type="date" class="form-control border-0 shadow-sm" id="dateRequested" required>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Row 3 -->
-                                                <div class="row g-3 mb-4">
                                                     <!-- Training Date -->
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <label for="trainingDate" class="form-label text-muted">Training Date</label>
                                                         <input type="date" class="form-control border-0 shadow-sm" id="trainingDate" required>
                                                     </div>
+                                                </div>
+                            
+                                                <!-- Row 2 -->
+                                                <div class="row g-3 mb-4">
+                                                    <!-- Region -->
+                                                    <div class="col-md-4">
+                                                        <label for="location" class="form-label text-muted">Region</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="location" placeholder="Enter region" required>
+                                                    </div>
+                                                    <!-- District (LGA) -->
+                                                    <div class="col-md-4">
+                                                        <label for="lgas" class="form-label text-muted">District</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="lgas" placeholder="Enter LGA's" required>
+                                                    </div>
+                                                    <!-- Ward -->
+                                                    <div class="col-md-4">
+                                                        <label for="ward" class="form-label text-muted">Ward</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="ward" placeholder="Enter ward" required>
+                                                    </div>
+                                                </div>
+                            
+                                                <!-- Row 3 -->
+                                                <div class="row g-3 mb-4">
+                                                     <!-- Time -->
+                                                     <div class="col-md-4">
+                                                        <label for="time" class="form-label text-muted">Time</label>
+                                                        <input type="time" class="form-control border-0 shadow-sm" id="time" required>
+                                                    </div>
                                                     <!-- Capacity -->
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <label for="capacity" class="form-label text-muted">Capacity</label>
                                                         <input type="number" class="form-control border-0 shadow-sm" id="capacity" placeholder="Enter capacity" required>
                                                     </div>
-                                                </div>
-
-                                                <!-- Row 4 -->
-                                                <div class="row g-3 mb-4">
-                                                    <!-- Location -->
-                                                    <div class="col-md-6">
-                                                        <label for="location" class="form-label text-muted">Location</label>
-                                                        <input type="text" class="form-control border-0 shadow-sm" id="location" placeholder="Enter location" required>
-                                                    </div>
-                                                    <!-- Status -->
-                                                    <div class="col-md-6">
-                                                        <label for="status" class="form-label text-muted">Status</label>
-                                                        <select class="form-select border-0 shadow-sm" id="status" required>
-                                                            <option value="Approved">Not conducted</option>
-                                                            <option value="Rejected">Conducted yet</option>
-                                                        </select>
+                                                    <!-- Hall -->
+                                                    <div class="col-md-4">
+                                                        <label for="hall" class="form-label text-muted">Hall</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="hall" placeholder="Enter hall" required>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
-
+                            
                                         <!-- Modal Footer -->
                                         <div class="modal-footer d-flex" style="background-color: #e0f2f1;">
                                             <button type="button" class="btn btn-danger shadow-sm rounded-pill px-3" data-bs-dismiss="modal" id="cancelButton">
@@ -977,6 +976,87 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Model window to edit data -->
+                            <div class="modal fade" id="editTrainingModal" tabindex="-1" aria-labelledby="editTrainingModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content rounded-4 shadow-lg">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header text-white" style="background: linear-gradient(135deg, #004d40, #00796b);">
+                                            <h5 class="modal-title fw-bold" id="editTrainingModalLabel">
+                                                <i class="fa fa-chalkboard-teacher me-2"></i> Edit Training Details
+                                            </h5>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                            
+                                        <!-- Modal Body -->
+                                        <div class="modal-body p-4" style="background-color: #f7f9fb;">
+                                            <form id="editTrainingForm">
+                                                <!-- Row 1 -->
+                                                <div class="row g-3 mb-4">
+                                                    <div class="col-md-4">
+                                                        <label for="editTrainingCode" class="form-label text-muted">Training Code</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="editTrainingCode" placeholder="Enter training code" required>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="editTrainingTitle" class="form-label text-muted">Training Title</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="editTrainingTitle" placeholder="Enter training title" required>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="editTrainingDate" class="form-label text-muted">Training Date</label>
+                                                        <input type="date" class="form-control border-0 shadow-sm" id="editTrainingDate" required>
+                                                    </div>
+                                                </div>
+                            
+                                                <!-- Row 2 -->
+                                                <div class="row g-3 mb-4">
+                                                    <div class="col-md-4">
+                                                        <label for="editLocation" class="form-label text-muted">Region</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="editLocation" placeholder="Enter region" required>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="editLgas" class="form-label text-muted">District</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="editLgas" placeholder="Enter LGA's" required>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="editWard" class="form-label text-muted">Ward</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="editWard" placeholder="Enter ward" required>
+                                                    </div>
+                                                </div>
+                            
+                                                <!-- Row 3 -->
+                                                <div class="row g-3 mb-4">
+                                                    <div class="col-md-4">
+                                                        <label for="editTime" class="form-label text-muted">Time</label>
+                                                        <input type="time" class="form-control border-0 shadow-sm" id="editTime" required>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="editCapacity" class="form-label text-muted">Capacity</label>
+                                                        <input type="number" class="form-control border-0 shadow-sm" id="editCapacity" placeholder="Enter capacity" required>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="editHall" class="form-label text-muted">Hall</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="editHall" placeholder="Enter hall" required>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                            
+                                        <!-- Modal Footer -->
+                                        <div class="modal-footer d-flex" style="background-color: #e0f2f1;">
+                                            <button type="button" class="btn btn-danger shadow-sm rounded-pill px-3" data-bs-dismiss="modal" id="cancelButton">
+                                                <i class="fa fa-times-circle"></i> Cancel
+                                            </button>
+                                            <button type="button" class="btn btn-success shadow-sm rounded-pill px-4" id="updateTrainingButton">
+                                                <i class="fa fa-check-circle"></i> Update Training
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            
 
 
 
@@ -989,13 +1069,14 @@
                                     <thead style="background-color: #f8f9fa;">
                                         <tr>
                                             <th>Code</th>
-                                            <th>Training Title</th>
-                                            <th>CPD Facilitator</th>
-                                            <th>Date Requested</th>
-                                            <th>Training Date</th>
+                                            <th> Title</th>
+                                            <th> Date</th>
+                                            <th>Region</th>
+                                            <th>District</th>
+                                            <th>Ward</th>
+                                            <th>Time</th>
                                             <th>Capacity</th>
-                                            <th>Location</th>
-                                            <th>Status</th>
+                                            <th>Hall</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -1003,47 +1084,51 @@
                                         <tr>
                                             <td>TC0013</td>
                                             <td data-label="Training Title">Effective immunology</td>
-                                            <td data-label="Requested By">Anola Godfrey</td>
                                             <td data-label="Date Requested">2024-01-15</td>
-                                            <td data-label="Training Date">2024-02-01</td>
-                                            <td>250</td>
                                             <td data-label="Location">Mwanza</td>
-                                            <td data-label="Status">
-                                                <span class="badge bg-success">Conducted yet</span>
-                                            </td>
+                                            <td data-label="Requested By">Ilemela</td>
+                                            <td data-label="Requested By">kilimahewa</td>
+                                            <td data-label="Training Date">11:00</td>
+                                            <td>250</td>
+                                            <td>Jakaya convesion</td>
                                             <td data-label="Actions">
                                                 <button class="btn btn-sm" style="background-color: #009c95; color: white;" title="View Details" onclick="viewTraining(1)">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
-                                                <button class="btn btn-sm btn-danger text-white" title="Delete" onclick="confirmDelete()">
-                                                    <i class="fa fa-trash-alt"></i> <!-- Updated to a better trash icon -->
-                                                </button>  
                                                 <button class="btn btn-sm btn-success text-white" title="Save" onclick="saveAction()">
                                                     <i class="fa fa-save"></i> <!-- Save icon -->
-                                                </button>                                             
+                                                </button>
+                                                <button class="btn btn-sm btn-warning text-white" title="Edit" onclick="editTraining('TC0013')">
+                                                    <i class="fa fa-edit"></i> <!-- Edit icon -->
+                                                </button>                                                                                               
+                                                <button class="btn btn-sm btn-danger text-white" title="Delete" onclick="confirmDelete()">
+                                                    <i class="fa fa-trash-alt"></i> <!-- Updated to a better trash icon -->
+                                                </button>                                              
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>TC0014</td>
-                                            <td data-label="Training Title"> Teaching Methodology</td>
-                                            <td data-label="Requested By">Kasano junior</td>
-                                            <td data-label="Date Requested">2024-01-15</td>
-                                            <td data-label="Training Date">2024-02-01</td>
-                                            <td>200</td>
-                                            <td data-label="Location">Arusha</td>
-                                            <td data-label="Status">
-                                                <span class="badge bg-danger">Not conducted</span>
-                                            </td>
+                                            <td data-label="Training Title">Effective teaching</td>
+                                            <td data-label="Date Requested">2024-01-16</td>
+                                            <td data-label="Location">Dodoma</td>
+                                            <td data-label="Requested By">Dodoma</td>
+                                            <td data-label="Requested By">Makulu</td>
+                                            <td data-label="Training Date">12:00</td>
+                                            <td>250</td>
+                                            <td>Jakaya convesion</td>
                                             <td data-label="Actions">
                                                 <button class="btn btn-sm" style="background-color: #009c95; color: white;" title="View Details" onclick="viewTraining(1)">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
-                                                <button class="btn btn-sm btn-danger text-white" title="Delete" onclick="confirmDelete()">
-                                                    <i class="fa fa-trash-alt"></i> <!-- Updated to a better trash icon -->
-                                                </button>
                                                 <button class="btn btn-sm btn-success text-white" title="Save" onclick="saveAction()">
                                                     <i class="fa fa-save"></i> <!-- Save icon -->
+                                                </button>
+                                                <button class="btn btn-sm btn-warning text-white" title="Edit" onclick="editTraining('TC0014')">
+                                                    <i class="fa fa-edit"></i> <!-- Edit icon -->
                                                 </button>                                                
+                                                <button class="btn btn-sm btn-danger text-white" title="Delete" onclick="confirmDelete()">
+                                                    <i class="fa fa-trash-alt"></i> <!-- Updated to a better trash icon -->
+                                                </button>                                              
                                             </td>
                                         </tr>
                                     </tbody>
@@ -1262,6 +1347,32 @@
             });
         }
     </script>
+    <!-- model window to edit data -->
+     <script>
+        function editTraining(trainingId) {
+
+        // Show the modal
+            var editModal = new bootstrap.Modal(document.getElementById('editTrainingModal'));
+            editModal.show();
+        }
+
+        // Handle saving the updated training data
+        document.getElementById("updateTrainingButton").addEventListener("click", function() {
+            // Close the modal after update
+            var editModal = bootstrap.Modal.getInstance(document.getElementById('editTrainingModal'));
+            editModal.hide();
+
+            // SweetAlert success message for successful data saving
+        Swal.fire({
+            icon: 'success', // Set the icon to success
+            title: 'Success!', // Set the title
+            text: 'Training details updated successfully!', // Set the message
+            confirmButtonText: 'OK', // Set the text of the confirm button
+            timer: 3000, // Optional: Auto-close after 3 seconds
+        });
+
+        });
+     </script>
     
 
     <!-- script to create model window when add training button is clicked -->
