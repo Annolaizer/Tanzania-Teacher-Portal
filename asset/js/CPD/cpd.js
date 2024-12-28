@@ -235,4 +235,28 @@ $(document).ready(function() {
     $('[data-bs-toggle="modal"]').on('click', function() {
         academicModal.show();
     });
+
+    // SweetAlert confirmation for finalize button
+    $('#finalize').on('click', function() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you want to finalize this process?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#009c95',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, finalize it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Finalized!',
+                    'Your process has been completed.',
+                    'success'
+                ).then(() => {
+                    window.location.href = 'CPD_Trainings.html';
+                });
+            }
+        });
+    });
+
 });

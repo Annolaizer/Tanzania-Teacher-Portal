@@ -601,8 +601,8 @@
                         <div class="profile-email">annolamatimbwi@gmail.com</div>
                     </div>
                     <div class="profile-menu">
-                        <a href="#"><i class="fas fa-home text-prime"></i>Home</a>
-                        <a href="CPD_Trainings.html"><i class="fas fa-certificate text-prime"></i>Trainings</a>
+                        <a href="teacher_dashborad.html"><i class="fas fa-home text-prime"></i>Home</a>
+                        <a href="teacher_training.html"><i class="fas fa-certificate text-prime"></i>Trainings</a>
                         <a href="settings.html"><i class="fas fa-cog text-prime"></i>Account settings</a>
                         <div class="divider"></div>
                         <a href="login.html"><i class="fas fa-user-plus text-prime"></i>Log into another account</a>
@@ -666,6 +666,34 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Add SweetAlert confirmation on form submission
+        document.querySelector('.btn.btn-prime.bg-prime[type="submit"]').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'Do you want to submit this report?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#007c77',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, submit it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Submitted!',
+                        'Your report has been successfully submitted.',
+                        'success'
+                    ).then(() => {
+                        // Submit the form
+                        event.target.closest('form').submit();
+                    });
+                }
+            });
+        });
+    </script>
     <script>
         function toggleDropdown() {
             const dropdown = document.getElementById('profileDropdown');
