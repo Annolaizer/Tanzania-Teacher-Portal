@@ -636,8 +636,7 @@
 
         @media screen and (max-width: 767px) {
             #numberOfRequests{
-                /* display: none; */
-                margin-top: 15px;
+                display: none;
             }
             #templateCards{
                 margin-top: 25px;
@@ -1090,17 +1089,15 @@
                                             <td data-label="Requested By">Ilemela</td>
                                             <td data-label="Requested By">kilimahewa</td>
                                             <td data-label="Training Date">11:00</td>
-                                            <td>350</td>
-                                            <td>Golden crest</td>
+                                            <td>250</td>
+                                            <td>Jakaya convesion</td>
                                             <td data-label="Actions">
                                                 <button class="btn btn-sm" style="background-color: #009c95; color: white;" title="View Details" onclick="viewTraining(1)">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
-                                                <a href="assign_training.html">
-                                                    <button class="btn btn-sm btn-success text-white" title="Assign">
-                                                        <i class="fa fa-save"></i> <!-- Save icon -->
-                                                    </button>
-                                                </a>
+                                                <button class="btn btn-sm btn-success text-white" title="Save" onclick="saveAction()">
+                                                    <i class="fa fa-save"></i> <!-- Save icon -->
+                                                </button>
                                                 <button class="btn btn-sm btn-warning text-white" title="Edit" onclick="editTraining('TC0013')">
                                                     <i class="fa fa-edit"></i> <!-- Edit icon -->
                                                 </button>                                                                                               
@@ -1118,16 +1115,14 @@
                                             <td data-label="Requested By">Makulu</td>
                                             <td data-label="Training Date">12:00</td>
                                             <td>250</td>
-                                            <td>Jakaya convs</td>
+                                            <td>Jakaya convesion</td>
                                             <td data-label="Actions">
                                                 <button class="btn btn-sm" style="background-color: #009c95; color: white;" title="View Details" onclick="viewTraining(1)">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
-                                                <a href="assign_training.html">
-                                                    <button class="btn btn-sm btn-success text-white" title="Assign">
-                                                        <i class="fa fa-save"></i> <!-- Save icon -->
-                                                    </button>
-                                                </a>
+                                                <button class="btn btn-sm btn-success text-white" title="Assign">
+                                                    <i class="fa fa-save"></i> <!-- Save icon -->
+                                                </button>
                                                 <button class="btn btn-sm btn-warning text-white" title="Edit" onclick="editTraining('TC0014')">
                                                     <i class="fa fa-edit"></i> <!-- Edit icon -->
                                                 </button>                                                
@@ -1329,7 +1324,6 @@
     </style>
     <!-- SweetAlert confirmation before deleting -->
     <script>
-        
         // Function to show SweetAlert confirmation before deleting
         function confirmDelete() {
             Swal.fire({
@@ -1356,13 +1350,11 @@
                     // Handle the delete action (replace this with actual delete logic)
                     console.log("Item deleted!");
                     Swal.fire({
-                    icon: 'success',
-                    title: 'Deleted!',
-                    text: 'Your item has been deleted.',
-                    confirmButtonText: 'Ok',
-                    showConfirmButton: true,
-                    timer: 3000, // Automatically close after 3 seconds
-                    showCloseButton: true,
+                        icon: 'success',
+                        title: 'Deleted!',
+                        text: 'Your item has been deleted.',
+                        showConfirmButton: false,
+                        timer: 1500 // Auto-close the success alert after 1.5 seconds
                     });
                 } else {
                     // If user cancels, you can add additional logic if necessary
