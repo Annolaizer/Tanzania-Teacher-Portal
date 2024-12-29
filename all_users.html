@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="shortcut icon" href="asset/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>TTPS - All users management</title>
+    <style>
+        body {
+            background-color: #f7f9fc;
+        }
+        .page-header {
+            background-color: #009c95;;
+            color: white;
+            padding: 5px;
+            border-radius: 70px;
+            margin-bottom: 20px;
+        }
+        .table-container {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Page Header -->
+        <div class="page-header text-center" style="margin-top: 30px;">
+            <h2><i class="fa fa-user-friends me-2"></i> All users management</h2>
+        </div>
+        
+        
+        <!-- Search Bar and Add Button -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="input-group w-50">
+                <button class="btn btn-success" onclick="performSearch()">
+                    <i class="fa fa-search"></i> Search
+                </button>
+                <input type="text" class="form-control" id="searchInput" placeholder="search users..">
+            </div>
+            <button class="btn btn-success rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                <i class="fa fa-plus-circle"></i> Add New User
+            </button>
+        </div>
+
+        <!-- User Table -->
+        <div class="table-container">
+            <table class="table table-hover table-bordered">
+                <thead class="">
+                    <tr class="text-center table-striped">
+                        <th>S/N</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTable">
+                    <!-- Example Users -->
+                    <tr class="text-center">
+                        <td>1</td>
+                        <td>kasano junior</td>
+                        <td>kasanojunior@gmail.com</td>
+                        <td>Admin</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-success" title="Edit" onclick="editUser(1)">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-info" title="View Details" onclick="viewUserDetails(1)">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" title="Delete" onclick="deleteUser(1)">
+                                <i class="fa fa-trash-alt"></i>
+                            </button>                            
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>2</td>
+                        <td>braina walter kawa</td>
+                        <td>braina@gmail.com</td>
+                        <td>Teacher</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-success" title="Edit" onclick="editUser(1)">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-info" title="View Details" onclick="viewUserDetails(1)">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" title="Delete" onclick="deleteUser(1)">
+                                <i class="fa fa-trash-alt"></i>
+                            </button>                            
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>3</td>
+                        <td>anola godfrey</td>
+                        <td>annolaizer@gmail.com</td>
+                        <td>Facilitator</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-success" title="Edit" onclick="editUser(1)">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-info" title="View Details" onclick="viewUserDetails(1)">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" title="Delete" onclick="deleteUser(1)">
+                                <i class="fa fa-trash-alt"></i>
+                            </button>                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content rounded-4 shadow-lg">
+                <!-- Modal Header -->
+                <div class="modal-header text-white" style="background: linear-gradient(135deg, #004d40, #00796b);">
+                    <h5 class="modal-title fw-bold" id="addUserModalLabel">
+                        <i class="fa fa-user-plus me-2"></i> Add New User
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+    
+                <!-- Modal Body -->
+                    <div class="modal-body p-4" style="background-color: #f7f9fb;">
+                        <form id="addUserForm">    
+                            <!-- Row 2 -->
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="username" class="form-label text-muted">Username</label>
+                                    <input type="text" class="form-control border-0 shadow-sm" id="username" placeholder="Enter username" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label text-muted">Email</label>
+                                    <input type="email" class="form-control border-0 shadow-sm" id="email" placeholder="Enter email" required>
+                                </div>
+                            </div>
+
+                            <!-- Row 3 -->
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="password" class="form-label text-muted">Password</label>
+                                    <input type="password" class="form-control border-0 shadow-sm" id="password" placeholder="Enter password" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="role" class="form-label text-muted">Role</label>
+                                    <select class="form-select" id="role" required>
+                                        <option value="" disabled selected>Select role</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Teacher">Teacher</option>
+                                        <option value="Facilitator">Facilitator</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <div class="modal-footer d-flex" style="background-color: #e0f2f1;">
+                        <button type="button" class="btn btn-danger shadow-sm rounded-pill px-3" data-bs-dismiss="modal">
+                            <i class="fa fa-times-circle"></i> Cancel
+                        </button>
+                        <button type="button" class="btn btn-success shadow-sm rounded-pill px-4" id="saveUserButton">
+                            <i class="fa fa-check-circle"></i> Save User
+                        </button>
+                    </div>
+
+            </div>
+        </div>
+    </div> 
+
+    <script>
+        // Perform Search Function
+        function performSearch() {
+            const query = document.getElementById('searchInput').value;
+            alert(`Searching for: ${query}`);
+        }
+
+        // Save User Function
+        function saveUser() {
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const role = document.getElementById('userRole').value;
+            const password = document.getElementById('userPassword').value;
+
+            if (name && email && role && password) {
+                alert(`User Added Successfully!\nName: ${name}\nEmail: ${email}\nRole: ${role}`);
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('addUserModal'));
+                modal.hide();
+            } else {
+                alert('Please fill out all fields!');
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
