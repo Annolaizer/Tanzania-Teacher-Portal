@@ -1010,6 +1010,20 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('show');
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const profile = document.querySelector('.user-profile');
+                if (!profile.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        }
+    </script>
+    <script>
         // Populate Training Details
         const urlParams = new URLSearchParams(window.location.search);
         document.getElementById('trainingTitle').value = urlParams.get('trainingTitle') || '';
