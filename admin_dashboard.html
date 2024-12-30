@@ -8,6 +8,81 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="asset/css/Administrator/administrator.css">
+    <style>
+        /* Stat Cards */
+        .stat-card {
+            position: relative;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card-icon {
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            font-size: 5rem;
+            opacity: 0.2;
+            transform: rotate(10deg);
+        }
+
+        .stat-card-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-card-title {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card-number {
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card-progress {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.75rem;
+            margin-bottom: 0;
+        }
+
+        .stat-card-progress i {
+            margin-right: 0.25rem;
+        }
+
+        /* Gradient Backgrounds */
+        .bg-gradient-primary {
+            background: linear-gradient(45deg, #4e73df, #224abe);
+        }
+
+        .bg-gradient-success {
+            background: linear-gradient(45deg, #1cc88a, #13855c);
+        }
+
+        .bg-gradient-warning {
+            background: linear-gradient(45deg, #f6c23e, #dda20a);
+        }
+
+        .bg-gradient-info {
+            background: linear-gradient(45deg, #36b9cc, #258391);
+        }
+
+        /* Hover Effects */
+        .stat-card:hover .stat-card-icon {
+            transform: rotate(15deg) scale(1.1);
+            transition: transform 0.3s ease;
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -319,27 +394,63 @@
                 <!-- Summary Statistics -->
                 <div class="row mb-4">
                     <div class="col-md-3">
-                        <div class="stat-card bg-primary text-white">
-                            <h5>Total Teachers</h5>
-                            <h2 id="totalTeachers">0</h2>
+                        <div class="stat-card bg-gradient-primary">
+                            <div class="stat-card-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="stat-card-info">
+                                <p class="stat-card-title">Total Teachers</p>
+                                <h2 class="stat-card-number" id="totalTeachers">2,547</h2>
+                                <p class="stat-card-progress">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>12.5% increase</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="stat-card bg-success text-white">
-                            <h5>Public Teachers</h5>
-                            <h2 id="publicTeachers">0</h2>
+                        <div class="stat-card bg-gradient-success">
+                            <div class="stat-card-icon">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <div class="stat-card-info">
+                                <p class="stat-card-title">Total Institutions</p>
+                                <h2 class="stat-card-number" id="totalInstitutions">1,845</h2>
+                                <p class="stat-card-progress">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>8.2% increase</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="stat-card bg-warning text-white">
-                            <h5>Private Teachers</h5>
-                            <h2 id="privateTeachers">0</h2>
+                        <div class="stat-card bg-gradient-warning">
+                            <div class="stat-card-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="stat-card-info">
+                                <p class="stat-card-title">Trainings</p>
+                                <h2 class="stat-card-number" id="trainings">702</h2>
+                                <p class="stat-card-progress">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>5.3% increase</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="stat-card bg-info text-white">
-                            <h5>Active Users</h5>
-                            <h2 id="activeUsers">0</h2>
+                        <div class="stat-card bg-gradient-info">
+                            <div class="stat-card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-card-info">
+                                <p class="stat-card-title">Active Users</p>
+                                <h2 class="stat-card-number" id="activeUsers">3,124</h2>
+                                <p class="stat-card-progress">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>15.7% increase</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

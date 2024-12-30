@@ -3,214 +3,714 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTP - Admin Dashboard</title>
     <link rel="shortcut icon" href="asset/images/logo.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <title>TTP - Organization SignUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="asset/css/Administrator/administrator.css">
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-        :root {
-            --bg-color: #f8f8f8;
-        }
-        body {
-            background-color: var(--bg-color);
-        }
-        .container-fluid {
-            min-height: 100%;
-        }
-        .row {
-            min-height: 100vh;
-        }
-        .bg-photo {
-            background-image: url("asset/images/Login.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .bg-photo::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.616);
-        }
-        .bg-photo h3 {
-            position: absolute;
-            top: 150px;
-            z-index: 1;
-            color: white;
-        }
-        .text-green {
-            color: #009c95;
-        }
-        .card-container {
-            width: 70%;
-            max-width: 400px;
-            min-width: 350px;
-            margin: auto;
-        }
-        .image-tab {
-            width: 100%;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 0;
-        }
-        .image-tab img {
-            margin-bottom: 10px;
-        }
-        .image-tab span {
-            color: #009c95;
-            font-size: 1.2em;
-        }
-        .form-container {
-            background-color: transparent;
-            padding: 15px 0;
-        }
-        .input-row {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-        .input-col {
-            flex: 1;
-            position: relative;
-        }
-        .form-floating {
-            position: relative;
-        }
-        .form-container input, .form-container select {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 12px;
-            background: transparent;
-            height: 45px;
-            padding-top: 20px;
-        }
-        .form-container select {
-            color: #666;
-            padding-top: 16px;
-            padding-bottom: 4px;
-        }
-        .form-container select option {
-            color: #666;
-        }
-        .form-container select:focus {
-            color: #666;
-        }
-        .form-container input:focus, .form-container select:focus {
-            border-color: #009c95;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(0, 156, 149, 0.2);
-        }
-        .form-floating label {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 14px;
-            color: #666;
-            pointer-events: none;
-            transition: 0.2s ease all;
-        }
-        .form-floating input:focus ~ label,
-        .form-floating input:not(:placeholder-shown) ~ label,
-        .form-floating select:focus ~ label,
-        .form-floating select:not(:placeholder-shown) ~ label {
-            top: 1px;
-            font-size: 12px;
-            color: #009c95;
-            background-color: #f8f8f8;
-            padding: 0 2px;
-            display: inline;
-            line-height: 1;
-            height: auto;
-            margin: 0;
-        }
-        .form-container input::placeholder {
-            color: transparent;
-        }
-        .password-field {
-            position: relative;
-        }
-        .password-toggle {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #666;
-            z-index: 1;
-            height: 16px;
-            display: flex;
-            align-items: center;
-            margin-top: -6px;
-        }
-        .password-toggle:hover {
-            color: #009c95;
-        }
-        .form-container button {
-            width: 100%;
-            padding: 12px;
-            background-color: #009c95;
-            color: white;
+        .card {
             border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
+            border-radius: 10px;
         }
-        .form-container button:hover {
-            background-color: #008066;
+        
+        .table th {
+            font-weight: 600;
+            background-color: #f8f9fa;
         }
-        .home-link {
-            text-decoration: none;
-            color: #009c95;
+        
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            margin: 0 0.1rem;
         }
-        .home-link:hover {
-            color: #008066;
+        
+        .badge {
+            padding: 0.5rem 0.8rem;
+            font-weight: 500;
         }
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-            color: #009c95;
-            text-decoration: none;
+        
+        .input-group-text {
+            border: none;
         }
-        .back-link:hover {
-            color: #008066;
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
         }
-        @media screen and (max-width: 768px) {
-            .bg-photo {
-                display: none;
-            }
-            .col-md-8 {
-                width: 100%;
-            }
-            .card-container {
-                width: 90%;
-                min-width: auto;
-                margin: 20px auto;
-            }
+        
+        .modal-content {
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .modal-header {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        #topicsContainer .badge {
+            padding: 0.5rem;
+            margin: 0.2rem;
+        }
+        
+        .btn-custom-primary {
+            background-color: #009c95;
+            border-color: #009c95;
+            color: white;
+        }
+        
+        .btn-custom-primary:hover {
+            background-color: #008c85;
+            border-color: #008c85;
+            color: white;
+        }
+
+        .bg-custom-primary {
+            background-color: #009c95 !important;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <div class="container-fluid">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container-fluid px-0">
+            <div class="d-flex align-items-center">
+                <button class="navbar-toggler d-md-none me-2" type="button" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="admin_dashboard.html">
+                    <img src="asset/images/logo.png" alt="Logo">
+                    <span>Tanzania Teacher Portal</span>
+                </a>
+            </div>
+            <div class="d-flex align-items-center">
+                <!-- Notification Icon -->
+                <div class="dropdown">
+                    <div class="notification-icon me-3" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-end notification-dropdown p-0">
+                        <div class="dropdown-header d-flex justify-content-between align-items-center p-3">
+                            <h6 class="mb-0">Notifications</h6>
+                            <small class="text-muted">3 New</small>
+                        </div>
+                        <div class="notification-list">
+                            <a href="#" class="dropdown-item notification-item">
+                                <div class="d-flex align-items-start">
+                                    <div class="notification-icon-circle bg-primary">
+                                        <i class="fas fa-user-plus text-white"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <p class="notification-title mb-1">New Teacher Registration</p>
+                                        <hr style="margin-top: -2px;">
+                                        <p class="notification-desc mb-1">John Doe registered as a new teacher</p>
+                                        <div class="notification-time">
+                                            <i class="far fa-clock"></i>
+                                            <span>2 minutes ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item notification-item read">
+                                <div class="d-flex align-items-start">
+                                    <div class="notification-icon-circle bg-success">
+                                        <i class="fas fa-shield-alt text-white"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <p class="notification-title mb-1">Permission Updated</p>
+                                        <p class="notification-desc mb-1">Admin role permissions were modified</p>
+                                        <div class="notification-time">
+                                            <i class="far fa-clock"></i>
+                                            <span>1 hour ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item notification-item read">
+                                <div class="d-flex align-items-start">
+                                    <div class="notification-icon-circle bg-warning">
+                                        <i class="fas fa-cog text-white"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <p class="notification-title mb-1">System Update</p>
+                                        <p class="notification-desc mb-1">System maintenance completed</p>
+                                        <div class="notification-time">
+                                            <i class="far fa-clock"></i>
+                                            <span>3 hours ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="dropdown-footer text-center p-2 border-top">
+                            <a href="#" class="text-primary">View All Notifications</a>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- User Profile -->
+                <div class="dropdown">
+                    <div class="nav-icon" data-bs-toggle="dropdown">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <div class="user-profile-header">
+                            <div class="profile-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-name">John Doe</div>
+                            <div class="user-role">Administrator</div>
+                        </div>
+                        <a class="dropdown-item" href="profile.html">
+                            <i class="fas fa-user-cog"></i>
+                            Profile Settings
+                        </a>
+                        <a class="dropdown-item" href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            System Settings
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="logout.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="admin_dashboard.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#trainingsSubmenu" class="nav-link active" data-bs-toggle="collapse">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Trainings</span>
+                        <i class="fas fa-chevron-down ms-auto"></i>
+                    </a>
+                    <div class="collapse show" id="trainingsSubmenu">
+                        <ul class="nav-list">
+                            <li class="nav-item">
+                                <a href="organization_all_users.html" class="nav-link active">
+                                    <i class="fas fa-list"></i>
+                                    <span>All Trainings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#teachersSubmenu" class="nav-link" data-bs-toggle="collapse">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Teachers</span>
+                        <i class="fas fa-chevron-down ms-auto"></i>
+                    </a>
+                    <ul class="collapse nav-list" id="teachersSubmenu">
+                        <li class="nav-item">
+                            <a href="all_teachers.html" class="nav-link">
+                                <i class="fas fa-users"></i>
+                                <span>All Teachers</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#institutionsSubmenu" class="nav-link" data-bs-toggle="collapse">
+                        <i class="fas fa-university"></i>
+                        <span>Institutions</span>
+                        <i class="fas fa-chevron-down ms-auto"></i>
+                    </a>
+                    <ul class="collapse nav-list" id="institutionsSubmenu">
+                        <li class="nav-item">
+                            <a href="all_institutions.html" class="nav-link">
+                                <i class="fas fa-building"></i>
+                                <span>All Institutions</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#reportsSubmenu" class="nav-link" data-bs-toggle="collapse">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Reports</span>
+                        <i class="fas fa-chevron-down ms-auto"></i>
+                    </a>
+                    <ul class="collapse nav-list" id="reportsSubmenu">
+                        <li class="nav-item">
+                            <a href="reports.html" class="nav-link">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Teacher Reports</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item mt-auto">
+                    <div class="nav-divider"></div>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container-fluid">
+            <!-- Filters Section -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-text bg-primary text-white">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                                <input type="text" class="form-control" id="titleFilter" placeholder="Search by Title or Code">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <span class="input-group-text bg-primary text-white">
+                                    <i class="fas fa-calendar"></i>
+                                </span>
+                                <input type="date" class="form-control" id="dateFilter">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <select class="form-select" id="statusFilter">
+                                <option value="">All Status</option>
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-custom-primary w-100 d-flex align-items-center justify-content-center gap-2" 
+                                    onclick="addTraining()">
+                                <i class="fas fa-plus"></i>
+                                <span>Add Training</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training Table -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Training Code</th>
+                                    <th>Training Title</th>
+                                    <th>Date Created</th>
+                                    <th>Status</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trainingTableBody">
+                                <!-- Sample Data -->
+                                <tr>
+                                    <td><span class="badge bg-secondary">TRN-001</span></td>
+                                    <td>Introduction to Teaching Methods</td>
+                                    <td>2024-01-15</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-custom-primary" onclick="viewTraining(0)">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-custom-primary" onclick="editTraining(0)">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteTraining(0)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-secondary">TRN-002</span></td>
+                                    <td>Classroom Management Skills</td>
+                                    <td>2024-01-20</td>
+                                    <td><span class="badge bg-warning">Inactive</span></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-custom-primary" onclick="viewTraining(1)">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-custom-primary" onclick="editTraining(1)">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteTraining(1)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- View Training Modal -->
+    <div class="modal fade" id="viewTrainingModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title">Training Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="fw-bold">Training Code:</label>
+                                <p id="viewTrainingCode" class="mb-0"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="fw-bold">Status:</label>
+                                <p id="viewTrainingStatus" class="mb-0"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="fw-bold">Training Title:</label>
+                        <p id="viewTrainingTitle" class="mb-0"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="fw-bold">Topics:</label>
+                        <div id="viewTrainingTopics" class="d-flex flex-wrap gap-2"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="fw-bold">Description:</label>
+                        <p id="viewTrainingDescription" class="mb-0"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Training Modal -->
+    <div class="modal fade" id="trainingModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-custom-primary">
+                    <h5 class="modal-title" id="modalTitle">Add Training</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="trainingForm" class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Training Code</label>
+                                <input type="text" class="form-control" id="trainingCode" required readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Status</label>
+                                <select class="form-select" id="trainingStatus" required>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Training Title</label>
+                            <input type="text" class="form-control" id="trainingTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Topics</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="topicInput" placeholder="Add a topic">
+                                <button class="btn btn-outline-primary" type="button" onclick="addTopic()">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div id="topicsContainer" class="d-flex flex-wrap gap-2 mt-2"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="trainingDescription" rows="3" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-custom-primary" onclick="saveTraining()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and other dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Sample data array (simulating backend data)
+        const trainings = [
+            {
+                code: 'TRN-001',
+                title: 'Introduction to Teaching Methods',
+                topics: ['Pedagogy', 'Classroom Management'],
+                description: 'Comprehensive introduction to modern teaching methods and practices.',
+                date: '2024-01-15',
+                status: 'Active'
+            },
+            {
+                code: 'TRN-002',
+                title: 'Classroom Management Skills',
+                topics: ['Discipline', 'Student Engagement'],
+                description: 'Learn effective classroom management techniques and student engagement strategies.',
+                date: '2024-01-20',
+                status: 'Inactive'
+            }
+        ];
+
+        // Edit training
+        function editTraining(index) {
+            const training = trainings[index];
+            document.getElementById('modalTitle').textContent = 'Edit Training';
+            document.getElementById('trainingCode').value = training.code;
+            document.getElementById('trainingTitle').value = training.title;
+            document.getElementById('trainingStatus').value = training.status;
+            document.getElementById('trainingDescription').value = training.description;
+            
+            // Clear and populate topics
+            const topicsContainer = document.getElementById('topicsContainer');
+            topicsContainer.innerHTML = '';
+            training.topics.forEach(topic => {
+                const topicElement = document.createElement('div');
+                topicElement.className = 'badge bg-secondary d-flex align-items-center gap-2';
+                topicElement.innerHTML = `
+                    ${topic}
+                    <button type="button" class="btn-close btn-close-white" 
+                            onclick="this.parentElement.remove()" style="font-size: 0.5rem;"></button>
+                `;
+                topicsContainer.appendChild(topicElement);
+            });
+            
+            new bootstrap.Modal(document.getElementById('trainingModal')).show();
+        }
+
+        // Save training
+        function saveTraining() {
+            const code = document.getElementById('trainingCode').value;
+            const title = document.getElementById('trainingTitle').value;
+            const status = document.getElementById('trainingStatus').value;
+            const description = document.getElementById('trainingDescription').value;
+            
+            // Get topics from badges
+            const topics = Array.from(document.getElementById('topicsContainer').children)
+                .map(badge => badge.textContent.trim());
+
+            if (!title || topics.length === 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Validation Error',
+                    text: 'Please fill in all required fields and add at least one topic!',
+                    confirmButtonColor: '#009c95'
+                });
+                return;
+            }
+
+            // Find if we're editing an existing training
+            const existingIndex = trainings.findIndex(t => t.code === code);
+            const isNewTraining = existingIndex === -1;
+
+            const training = {
+                code,
+                title,
+                topics,
+                description,
+                date: isNewTraining ? new Date().toLocaleDateString() : trainings[existingIndex].date,
+                status
+            };
+
+            if (isNewTraining) {
+                trainings.push(training);
+            } else {
+                trainings[existingIndex] = training;
+            }
+
+            Swal.fire({
+                icon: 'success',
+                title: `Training ${isNewTraining ? 'Added' : 'Updated'}!`,
+                text: `The training has been successfully ${isNewTraining ? 'added' : 'updated'}.`,
+                confirmButtonColor: '#009c95',
+                timer: 1500,
+                showConfirmButton: false
+            }).then(() => {
+                bootstrap.Modal.getInstance(document.getElementById('trainingModal')).hide();
+                // Here you would typically refresh the data from the backend
+                // For now, we'll just reload the page
+                location.reload();
+            });
+        }
+
+        // Add topic
+        function addTopic() {
+            const topicInput = document.getElementById('topicInput');
+            const topic = topicInput.value.trim();
+            
+            if (!topic) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Invalid Topic',
+                    text: 'Please enter a topic name',
+                    confirmButtonColor: '#009c95'
+                });
+                return;
+            }
+            
+            const topicsContainer = document.getElementById('topicsContainer');
+            const existingTopics = Array.from(topicsContainer.children)
+                .map(badge => badge.textContent.trim());
+            
+            if (existingTopics.includes(topic)) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Duplicate Topic',
+                    text: 'This topic has already been added',
+                    confirmButtonColor: '#009c95'
+                });
+                return;
+            }
+
+            const topicElement = document.createElement('div');
+            topicElement.className = 'badge bg-secondary d-flex align-items-center gap-2';
+            topicElement.innerHTML = `
+                ${topic}
+                <button type="button" class="btn-close btn-close-white" 
+                        onclick="removeTopic(this)" style="font-size: 0.5rem;"></button>
+            `;
+            topicsContainer.appendChild(topicElement);
+            topicInput.value = '';
+        }
+
+        // Remove topic
+        function removeTopic(button) {
+            Swal.fire({
+                title: 'Remove Topic?',
+                text: 'Are you sure you want to remove this topic?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#009c95',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, remove it'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    button.parentElement.remove();
+                }
+            });
+        }
+
+        // Delete training
+        function deleteTraining(index) {
+            Swal.fire({
+                title: 'Delete Training?',
+                text: "This action cannot be undone!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Here you would typically make an API call to delete the training
+                    trainings.splice(index, 1);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Deleted!',
+                        text: 'The training has been deleted.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        location.reload();
+                    });
+                }
+            });
+        }
+
+        // View training
+        function viewTraining(index) {
+            const training = trainings[index];
+            Swal.fire({
+                title: training.title,
+                html: `
+                    <div class="text-start">
+                        <p><strong>Training Code:</strong> ${training.code}</p>
+                        <p><strong>Topics:</strong> ${training.topics.join(', ')}</p>
+                        <p><strong>Description:</strong> ${training.description}</p>
+                        <p><strong>Date Created:</strong> ${training.date}</p>
+                        <p><strong>Status:</strong> 
+                            <span class="badge bg-${training.status === 'Active' ? 'success' : 'warning'}">
+                                ${training.status}
+                            </span>
+                        </p>
+                    </div>
+                `,
+                confirmButtonColor: '#009c95',
+                width: '600px'
+            });
+        }
+
+        // Add new training
+        function addTraining() {
+            document.getElementById('modalTitle').textContent = 'Add Training';
+            document.getElementById('trainingForm').reset();
+            document.getElementById('trainingCode').value = generateTrainingCode();
+            document.getElementById('topicsContainer').innerHTML = '';
+            document.getElementById('trainingStatus').value = 'Active'; // Set default status
+            new bootstrap.Modal(document.getElementById('trainingModal')).show();
+        }
+
+        // Generate training code
+        function generateTrainingCode() {
+            const lastCode = trainings.length > 0 ? 
+                parseInt(trainings[trainings.length - 1].code.split('-')[1]) : 0;
+            return `TRN-${String(lastCode + 1).padStart(3, '0')}`;
+        }
+
+        // Filter functionality
+        function applyFilters() {
+            const titleFilter = document.getElementById('titleFilter').value.toLowerCase();
+            const dateFilter = document.getElementById('dateFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            // Here you would typically make an API call with the filter parameters
+            Swal.fire({
+                icon: 'info',
+                title: 'Filters Applied',
+                text: 'The filter functionality will be connected to the backend API.',
+                confirmButtonColor: '#009c95',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        }
+
+        // Add event listeners for filters
+        document.getElementById('titleFilter').addEventListener('input', applyFilters);
+        document.getElementById('dateFilter').addEventListener('change', applyFilters);
+        document.getElementById('statusFilter').addEventListener('change', applyFilters);
+    </script>
 </body>
 </html>
