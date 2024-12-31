@@ -910,7 +910,7 @@
                                                 <div class="row g-3 mb-4">
                                                     <!-- Training Code -->
                                                     <div class="col-md-4">
-                                                        <label for="trainingCode" class="form-label text-muted">Training Code</label>
+                                                        <label for="trainingCode" class="form-label text-muted"> Code</label>
                                                         <input type="text" class="form-control border-0 shadow-sm" id="trainingCode" placeholder="Enter training code" >
                                                     </div>
                                                     <!-- Training Title -->
@@ -918,15 +918,20 @@
                                                         <label for="trainingTitle" class="form-label text-muted">Training Title</label>
                                                         <input type="text" class="form-control border-0 shadow-sm" id="trainingTitle" placeholder="Enter training title" >
                                                     </div>
-                                                    <!-- Training Date -->
+                                                    <!-- Training Description -->
                                                     <div class="col-md-4">
-                                                        <label for="trainingDate" class="form-label text-muted">Training Date</label>
-                                                        <input type="date" class="form-control border-0 shadow-sm" id="trainingDate" >
+                                                        <label for="trainingTitle" class="form-label text-muted"> Title description</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="trainingdescription" placeholder="Enter training description" >
                                                     </div>
                                                 </div>
                             
                                                 <!-- Row 2 -->
                                                 <div class="row g-3 mb-4">
+                                                    <!-- Training Date -->
+                                                    <div class="col-md-4">
+                                                        <label for="trainingDate" class="form-label text-muted">Training Date</label>
+                                                        <input type="date" class="form-control border-0 shadow-sm" id="trainingDate" >
+                                                    </div>
                                                     <!-- Region -->
                                                     <div class="col-md-4">
                                                         <label for="location" class="form-label text-muted">Region</label>
@@ -934,32 +939,35 @@
                                                     </div>
                                                     <!-- District -->
                                                     <div class="col-md-4">
-                                                        <label for="lgas" class="form-label text-muted">District</label>
+                                                        <label for="lgas" class="form-label text-muted">LGA</label>
                                                         <input type="text" class="form-control border-0 shadow-sm" id="lgas" placeholder="Enter district" >
-                                                    </div>
-                                                    <!-- Ward -->
-                                                    <div class="col-md-4">
-                                                        <label for="ward" class="form-label text-muted">Ward</label>
-                                                        <input type="text" class="form-control border-0 shadow-sm" id="ward" placeholder="Enter ward" >
                                                     </div>
                                                 </div>
                             
                                                 <!-- Row 3 -->
                                                 <div class="row g-3 mb-4">
+                                                    <!-- Ward -->
+                                                    <div class="col-md-4">
+                                                        <label for="ward" class="form-label text-muted">Ward</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="ward" placeholder="Enter ward" >
+                                                    </div>
                                                      <!-- Time -->
                                                      <div class="col-md-4">
-                                                        <label for="time" class="form-label text-muted">Time</label>
-                                                        <input type="time" class="form-control border-0 shadow-sm" id="time" >
+                                                        <label for="time" class="form-label text-muted">Duration</label>
+                                                        <input type="number" class="form-control border-0 shadow-sm" id="duration" placeholder="Enter duration(in days)">
                                                     </div>
                                                     <!-- Capacity -->
                                                     <div class="col-md-4">
-                                                        <label for="capacity" class="form-label text-muted">Capacity</label>
-                                                        <input type="number" class="form-control border-0 shadow-sm" id="capacity" placeholder="Enter capacity" >
+                                                        <label for="capacity" class="form-label text-muted">Participants</label>
+                                                        <input type="number" class="form-control border-0 shadow-sm" id="capacity" placeholder="Enter No of participants" >
                                                     </div>
-                                                    <!-- Hall -->
+                                                </div>
+                                                <!-- Row 4 -->
+                                                <div class="row g-3 mb-4">
+                                                    <!-- Venue -->
                                                     <div class="col-md-4">
-                                                        <label for="hall" class="form-label text-muted">Hall</label>
-                                                        <input type="text" class="form-control border-0 shadow-sm" id="hall" placeholder="Enter hall" >
+                                                        <label for="hall" class="form-label text-muted">Venue</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="hall" placeholder="Enter venue" >
                                                     </div>
                                                 </div>
                                             </form>
@@ -994,49 +1002,67 @@
                                             <form id="editTrainingForm">
                                                 <!-- Row 1 -->
                                                 <div class="row g-3 mb-4">
+                                                    <!-- Training Code -->
                                                     <div class="col-md-4">
-                                                        <label for="editTrainingCode" class="form-label text-muted">Training Code</label>
-                                                        <input type="text" class="form-control border-0 shadow-sm" id="editTrainingCode" placeholder="Enter training code" required>
+                                                        <label for="trainingCode" class="form-label text-muted"> Code</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="trainingCode" placeholder="Enter training code" >
                                                     </div>
+                                                    <!-- Training Title -->
                                                     <div class="col-md-4">
-                                                        <label for="editTrainingTitle" class="form-label text-muted">Training Title</label>
-                                                        <input type="text" class="form-control border-0 shadow-sm" id="editTrainingTitle" placeholder="Enter training title" required>
+                                                        <label for="trainingTitle" class="form-label text-muted">Training Title</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="trainingTitle" placeholder="Enter training title" >
                                                     </div>
+                                                    <!-- Training Description -->
                                                     <div class="col-md-4">
-                                                        <label for="editTrainingDate" class="form-label text-muted">Training Date</label>
-                                                        <input type="date" class="form-control border-0 shadow-sm" id="editTrainingDate" required>
+                                                        <label for="trainingTitle" class="form-label text-muted"> Title description</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="trainingdescription" placeholder="Enter training description" >
                                                     </div>
                                                 </div>
                             
                                                 <!-- Row 2 -->
                                                 <div class="row g-3 mb-4">
+                                                    <!-- Training Date -->
                                                     <div class="col-md-4">
-                                                        <label for="editLocation" class="form-label text-muted">Region</label>
-                                                        <input type="text" class="form-control border-0 shadow-sm" id="editLocation" placeholder="Enter region" required>
+                                                        <label for="trainingDate" class="form-label text-muted">Training Date</label>
+                                                        <input type="date" class="form-control border-0 shadow-sm" id="trainingDate" >
                                                     </div>
+                                                    <!-- Region -->
                                                     <div class="col-md-4">
-                                                        <label for="editLgas" class="form-label text-muted">District</label>
-                                                        <input type="text" class="form-control border-0 shadow-sm" id="editLgas" placeholder="Enter LGA's" required>
+                                                        <label for="location" class="form-label text-muted">Region</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="location" placeholder="Enter region" >
                                                     </div>
+                                                    <!-- District -->
                                                     <div class="col-md-4">
-                                                        <label for="editWard" class="form-label text-muted">Ward</label>
-                                                        <input type="text" class="form-control border-0 shadow-sm" id="editWard" placeholder="Enter ward" required>
+                                                        <label for="lgas" class="form-label text-muted">LGA</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="lgas" placeholder="Enter district" >
                                                     </div>
                                                 </div>
                             
                                                 <!-- Row 3 -->
                                                 <div class="row g-3 mb-4">
+                                                    <!-- Ward -->
                                                     <div class="col-md-4">
-                                                        <label for="editTime" class="form-label text-muted">Time</label>
-                                                        <input type="time" class="form-control border-0 shadow-sm" id="editTime" required>
+                                                        <label for="ward" class="form-label text-muted">Ward</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="ward" placeholder="Enter ward" >
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <label for="editCapacity" class="form-label text-muted">Capacity</label>
-                                                        <input type="number" class="form-control border-0 shadow-sm" id="editCapacity" placeholder="Enter capacity" required>
+                                                     <!-- Time -->
+                                                     <div class="col-md-4">
+                                                        <label for="time" class="form-label text-muted">Duration</label>
+                                                        <input type="number" class="form-control border-0 shadow-sm" id="duration" placeholder="Enter duration(in days)">
                                                     </div>
+                                                    <!-- Capacity -->
                                                     <div class="col-md-4">
-                                                        <label for="editHall" class="form-label text-muted">Hall</label>
-                                                        <input type="text" class="form-control border-0 shadow-sm" id="editHall" placeholder="Enter hall" required>
+                                                        <label for="capacity" class="form-label text-muted">Participants</label>
+                                                        <input type="number" class="form-control border-0 shadow-sm" id="capacity" placeholder="Enter No of participants" >
+                                                    </div>
+                                                </div>
+
+                                                <!-- Row 4 -->
+                                                <div class="row g-3 mb-4">
+                                                    <!-- Venue -->
+                                                    <div class="col-md-4">
+                                                        <label for="hall" class="form-label text-muted">Venue</label>
+                                                        <input type="text" class="form-control border-0 shadow-sm" id="hall" placeholder="Enter venue" >
                                                     </div>
                                                 </div>
                                             </form>
@@ -1071,25 +1097,27 @@
                                         <tr>
                                             <th>Code</th>
                                             <th> Title</th>
+                                            <th> Description</th>
                                             <th> Date</th>
                                             <th>Region</th>
-                                            <th>District</th>
+                                            <th>LGA</th>
                                             <th>Ward</th>
-                                            <th>Time</th>
-                                            <th>Capacity</th>
-                                            <th>Hall</th>
+                                            <th>Duration</th>
+                                            <th>Participants</th>
+                                            <th>venue</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>TC0013</td>
-                                            <td data-label="Training Title">Effective immunology</td>
+                                            <td data-label="Training Title">Immunology</td>
+                                            <td data-label="Training Title">Effective training on immunization</td>
                                             <td data-label="Date Requested">2024-01-15</td>
                                             <td data-label="Location">Mwanza</td>
                                             <td data-label="Requested By">Ilemela</td>
                                             <td data-label="Requested By">kilimahewa</td>
-                                            <td data-label="Training Date">11:00</td>
+                                            <td data-label="Training Date">11</td>
                                             <td>350</td>
                                             <td>Golden crest</td>
                                             <td data-label="Actions">
@@ -1111,12 +1139,13 @@
                                         </tr>
                                         <tr>
                                             <td>TC0014</td>
-                                            <td data-label="Training Title">Effective teaching</td>
+                                            <td data-label="Training Title">Teaching</td>
+                                            <td data-label="Training Title">Effective teaching training</td>
                                             <td data-label="Date Requested">2024-01-16</td>
                                             <td data-label="Location">Dodoma</td>
                                             <td data-label="Requested By">Dodoma</td>
                                             <td data-label="Requested By">Makulu</td>
-                                            <td data-label="Training Date">12:00</td>
+                                            <td data-label="Training Date">12</td>
                                             <td>250</td>
                                             <td>Jakaya convs</td>
                                             <td data-label="Actions">
