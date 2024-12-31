@@ -3,11 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TTP - All Institutions</title>
+    <title>TTP - All Organisation</title>
     <link rel="shortcut icon" href="asset/images/logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="asset/css/Administrator/administrator.css">
+    <style>
+        .btn-custom-primary {
+            background-color: #009c95;
+            border-color: #009c95;
+            color: white;
+        }
+        
+        .btn-custom-primary:hover {
+            background-color: #008c85;
+            border-color: #008c85;
+            color: white;
+        }
+
+        .bg-custom-primary {
+            background-color: #009c95 !important;
+            color: white;
+        }
+
+        .form-check-input:checked {
+            background-color: #009c95;
+            border-color: #009c95;
+        }
+
+        .badge {
+            padding: 0.5rem 0.8rem;
+            font-weight: 500;
+        }
+
+        .form-check.form-switch .form-check-input {
+            width: 2.5em;
+            height: 1.25em;
+            cursor: pointer;
+        }
+
+        .btn {
+            margin: 0 2px;
+        }
+
+        .pagination .page-link {
+            color: #009c95;
+        }
+
+        .pagination .active .page-link {
+            background-color: #009c95;
+            border-color: #009c95;
+            color: white;
+        }
+
+        /* Table styles */
+        .table {
+            font-size: 0.875rem; /* 14px */
+        }
+
+        .table th {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .table .badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        /* Action button styles */
+        .table .btn-sm {
+            width: 24px;
+            height: 24px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 2px;
+            font-size: 12px;
+        }
+        
+        .table .btn-sm i {
+            font-size: 12px;
+            line-height: 1;
+        }
+        
+        .table td.text-center {
+            white-space: nowrap;
+        }
+
+        /* View Modal Styles */
+        .modal-lg {
+            max-width: 1200px;
+        }
+        
+        .institution-details label {
+            font-size: 0.8125rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .institution-details p {
+            font-size: 0.9375rem;
+        }
+        
+        .detail-card {
+            background-color: #fff;
+            border-radius: 0.5rem;
+        }
+        
+        .detail-card h6 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .pdf-preview-container {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        
+        #viewEducationLevels .badge {
+            font-size: 0.8125rem;
+            padding: 0.35rem 0.75rem;
+            background-color: #e9ecef;
+            color: #495057;
+            font-weight: 500;
+        }
+        
+        #viewStatus.active {
+            color: #198754;
+            font-weight: 500;
+        }
+        
+        #viewStatus.inactive {
+            color: #dc3545;
+            font-weight: 500;
+        }
+
+        /* View Modal Compact Styles */
+        .detail-card h6 {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .detail-card .text-muted.small {
+            font-size: 0.75rem;
+            white-space: nowrap;
+            min-width: 85px;
+        }
+
+        .detail-card .fw-medium {
+            font-size: 0.85rem;
+            word-break: break-word;
+        }
+
+        .detail-card .row {
+            margin: 0 -8px;
+        }
+
+        .detail-card .col-md-4, .detail-card .col-12 {
+            padding: 0 8px;
+        }
+
+        .detail-card .badge {
+            font-size: 0.75rem;
+            padding: 0.25em 0.75em;
+            color: white !important;
+        }
+
+        #viewEducationLevels .badge {
+            font-size: 0.75rem;
+            color: white !important;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-card .d-flex {
+            gap: 0.5rem;
+        }
+
+        .detail-card .d-flex label {
+            flex-shrink: 0;
+        }
+
+        .detail-card .d-flex p {
+            flex-grow: 1;
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-card .col-md-4 {
+                margin-bottom: 0.5rem;
+            }
+            
+            .detail-card .d-flex {
+                flex-wrap: wrap;
+            }
+
+            .detail-card .text-muted.small {
+                min-width: 70px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -170,7 +375,7 @@
                 <li class="nav-item">
                     <a href="#institutionsSubmenu" class="nav-link active" data-bs-toggle="collapse">
                         <i class="fas fa-university"></i>
-                        <span>Institutions</span>
+                        <span>Organisation</span>
                         <i class="fas fa-chevron-down ms-auto"></i>
                     </a>
                     <div class="collapse show" id="institutionsSubmenu">
@@ -178,7 +383,7 @@
                             <li class="nav-item">
                                 <a href="all_institutions.html" class="nav-link active">
                                     <i class="fas fa-building"></i>
-                                    <span>All Institutions</span>
+                                    <span>All Organisation</span>
                                 </a>
                             </li>
                         </ul>
@@ -219,7 +424,7 @@
             <div class="card mb-4 shadow-sm">
                 <div class="card-body">
                     <div class="row g-3">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group">
                                 <span class="input-group-text bg-custom-primary text-white">
                                     <i class="fas fa-search"></i>
@@ -235,7 +440,7 @@
                                 <input type="date" class="form-control" id="dateFilter">
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <select class="form-select" id="ownershipFilter">
                                 <option value="">All Ownership</option>
                                 <option value="Government">Government</option>
@@ -243,17 +448,18 @@
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <button class="btn btn-custom-primary w-100 d-flex align-items-center justify-content-center gap-2" 
-                                    onclick="addInstitution()">
-                                <i class="fas fa-plus"></i>
-                                <span>Add Institution</span>
-                            </button>
+                            <select class="form-select" id="statusFilter">
+                                <option value="">All Status</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Institutions Table -->
+            <!-- Organisation Table -->
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -283,6 +489,7 @@
                                     <th>Ownership</th>
                                     <th>Education Level</th>
                                     <th>Registered At</th>
+                                    <th>Approved At</th>
                                     <th>Status</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
@@ -298,6 +505,7 @@
                                         <span class="badge bg-info">College</span>
                                     </td>
                                     <td>2024-01-15</td>
+                                    <td>2024-01-20</td>
                                     <td>
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" checked 
@@ -347,177 +555,132 @@
                 </div>
             </div>
         </div>
-
-        <style>
-            .btn-custom-primary {
-                background-color: #009c95;
-                border-color: #009c95;
-                color: white;
-            }
-            
-            .btn-custom-primary:hover {
-                background-color: #008c85;
-                border-color: #008c85;
-                color: white;
-            }
-
-            .bg-custom-primary {
-                background-color: #009c95 !important;
-                color: white;
-            }
-
-            .form-check-input:checked {
-                background-color: #009c95;
-                border-color: #009c95;
-            }
-
-            .badge {
-                padding: 0.5rem 0.8rem;
-                font-weight: 500;
-            }
-
-            .form-check.form-switch .form-check-input {
-                width: 2.5em;
-                height: 1.25em;
-                cursor: pointer;
-            }
-
-            .btn {
-                margin: 0 2px;
-            }
-
-            .pagination .page-link {
-                color: #009c95;
-            }
-
-            .pagination .active .page-link {
-                background-color: #009c95;
-                border-color: #009c95;
-                color: white;
-            }
-
-            /* Table styles */
-            .table {
-                font-size: 0.875rem; /* 14px */
-            }
-
-            .table th {
-                font-size: 0.875rem;
-                font-weight: 600;
-            }
-
-            .table .badge {
-                font-size: 0.75rem;
-                padding: 0.25rem 0.5rem;
-            }
-
-            .btn-sm {
-                padding: 0.25rem 0.5rem;
-                font-size: 0.75rem;
-            }
-        </style>
     </main>
 
     <!-- View Institution Modal -->
-    <div class="modal fade" id="viewInstitutionModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="viewModalLabel">View Institution</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header bg-custom-primary">
+                    <h5 class="modal-title text-white">View Institution Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="fw-bold">Organization Code:</label>
-                        <div id="viewOrgCode"></div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="fw-bold">Organization Name:</label>
-                        <div id="viewOrgName"></div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="fw-bold">Ownership:</label>
-                        <div id="viewOwnership"></div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="fw-bold">Education Levels:</label>
-                        <div id="viewEducationLevels"></div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="fw-bold">Registration Date:</label>
-                        <div id="viewRegistrationDate"></div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="fw-bold">Status:</label>
-                        <div id="viewStatus"></div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+                <div class="modal-body p-0" style="min-height: 600px;">
+                    <div class="row g-0 h-100">
+                        <!-- Institution Details Section -->
+                        <div class="col-md-5 border-end">
+                            <div class="p-4">
+                                <div class="institution-details">
+                                    <div class="detail-card mb-4">
+                                        <h6 class="text-muted mb-3 border-bottom pb-2">Basic Information</h6>
+                                        <div class="row g-2">
+                                            <div class="col-12">
+                                                <div class="d-flex align-items-center">
+                                                    <label class="text-muted small me-1 mb-0 w-25">Organization Code:</label>
+                                                    <p class="mb-0 fw-medium" id="viewCode"></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="d-flex align-items-center">
+                                                    <label class="text-muted small me-1 mb-0 w-25">Organization Name:</label>
+                                                    <p class="mb-0 fw-medium" id="viewName"></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="d-flex align-items-center">
+                                                    <label class="text-muted small me-1 mb-0 w-25">Ownership:</label>
+                                                    <p class="mb-0 fw-medium" id="viewOwnership"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-    <!-- Add/Edit Institution Modal -->
-    <div class="modal fade" id="institutionModal" tabindex="-1" aria-labelledby="institutionModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">Add Institution</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="detail-card mb-4">
+                                        <h6 class="text-muted mb-3 border-bottom pb-2">Targeted Education Level(s)</h6>
+                                        <div id="viewEducationLevels" class="d-flex flex-wrap gap-2"></div>
+                                    </div>
+
+                                    <div class="detail-card mb-4">
+                                        <h6 class="text-muted mb-3 border-bottom pb-2">Location Information</h6>
+                                        <div class="row g-2">
+                                            <div class="col-12">
+                                                <div class="d-flex align-items-center">
+                                                    <label class="text-muted small me-1 mb-0 w-25">Region:</label>
+                                                    <p class="mb-0 fw-medium" id="viewRegion"></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="d-flex align-items-center">
+                                                    <label class="text-muted small me-1 mb-0 w-25">LGAs:</label>
+                                                    <p class="mb-0 fw-medium" id="viewDistrict"></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="d-flex align-items-center">
+                                                    <label class="text-muted small me-1 mb-0 w-25">Ward:</label>
+                                                    <p class="mb-0 fw-medium" id="viewWard"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="detail-card">
+                                        <h6 class="text-muted mb-3 border-bottom pb-2">Status Information</h6>
+                                        <div class="row g-2">
+                                            <div class="col-12">
+                                                <div class="d-flex align-items-center">
+                                                    <label class="text-muted small me-1 mb-0 w-25">Reg:</label>
+                                                    <p class="mb-0 fw-medium" id="viewRegisteredAt"></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="d-flex align-items-center">
+                                                    <label class="text-muted small me-1 mb-0 w-25">Approved:</label>
+                                                    <p class="mb-0 fw-medium" id="viewApprovedAt"></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="d-flex align-items-center">
+                                                    <label class="text-muted small me-1 mb-0 w-25">Status:</label>
+                                                    <p class="mb-0" id="viewStatus"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="detail-card mt-4">
+                                        <h6 class="text-muted mb-3 border-bottom pb-2">Description</h6>
+                                        <p class="mb-0 fw-medium" id="viewDescription"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PDF Preview Section -->
+                        <div class="col-md-7">
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h6 class="mb-0"> Approval Letter</h6>
+                                    <div class="btn-group">
+                                        <button class="btn btn-sm btn-outline-primary" onclick="printTemplateLetter()">
+                                            <i class="fas fa-print me-1"></i> Print
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="downloadTemplateLetter()">
+                                            <i class="fas fa-download me-1"></i> Download
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="pdf-preview-container">
+                                    <embed src="TEMPLATE LETTER.pdf" type="application/pdf" width="100%" height="600px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form id="institutionForm" class="needs-validation" novalidate>
-                        <div class="mb-3">
-                            <label class="form-label">Organization Code</label>
-                            <input type="text" class="form-control" id="orgCode" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Organization Name</label>
-                            <input type="text" class="form-control" id="orgName" required>
-                            <div class="invalid-feedback">Please enter organization name</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Ownership</label>
-                            <select class="form-select" id="ownership" required>
-                                <option value="">Select ownership</option>
-                                <option value="Government">Government</option>
-                                <option value="Private">Private</option>
-                            </select>
-                            <div class="invalid-feedback">Please select ownership type</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Education Levels</label>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="levelPrimary" value="Primary">
-                                <label class="form-check-label">Primary School</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="levelSecondary" value="Secondary">
-                                <label class="form-check-label">Secondary School</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="levelCollege" value="College">
-                                <label class="form-check-label">College</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="levelUniversity" value="University">
-                                <label class="form-check-label">University</label>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Status</label>
-                            <select class="form-select" id="orgStatus" required>
-                                <option value="Pending">Pending</option>
-                                <option value="Active">Active</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-custom-primary" onclick="saveInstitution()">Save</button>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Close
+                    </button>
                 </div>
             </div>
         </div>
@@ -546,6 +709,79 @@
         </div>
     </div>
 
+    <!-- Edit Institution Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-custom-primary">
+                    <h5 class="modal-title text-white">Edit Institution Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editInstitutionForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="editCode" class="form-label">Institution Code</label>
+                                <input type="text" class="form-control" id="editCode" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editName" class="form-label">Institution Name</label>
+                                <input type="text" class="form-control" id="editName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editOwnership" class="form-label">Ownership</label>
+                                <select class="form-select" id="editOwnership" required>
+                                    <option value="">Select Ownership</option>
+                                    <option value="Government">Government</option>
+                                    <option value="Private">Private</option>
+                                    <option value="Community">Community</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editEducationLevels" class="form-label">Education Levels</label>
+                                <select class="form-select" id="editEducationLevels" multiple required>
+                                    <option value="Primary">Primary</option>
+                                    <option value="Secondary">Secondary</option>
+                                    <option value="College">College</option>
+                                    <option value="University">University</option>
+                                    <option value="Vocational">Vocational</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editRegion" class="form-label">Region</label>
+                                <input type="text" class="form-control" id="editRegion" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editDistrict" class="form-label">LGAs</label>
+                                <input type="text" class="form-control" id="editDistrict" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editWard" class="form-label">Ward</label>
+                                <input type="text" class="form-control" id="editWard" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editStatus" class="form-label">Status</label>
+                                <select class="form-select" id="editStatus" required>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                    <option value="Pending">Pending</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="editDescription" class="form-label">Description</label>
+                                <textarea class="form-control" id="editDescription" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-custom-primary" onclick="saveInstitutionChanges()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
     <!-- Bootstrap JS and other dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -559,142 +795,7 @@
             ownership: 'Government',
             educationLevels: ['University', 'College'],
             registeredAt: '2024-01-15',
-            status: true
-        },
-        {
-            code: 'ORG-002',
-            name: 'Mwanza College of Technology',
-            ownership: 'Private',
-            educationLevels: ['College'],
-            registeredAt: '2024-02-10',
-            status: true
-        },
-        {
-            code: 'ORG-003',
-            name: 'Arusha Institute of Science',
-            ownership: 'Government',
-            educationLevels: ['University', 'Vocational'],
-            registeredAt: '2024-03-05',
-            status: true
-        },
-        {
-            code: 'ORG-004',
-            name: 'Zanzibar Maritime Academy',
-            ownership: 'Private',
-            educationLevels: ['Vocational'],
-            registeredAt: '2024-04-18',
-            status: false
-        },
-        {
-            code: 'ORG-005',
-            name: 'Mbeya Polytechnic',
-            ownership: 'Government',
-            educationLevels: ['Polytechnic'],
-            registeredAt: '2024-05-22',
-            status: true
-        },
-        {
-            code: 'ORG-006',
-            name: 'Dodoma Health College',
-            ownership: 'Private',
-            educationLevels: ['College'],
-            registeredAt: '2024-06-11',
-            status: false
-        },
-        {
-            code: 'ORG-007',
-            name: 'Morogoro Agricultural Institute',
-            ownership: 'Government',
-            educationLevels: ['Vocational', 'College'],
-            registeredAt: '2024-07-15',
-            status: true
-        },
-        {
-            code: 'ORG-008',
-            name: 'Tanga School of Engineering',
-            ownership: 'Private',
-            educationLevels: ['College', 'Vocational'],
-            registeredAt: '2024-08-01',
-            status: true
-        },
-        {
-            code: 'ORG-009',
-            name: 'Kigoma Business School',
-            ownership: 'Private',
-            educationLevels: ['University'],
-            registeredAt: '2024-09-12',
-            status: false
-        },
-        {
-            code: 'ORG-010',
-            name: 'Iringa Teachers Training College',
-            ownership: 'Government',
-            educationLevels: ['College'],
-            registeredAt: '2024-10-05',
-            status: true
-        },
-        {
-            code: 'ORG-011',
-            name: 'Moshi Technical Institute',
-            ownership: 'Private',
-            educationLevels: ['Vocational', 'College'],
-            registeredAt: '2024-11-15',
-            status: true
-        },
-        {
-            code: 'ORG-012',
-            name: 'Tabora School of Fine Arts',
-            ownership: 'Government',
-            educationLevels: ['College'],
-            registeredAt: '2024-12-20',
-            status: false
-        },
-        {
-            code: 'ORG-013',
-            name: 'Singida Management University',
-            ownership: 'Private',
-            educationLevels: ['University'],
-            registeredAt: '2024-01-25',
-            status: true
-        },
-        {
-            code: 'ORG-014',
-            name: 'Shinyanga Community College',
-            ownership: 'Government',
-            educationLevels: ['College'],
-            registeredAt: '2024-02-17',
-            status: true
-        },
-        {
-            code: 'ORG-015',
-            name: 'Mtwara Arts and Design Academy',
-            ownership: 'Private',
-            educationLevels: ['Vocational'],
-            registeredAt: '2024-03-08',
-            status: true
-        },
-        {
-            code: 'ORG-016',
-            name: 'Njombe Center for Advanced Studies',
-            ownership: 'Government',
-            educationLevels: ['University'],
-            registeredAt: '2024-04-22',
-            status: true
-        },
-        {
-            code: 'ORG-017',
-            name: 'Pemba School of Hospitality',
-            ownership: 'Private',
-            educationLevels: ['Vocational'],
-            registeredAt: '2024-05-12',
-            status: false
-        },
-        {
-            code: 'ORG-018',
-            name: 'Kilwa Science Academy',
-            ownership: 'Government',
-            educationLevels: ['Polytechnic', 'College'],
-            registeredAt: '2024-06-30',
+            approvedAt: '2024-01-20',
             status: true
         },
         {
@@ -703,14 +804,7 @@
             ownership: 'Private',
             educationLevels: ['College'],
             registeredAt: '2024-07-20',
-            status: true
-        },
-        {
-            code: 'ORG-020',
-            name: 'Songea School of Technology',
-            ownership: 'Government',
-            educationLevels: ['Vocational', 'Polytechnic'],
-            registeredAt: '2024-08-25',
+            approvedAt: '2024-07-25',
             status: true
         }
     ];
@@ -722,43 +816,119 @@
         // View institution
         function viewInstitution(index) {
             const institution = filteredData[index];
-            document.getElementById('viewOrgCode').textContent = institution.code;
-            document.getElementById('viewOrgName').textContent = institution.name;
+            
+            // Update basic information
+            document.getElementById('viewCode').textContent = institution.code;
+            document.getElementById('viewName').textContent = institution.name;
             document.getElementById('viewOwnership').textContent = institution.ownership;
-            document.getElementById('viewStatus').innerHTML = `
-                <span class="badge bg-${institution.status ? 'success' : 'warning'}">
-                    ${institution.status ? 'Active' : 'Pending'}
-                </span>
-            `;
             
-            const levelsContainer = document.getElementById('viewEducationLevels');
-            levelsContainer.innerHTML = institution.educationLevels.map(level => 
-                `<span class="badge bg-info">${level}</span>`
-            ).join(' ');
+            // Update education levels with proper badge styling
+            const educationLevelsContainer = document.getElementById('viewEducationLevels');
+            educationLevelsContainer.innerHTML = institution.educationLevels.map(level => 
+                `<span class="badge bg-primary">${level}</span>`
+            ).join('');
             
-            document.getElementById('viewRegistrationDate').textContent = institution.registeredAt;
+            // Update location information
+            document.getElementById('viewRegion').textContent = institution.region || 'Not specified';
+            document.getElementById('viewDistrict').textContent = institution.district || 'Not specified';
+            document.getElementById('viewWard').textContent = institution.ward || 'Not specified';
             
-            const viewModal = new bootstrap.Modal(document.getElementById('viewInstitutionModal'));
+            // Update status information
+            document.getElementById('viewRegisteredAt').textContent = institution.registeredAt;
+            document.getElementById('viewApprovedAt').textContent = institution.approvedAt;
+            document.getElementById('viewStatus').innerHTML = institution.status ? 
+                '<span class="badge bg-success">Active</span>' : 
+                '<span class="badge bg-danger">Inactive</span>';
+            
+            // Update description
+            const descriptionElement = document.getElementById('viewDescription');
+            if (institution.description && institution.description.trim()) {
+                descriptionElement.textContent = institution.description;
+                descriptionElement.className = 'mb-0'; // Remove text-muted if there's content
+            } else {
+                descriptionElement.innerHTML = '<em class="text-muted">No description available</em>';
+            }
+
+            // Show the modal
+            const viewModal = new bootstrap.Modal(document.getElementById('viewModal'));
             viewModal.show();
         }
 
         // Edit institution
         function editInstitution(index) {
             const institution = filteredData[index];
-            document.getElementById('modalTitle').textContent = 'Edit Institution';
-            document.getElementById('orgCode').value = institution.code;
-            document.getElementById('orgName').value = institution.name;
-            document.getElementById('ownership').value = institution.ownership;
-            document.getElementById('orgStatus').value = institution.status ? 'Active' : 'Pending';
             
-            // Reset and set education levels
-            const levelCheckboxes = document.querySelectorAll('#institutionForm input[type="checkbox"]');
-            levelCheckboxes.forEach(checkbox => {
-                checkbox.checked = institution.educationLevels.includes(checkbox.value);
+            // Populate the edit form with current values
+            document.getElementById('editCode').value = institution.code;
+            document.getElementById('editName').value = institution.name;
+            document.getElementById('editOwnership').value = institution.ownership;
+            document.getElementById('editRegion').value = institution.region || '';
+            document.getElementById('editDistrict').value = institution.district || '';
+            document.getElementById('editWard').value = institution.ward || '';
+            document.getElementById('editStatus').value = institution.status ? 'Active' : 'Inactive';
+            document.getElementById('editDescription').value = institution.description || '';
+
+            // Handle multiple select for education levels
+            const editEducationLevels = document.getElementById('editEducationLevels');
+            Array.from(editEducationLevels.options).forEach(option => {
+                option.selected = institution.educationLevels.includes(option.value);
             });
-            
-            const editModal = new bootstrap.Modal(document.getElementById('institutionModal'));
+
+            // Store the current index for use when saving
+            document.getElementById('editInstitutionForm').dataset.editIndex = index;
+
+            // Show the modal
+            const editModal = new bootstrap.Modal(document.getElementById('editModal'));
             editModal.show();
+        }
+
+        // Save institution changes
+        function saveInstitutionChanges() {
+            const form = document.getElementById('editInstitutionForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const index = parseInt(form.dataset.editIndex);
+            const editEducationLevels = document.getElementById('editEducationLevels');
+            const selectedLevels = Array.from(editEducationLevels.selectedOptions).map(option => option.value);
+
+            // Update the institution data
+            const updatedInstitution = {
+                code: document.getElementById('editCode').value,
+                name: document.getElementById('editName').value,
+                ownership: document.getElementById('editOwnership').value,
+                educationLevels: selectedLevels,
+                region: document.getElementById('editRegion').value,
+                district: document.getElementById('editDistrict').value,
+                ward: document.getElementById('editWard').value,
+                status: document.getElementById('editStatus').value === 'Active',
+                description: document.getElementById('editDescription').value,
+                registeredAt: filteredData[index].registeredAt,
+                approvedAt: filteredData[index].approvedAt
+            };
+
+            // Update both the filtered and original data arrays
+            filteredData[index] = updatedInstitution;
+            const originalIndex = institutions.findIndex(inst => inst.code === updatedInstitution.code);
+            if (originalIndex !== -1) {
+                institutions[originalIndex] = updatedInstitution;
+            }
+
+            // Close the modal and update the table
+            const editModal = bootstrap.Modal.getInstance(document.getElementById('editModal'));
+            editModal.hide();
+            updateTable();
+
+            // Show success message
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Institution details updated successfully',
+                timer: 2000,
+                showConfirmButton: false
+            });
         }
 
         // Delete institution
@@ -826,80 +996,6 @@
             });
         }
 
-        // Add new institution
-        function addInstitution() {
-            document.getElementById('modalTitle').textContent = 'Add Institution';
-            document.getElementById('institutionForm').reset();
-            document.getElementById('orgCode').value = generateOrgCode();
-            document.getElementById('orgStatus').value = 'Pending';
-
-            // Clear validation states
-            const form = document.getElementById('institutionForm');
-            form.classList.remove('was-validated');
-            
-            const addModal = new bootstrap.Modal(document.getElementById('institutionModal'));
-            addModal.show();
-        }
-
-        // Generate organization code
-        function generateOrgCode() {
-            const lastCode = institutions.length > 0 ? 
-                parseInt(institutions[institutions.length - 1].code.split('-')[1]) : 0;
-            return `ORG-${String(lastCode + 1).padStart(3, '0')}`;
-        }
-
-        // Save institution
-        function saveInstitution() {
-            const form = document.getElementById('institutionForm');
-            if (!form.checkValidity()) {
-                form.classList.add('was-validated');
-                return;
-            }
-
-            const code = document.getElementById('orgCode').value;
-            const name = document.getElementById('orgName').value;
-            const ownership = document.getElementById('ownership').value;
-            const status = document.getElementById('orgStatus').value === 'Active';
-            
-            // Get selected education levels
-            const levelCheckboxes = document.querySelectorAll('#institutionForm input[type="checkbox"]:checked');
-            const educationLevels = Array.from(levelCheckboxes).map(cb => cb.value);
-
-            if (educationLevels.length === 0) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Validation Error',
-                    text: 'Please select at least one education level',
-                    confirmButtonColor: '#009c95'
-                });
-                return;
-            }
-
-            const institution = {
-                code,
-                name,
-                ownership,
-                educationLevels,
-                registeredAt: new Date().toISOString().split('T')[0],
-                status
-            };
-
-            // Here Laravel will handle the actual saving
-            Swal.fire({
-                icon: 'success',
-                title: 'Save Request Sent',
-                text: 'The institution data has been submitted.',
-                confirmButtonColor: '#009c95',
-                timer: 1500,
-                showConfirmButton: false
-            }).then(() => {
-                const modal = bootstrap.Modal.getInstance(document.getElementById('institutionModal'));
-                if (modal) {
-                    modal.hide();
-                }
-            });
-        }
-
         // Toggle status
         function toggleStatus(index, status) {
             const institution = filteredData[index];
@@ -937,6 +1033,7 @@
             document.getElementById('searchFilter').addEventListener('input', applyFilters);
             document.getElementById('dateFilter').addEventListener('change', applyFilters);
             document.getElementById('ownershipFilter').addEventListener('change', applyFilters);
+            document.getElementById('statusFilter').addEventListener('change', applyFilters);
             document.getElementById('entriesPerPage').addEventListener('change', function() {
                 entriesPerPage = parseInt(this.value);
                 currentPage = 1;
@@ -950,6 +1047,7 @@
             const searchTerm = document.getElementById('searchFilter').value.toLowerCase();
             const dateFilter = document.getElementById('dateFilter').value;
             const ownershipFilter = document.getElementById('ownershipFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
             const quickSearch = document.getElementById('quickSearch').value.toLowerCase();
 
             filteredData = institutions.filter(institution => {
@@ -958,11 +1056,12 @@
                     institution.code.toLowerCase().includes(searchTerm);
                 const matchesDate = !dateFilter || institution.registeredAt === dateFilter;
                 const matchesOwnership = !ownershipFilter || institution.ownership === ownershipFilter;
+                const matchesStatus = !statusFilter || (statusFilter === 'Pending' && !institution.status) || (statusFilter === 'Approved' && institution.status);
                 const matchesQuickSearch = !quickSearch || 
                     institution.name.toLowerCase().includes(quickSearch) || 
                     institution.code.toLowerCase().includes(quickSearch);
 
-                return matchesSearch && matchesDate && matchesOwnership && matchesQuickSearch;
+                return matchesSearch && matchesDate && matchesOwnership && matchesStatus && matchesQuickSearch;
             });
 
             currentPage = 1;
@@ -990,6 +1089,7 @@
                             ).join(' ')}
                         </td>
                         <td>${institution.registeredAt}</td>
+                        <td>${institution.approvedAt}</td>
                         <td>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" ${institution.status ? 'checked' : ''} 
@@ -1069,6 +1169,20 @@
                 currentPage = page;
             }
             updateTable();
+        }
+
+        // Print template letter
+        function printTemplateLetter() {
+            window.open('TEMPLATE LETTER.pdf', '_blank').print();
+        }
+        
+        // Download template letter
+        function downloadTemplateLetter() {
+            const link = document.createElement('a');
+            link.href = 'TEMPLATE LETTER.pdf';
+            const code = document.getElementById('viewCode').textContent;
+            link.download = `${code}_template_letter.pdf`;
+            link.click();
         }
 
         // Initialize on page load
