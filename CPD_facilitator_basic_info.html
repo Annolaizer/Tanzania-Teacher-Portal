@@ -282,14 +282,6 @@
                     </div>
                 </div>
 
-                <div class="form-group mb-4">
-                    <label class="form-label">Specialization</label>
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="specialization" name="specialization" placeholder="Specialization">
-                        <label for="specialization">Specialization</label>
-                    </div>
-                </div>
-
                 <!-- Additional Information -->
                 <div class="form-group mb-4">
                     <label class="form-label">Additional Certifications</label>
@@ -313,23 +305,25 @@
         </div>
         <!-- Academic Entry Section -->
         <div class="form-section" id="academicEntrySection" style="display: none;">
-            <h2 class="form-title">Academic History</h2>
-            <p class="form-subtitle"><i>Next, we'll need entries from your academic history</i></p>
+            <h2 class="form-title">Specialization categories</h2>
+            <p class="form-subtitle"><i>Next, we'll need entries from your Specialization categories</i></p>
             
             <div class="form-content">
                 <!-- Table for displaying entries -->
-                <div class="table-responsive mb-4">
-                    <div class="text-center mb-3">
-                        <i class="text-prime fas fa-graduation-cap fa-2x" style="font-size: 10rem;"></i>
-                    </div>
-                    <p class="text-center"> No entries found</p>
-                    <div id="academicEntriesTable">
-                        <!-- Academic entries will be displayed here -->
-                    </div>
+                <div class="form-group mb-4">
+                    <label class="form-label">Specialization categories</label>
+                    <select class="form-select" id="professionalQualification" name="professionalQualification" required>
+                        <option value="" disabled selected>Select Specialization</option>
+                        <option value="data-science">Data Science</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="cyber-security">Cybersecurity</option>
+                        <option value="cloud-computing">Cloud Computing</option>
+                        <option value="machine-learning">Machine Learning</option>
+                    </select>
                 </div>
 
-                <button type="button" class="btn btn-primary mb-4 w-100" data-bs-toggle="modal" data-bs-target="#requestModal">
-                    Add Academic Entry
+                <button type="button" class="btn btn-primary mb-4 w-100" data-bs-target="#requestModal">
+                    <i class="bi bi-save me-2"></i>Add specialization
                 </button>
 
                 <div class="d-flex gap-4">
@@ -339,55 +333,6 @@
             </div>
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="requestModalLabel">Add academic entry</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="academicEntryForm">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="institutionName" placeholder="Institution name" required>
-                                <label for="institutionName">Institution name</label>
-                            </div>
-                            
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="institutionEmail" placeholder="Institution email" required>
-                                <label for="institutionEmail">Institution email</label>
-                            </div>
-                            
-                            <div class="form-group mb-3">
-                                <small><label class="form-label">Introduction letter from LGAs</label></small>
-                                <div class="file-input-wrapper">
-                                    <input type="file" class="form-control" id="introLetter" accept=".pdf,.doc,.docx">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group mb-3">
-                                <small><label class="form-label">Letter addressed to The Registrar</label></small>
-                                <div class="file-input-wrapper">
-                                    <input type="file" class="form-control" id="registrarLetter" accept=".pdf,.doc,.docx">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group mb-3">
-                                <small><label class="form-label">Transcript</label></small>
-                                <div class="file-input-wrapper">
-                                    <input type="file" class="form-control" id="transcript" accept=".pdf">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" form="academicEntryForm" class="btn btn-submit" style="background-color: var(--primary-color); color: white;">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

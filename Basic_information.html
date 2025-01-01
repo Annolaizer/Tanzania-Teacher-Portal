@@ -14,6 +14,20 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="asset/css/Teacher/basic_information.css">
     <link rel="stylesheet" href="asset/css/academic_entry.css">
+    <style>
+        /* Style for the subjects grid */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+            gap: 10px; /* Space between items */
+        }
+        
+        .subject-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px; /* Space between checkbox and label */
+        }
+    </style>
 </head>
 <body>
  <!-- Top Bar -->
@@ -265,28 +279,6 @@
                     </select>
                 </div>
 
-                <!-- teaching Level -->
-                <div class="form-group mb-4">
-                    <label class="form-label">Teaching Level</label>
-                    <select class="form-select" id="professionalQualification" name="professionalQualification" required>
-                        <option value="" selected disabled>Please select an option</option>
-                        <option value="pre">Pre-primary</option>
-                        <option value="primary">Primary</option>
-                        <option value="lower">Lower secondary</option>
-                        <option value="upper">Upper secondary</option>
-                    </select>
-                </div>
-
-                <!-- teaching subject -->
-                <div class="form-group mb-4">
-                    <label class="form-label">Teaching Subject</label>
-                    <select class="form-select" id="professionalQualification" name="professionalQualification" required>
-                        <option value="" selected disabled>Please subjects</option>
-                        <option value="lower">Science subject</option>
-                        <option value="upper">Arts subject</option>
-                    </select>
-                </div>
-
                 
                 <!-- Working Experience -->
                 <div class="form-group mb-4">
@@ -307,7 +299,7 @@
                 <!-- Button Group -->
                 <div class="row mb-3">
                     <div class="col-12">
-                        <button type="button" class="btn btn-primary w-100" id="professionalInfoSaveBtn">Save</button>
+                        <button type="button" class="btn btn-primary w-100" id="professionalInfoSaveBtn"><i class="fas fa-save me-2"></i>Save</button>
                     </div>
                 </div>
                 <div class="d-flex gap-4">
@@ -318,23 +310,81 @@
         </div>
         <!-- Academic Entry Section -->
         <div class="form-section" id="academicEntrySection" style="display: none;">
-            <h2 class="form-title">Academic History</h2>
-            <p class="form-subtitle"><i>Next, we'll need entries from your academic history</i></p>
+            <h2 class="form-title">Teaching subjects</h2>
+            <p class="form-subtitle"><i>Next, specify current teaching subjects </i></p>
             
             <div class="form-content">
                 <!-- Table for displaying entries -->
                 <div class="table-responsive mb-4">
-                    <div class="text-center mb-3">
-                        <i class="text-prime fas fa-graduation-cap fa-2x" style="font-size: 10rem;"></i>
+                    <!-- Education Level Dropdown -->
+                    <div class="form-group mb-4">
+                        <label class="form-label">Teaching Level</label>
+                        <select class="form-select" id="educationLevel" required>
+                            <option value="">Select teaching Level</option>
+                            <option value="Primary">Pre-primary Education</option>
+                            <option value="Primary">Primary Education</option>
+                            <option value="Lower">Lower Secondary Education</option>
+                            <option value="Higher">Higher Secondary Education</option>
+                        </select>
                     </div>
-                    <p class="text-center"> No entries found</p>
-                    <div id="academicEntriesTable">
-                        <!-- Academic entries will be displayed here -->
+                    <!-- Secondary Subjects (Initially Hidden) -->
+                    <div id="subjectsSection" class="mb-3" style="display: none;">
+                        <div class="subjects-grid">
+                            <!-- List of subjects -->
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="mathematics" name="subjects">
+                                <label for="mathematics">Mathematics</label>
+                            </div>
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="physics" name="subjects">
+                                <label for="physics">Physics</label>
+                            </div>
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="chemistry" name="subjects">
+                                <label for="chemistry">Chemistry</label>
+                            </div>
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="biology" name="subjects">
+                                <label for="biology">Biology</label>
+                            </div>
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="english" name="subjects">
+                                <label for="english">English</label>
+                            </div>
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="kiswahili" name="subjects">
+                                <label for="kiswahili">Kiswahili</label>
+                            </div>
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="geography" name="subjects">
+                                <label for="geography">Geography</label>
+                            </div>
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="history" name="subjects">
+                                <label for="history">History</label>
+                            </div>
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="civics" name="subjects">
+                                <label for="civics">Civics</label>
+                            </div>
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="commerce" name="subjects">
+                                <label for="commerce">Commerce</label>
+                            </div>
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="book-keeping" name="subjects">
+                                <label for="book-keeping">Book Keeping</label>
+                            </div>
+                            <div class="subject-checkbox">
+                                <input type="checkbox" id="agriculture" name="subjects">
+                                <label for="agriculture">Agriculture</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-primary mb-4 w-100" data-bs-toggle="modal" data-bs-target="#requestModal">
-                    Add Academic Entry
+                <button type="button" class="btn btn-primary mb-4 w-100" data-bs-target="#requestModal">
+                    <i class="fas fa-save me-2"></i>Save
                 </button>
 
                 <div class="d-flex gap-4">
@@ -344,56 +394,6 @@
             </div>
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="requestModalLabel">Add academic entry</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="academicEntryForm">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="institutionName" placeholder="Institution name" required>
-                                <label for="institutionName">ORDINARY LEVEL</label>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <small><label class="form-label">certificate</label></small>
-                                <div class="file-input-wrapper">
-                                    <input type="file" class="form-control" id="introLetter" accept=".pdf,.doc,.docx">
-                                </div>
-                            </div>
-                            
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="institutionEmail" placeholder="Institution email" required>
-                                <label for="institutionEmail">UNDERGRADUATE LEVEL</label>
-                            </div>
-                            
-                            
-                            <div class="form-group mb-3">
-                                <small><label class="form-label">Certificate</label></small>
-                                <div class="file-input-wrapper">
-                                    <input type="file" class="form-control" id="registrarLetter" accept=".pdf,.doc,.docx">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group mb-3">
-                                <small><label class="form-label">Transcript</label></small>
-                                <div class="file-input-wrapper">
-                                    <input type="file" class="form-control" id="transcript" accept=".pdf">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" form="academicEntryForm" class="btn btn-submit" style="background-color: var(--primary-color); color: white;">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -403,5 +403,34 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="asset/js/Teacher/teachers.js"></script>
+
+    <!-- subjects selection -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const educationLevel = document.getElementById('educationLevel');
+            const subjectsSection = document.getElementById('subjectsSection');
+            const subjectCheckboxes = document.querySelectorAll('.subject-checkbox input[type="checkbox"]');
+    
+            // Reset all checkboxes and hide subjects section initially
+            subjectCheckboxes.forEach(checkbox => checkbox.checked = false);
+            subjectsSection.style.display = 'none';
+    
+            // Handle education level change
+            educationLevel?.addEventListener('change', function () {
+                const value = this.value;
+    
+                if (value === 'Lower' || value === 'Higher') {
+                    subjectsSection.style.display = 'block';
+                    subjectCheckboxes.forEach(checkbox => checkbox.required = true);
+                } else {
+                    subjectsSection.style.display = 'none';
+                    subjectCheckboxes.forEach(checkbox => {
+                        checkbox.checked = false;
+                        checkbox.required = false;
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
